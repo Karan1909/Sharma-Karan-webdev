@@ -38,15 +38,26 @@ body.ks-forList
 
 .no-margin-left
 {
-    margin-left:0;
+    margin-left:0px;
 }
 
-.mycontent-left
-{
-    border-right: 1px dashed #333;
-}
 .glyphicon-cog
 {
     top:12px;
     position: absolute;
+}
+h1.ks-bringDowm
+{
+    margin-top:80px;
+    color: black;
+}
+
+.list-group
+{
+    padding-top:20px;
+}
+
+.navbar-brand.ks-toShiftLeft
+{
+    padding-left: 0px;
 }
