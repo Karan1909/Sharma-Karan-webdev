@@ -66,3 +66,7 @@ h1.ks-bringDowm
 {
     border-right: 1px dashed #333;
 }
+.ks-addPaddingOnRight
+{
+    padding-right:10px;
+}
