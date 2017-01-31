@@ -4,46 +4,48 @@
     <meta charset="UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
-    <title>Website List</title>
+    <title>Edit Page</title>
 </head>
-<body class="ks-forList ">
+<body class="ks-forList">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs ">
             <div class="navbar-text pull-left">
-                <a href="website-list.html">
-                <span class="glyphicon glyphicon-chevron-left">
+                <a href="page-list.html">
+                <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
             </div>
             <div class="navbar-header ">
-                <a class="navbar-brand">
-                    Websites
+                <a class="navbar-brand " >
+                   <b class="makeItWhite"> Pages
+                   </b>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
-                    <span class="glyphicon glyphicon-plus">
+                <a href="page-new.html">
+                    <span class="glyphicon glyphicon-plus makeItWhite">
                     </span>
                 </a>
             </div>
         </div>
         <div class="col-sm-8">
             <div class="navbar-text pull-left visible-xs">
-                <a>
-                <span class="glyphicon glyphicon-chevron-left">
+                <a href="page-list.html">
+                <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-right">
-                <a>
-                    <span class="glyphicon glyphicon-ok">
+                <a href="page-list.html">
+                    <span class="glyphicon glyphicon-ok makeItWhite">
                     </span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand no-margin-left ">
-                    Edit Website
+                <a class="navbar-brand no-margin-left">
+                   <b class="makeItWhite"> Edit Page
+                   </b>
                 </a>
             </div>
         </div>
@@ -51,28 +53,35 @@
 </nav>
 <div class="row container-fluid ">
     <div class="col-sm-4 hidden-xs border-laga">
-        <ul class="list-group">
-            <li class="list-group-item list-group-item-action">Address Book App
+        <ul class="list-group ks-forPageList">
+            <li class="list-group-item">
+                <a href="page-new.html" style="text-decoration: none">
+                    Blog Post
+                </a>
                 <div class="navbar-text pull-right">
-                    <a href="website-edit.html">
+                    <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                     </a>
                 </div>
 
             </li>
-            <li class="list-group-item">Blogger
+            <li class="list-group-item">
+                <a href="website-list.html" style="text-decoration: none">Blogs
+                </a>
                 <div class="navbar-text pull-right">
-                    <a href="website-edit.html">
+                    <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                     </a>
                 </div>
             </li>
 
-            <li class="list-group-item">Bloggin App
+            <li class="list-group-item">
+                <a href="website-list.html" style="text-decoration: none">Home
+                </a>
                 <div class="navbar-text pull-right">
-                    <a href="website-edit.html">
+                    <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                     </a>
@@ -80,18 +89,23 @@
 
             </li>
 
-            <li class="list-group-item">Script Testing App
+            <li class="list-group-item">
+                <a href="website-list.html" style="text-decoration: none">
+                    About
+                </a>
                 <div class="navbar-text pull-right">
-                    <a href="website-edit.html">
+                    <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                     </a>
                 </div>
 
             </li>
-            <li class="list-group-item">Script Testing App
+            <li class="list-group-item">
+                <a href="website-list.html" style="text-decoration: none">Contact Us
+                </a>
                 <div class="navbar-text pull-right">
-                    <a href="website-edit.html">
+                    <a href="page-edit.html">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                     </a>
@@ -102,24 +116,24 @@
     </div>
     <div class="col-xs-8">
         <div class="form-group mycontent-left">
-            <label for="name"> Website Name</label>
+            <label for="name"> Name</label>
             <input type="text" class="form-control" id="name" placeholder="Name">
         </div>
         <div class="form-group">
-            <label for="desc"> Website Description</label>
+            <label for="desc">Description</label>
             <textarea class="form-control" rows="5" id="desc"></textarea>
         </div>
         <a class="btn btn-danger  btn-block"
-        href="login.html">Delete</a>
+           href="login.html">Delete</a>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
 
         <div class="navbar-text pull-right">
             <div class="ks-addPaddingOnRight">
-            <a>
-                    <span class="glyphicon glyphicon-user">
+                <a href="profile.html">
+                    <span class="glyphicon glyphicon-user makeItWhite">
                     </span>
-            </a>
+                </a>
             </div>
         </div>
     </nav>

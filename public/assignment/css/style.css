@@ -45,6 +45,7 @@ body.ks-forList
 {
     top:12px;
     position: absolute;
+
 }
 h1.ks-bringDowm
 {
@@ -69,4 +70,50 @@ h1.ks-bringDowm
 .ks-addPaddingOnRight
 {
     padding-right:10px;
+}
+body.ks-forWebList
+{
+    padding-top:32px;
+}
+
+.list-group.ks-pushForList
+{
+    padding-top: 52px;
+}
+.navbar-fixed-top
+{
+    background-color: blue;
+    text-decoration-color: white;
+    color: white;
+    font-family: sans-serif;
+
+}
+
+.makeItWhite
+{
+    color: white;
+}
+
+.navbar-fixed-bottom
+{
+    background-color: blue;
+    text-decoration-color: white;
+    color: white;
+    font-family: sans-serif;
+
+}
+
+.makeItBlue
+{
+    color: blue;
+}
+
+.list-group.ks-putItUp
+{
+    padding-top: 51px;
+}
+
+.list-group.ks-forPageList
+{
+    padding-top: 5px;
 }
