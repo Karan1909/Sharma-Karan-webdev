@@ -64,10 +64,6 @@ h1.ks-bringDowm
     padding-left: 0px;
 }
 
-.border-laga
-{
-    border-right: 1px dashed #333;
-}
 body.ks-forWebList
 {
     padding-top:32px;
@@ -114,24 +110,6 @@ body.ks-forWebList
 {
     padding-top: 5px;
 }
-.forTheCogOverImage
-{
-    z-index: 2;
-    position: absolute;
-    top: 206px;
-    right:56px;
-    opacity: 0.9;
-}
-
-
-.forTheCogOverImage-1
-{
-    z-index: 2;
-    position: absolute;
-    top: 306px;
-    right:56px;
-    opacity: 0.9;
-}
 
 .navbar-default .navbar-nav>.open>a,
 .navbar-default .navbar-nav>.open>a:focus,
@@ -163,4 +141,17 @@ body.ks-forWebList
 .ks-alignWithGizmo
 {
     padding-top: 50px;
+}
+
+.wbdv-right-pane {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    overflow-y: auto;
 }
