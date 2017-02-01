@@ -9,7 +9,7 @@
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="row container-fluid">
+
         <div>
             <div class="navbar-text pull-left">
                 <a href="website-list.html">
@@ -23,47 +23,56 @@
                 </a>
             </div>
         </div>
-    </div>
 </nav>
 <div class="container-fluid">
-        <h1 class="ks-pushProfileDown">Profile</h1>
+        <h1>Profile</h1>
+            <label for="first">First Name</label>
+            <input id="first"
+                   class="form-control"
+                   placeholder="John"/>
 
-        <form>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" placeholder="yourname@domain.com">
-            </div>
-            <div class="form-group">
-                <label for="first-name">First Name</label>
-                <input type="text" class="form-control" id="first-name" placeholder="Karan">
-            </div>
-            <div class="form-group">
-                <label for="last-name">Last Name</label>
-                <input type="text" class="form-control" id="last-name" placeholder="Sharma">
-            </div>
-        </form>
+            <label for="last">Last Name</label>
+            <input id="last"
+                   class="form-control"
+                   placeholder="Doe"/>
 
-        <a class="btn btn-primary btn-block"
-           href="website-list.html">Websites</a>
-        <a class="btn btn-danger  btn-block"
-           href="login.html">Logout</a>
-    </div>
+            <label for="email">Email</label>
+            <input id="email"
+                   type="email"
+                   class="form-control"
+                   placeholder="john@doe.com"/>
 
-<nav class="navbar navbar-default navbar-fixed-bottom kar-colorclass">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right">
+            <label for="username">Username</label>
+            <input id="username"
+                   class="form-control"
+                   placeholder="john123"/>
+
+            <label for="password">Password</label>
+            <input id="password"
+                   class="form-control"
+                   type="password"
+                   placeholder="req4321"/>
+
+            <label for="password2">Validate Password</label>
+            <input id="password2"
+                   class="form-control"
+                   type="password"
+                   placeholder="req4321"/>
+
+            <div class="ks-addPaddingBottom">
+            <a href="../website/website-list.html" class="btn btn-primary btn-block ">Websites</a>
+            <a href="login.html" class="btn btn-danger btn-block">Logout</a>
+            </div>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+
+    <div class="navbar-text pull-right">
+        <div class="ks-addPaddingOnRight ">
             <a>
-                <a href="profile.html" class="navbar-link">
-          <span class="glyphicon glyphicon-user">
-          </span>
-                </a>
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
             </a>
         </div>
-
     </div>
 </nav>
 </body>

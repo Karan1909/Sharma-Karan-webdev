@@ -22,7 +22,7 @@ body.kar-imageForLogin {
     background-color: blue;
     color: white;
     font-weight: bold;
-    padding-top: 30px;
+
 }
 .container
 {
@@ -158,7 +158,8 @@ body.ks-forWebList
 {
     opacity: 1;
 }
-.h1.ks-pushProfileDown
+
+.ks-addPaddingBottom
 {
-    padding-top:34px;
+    padding-bottom: 60px;
 }
