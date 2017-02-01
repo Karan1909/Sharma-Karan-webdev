@@ -5,6 +5,7 @@ h1
 {
     font-weight: bold;
     color:red;
+    padding-top: 34px;
 }
 table
 {
@@ -41,7 +42,7 @@ body.ks-forList
     margin-left:0px;
 }
 
-.glyphicon-cog
+.glyphicon-cog.ks-toMakeAbsolute
 {
     top:12px;
     position: absolute;
@@ -116,4 +117,48 @@ body.ks-forWebList
 .list-group.ks-forPageList
 {
     padding-top: 5px;
+}
+.forTheCogOverImage
+{
+    z-index: 2;
+    position: absolute;
+    top: 206px;
+    right:56px;
+    opacity: 0.9;
+}
+
+
+.forTheCogOverImage-1
+{
+    z-index: 2;
+    position: absolute;
+    top: 306px;
+    right:56px;
+    opacity: 0.9;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+    color: white;
+    background-color: #555555;
+}
+
+
+.jga-toolbar {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.75;
+}
+.jga-toolbar:hover
+{
+    opacity: 1;
+}
+.h1.ks-pushProfileDown
+{
+    padding-top:34px;
 }
