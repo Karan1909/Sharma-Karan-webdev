@@ -50,7 +50,7 @@ body.ks-forList
 }
 h1.ks-bringDowm
 {
-    margin-top:80px;
+    margin-top:30px;
     color: black;
 }
 
@@ -67,10 +67,6 @@ h1.ks-bringDowm
 .border-laga
 {
     border-right: 1px dashed #333;
-}
-.ks-addPaddingOnRight
-{
-    padding-right:10px;
 }
 body.ks-forWebList
 {
@@ -111,7 +107,7 @@ body.ks-forWebList
 
 .list-group.ks-putItUp
 {
-    padding-top: 51px;
+    padding-top: 60px;
 }
 
 .list-group.ks-forPageList
@@ -162,4 +158,9 @@ body.ks-forWebList
 .ks-addPaddingBottom
 {
     padding-bottom: 60px;
+}
+
+.ks-alignWithGizmo
+{
+    padding-top: 50px;
 }
