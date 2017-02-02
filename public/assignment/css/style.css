@@ -15,7 +15,9 @@ table
 body.kar-imageForLogin {
     padding-top: 36px;
     padding-bottom: 60px;
-    background-image: url("http://bluewallpaperbackground.weebly.com/uploads/1/9/7/6/19768865/2324599_orig.jpg")
+    background-image: url("http://bluewallpaperbackground.weebly.com/uploads/1/9/7/6/19768865/2324599_orig.jpg");
+    background-size:cover;
+    
 }
 .kar-colorclass
 {
@@ -174,4 +176,8 @@ a.forCogShift
 }
 .wbdv-margin-left-15 {
     margin-left: 15px;
+}
+
+#img.source-image {
+
 }
