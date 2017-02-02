@@ -3,129 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-    <title>Edit Page</title>
+    <link href="../css/style.css" rel="stylesheet"/>
+    <title>Website List</title>
 </head>
 <body class="ks-forList">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
         <div class="col-sm-4 hidden-xs ">
             <div class="navbar-text pull-left wbdv-no-left-margin">
-                <a href="page-list.html">
+                <a href="../user/profile.html">
                 <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="page-new.html">
+                <a href="website-new.html">
                     <span class="glyphicon glyphicon-plus makeItWhite">
                     </span>
                 </a>
             </div>
             <div class="navbar-header ">
                 <a class="navbar-brand">
-                    <b class="makeItWhite">Pages </b>
+                    <b class="makeItWhite">Websites </b>
                 </a>
             </div>
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-8 col-xs-8">
             <div class="navbar-text pull-left visible-xs wbdv-no-left-margin">
-                <a href="page-list.html">
+                <a href="../user/profile.html">
                 <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="page-list.html">
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-ok makeItWhite">
                     </span>
                 </a>
             </div>
             <div class="navbar-header">
                 <a class="navbar-brand no-margin-left makeItWhite">
-                    <b class="makeItWhite"> Edit Page </b>
+                   <b class="makeItWhite"> New Website </b>
                 </a>
             </div>
         </div>
     </div>
 </nav>
-<div class="row container-fluid">
-    <div class="col-sm-4 hidden-xs">
+<div class="row container-fluid ">
+    <div class="col-sm-4 hidden-xs border-laga ">
         <ul class="list-group">
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
-                    Blog Post
+                <a href="../page/page-list.html" class="forCogShift">
+                    Address Book App
                 </a>
-                <a href="page-edit.html" class="pull-right">
+                <a href="website-edit.html" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
-                    Blogs
+                <a href="../page/page-list.html" class="forCogShift">
+                    Blogger
                 </a>
-                <a href="page-edit.html" class="pull-right">
+                <a href="website-edit.html" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
-                    Home
+                <a href="../page/page-list.html" class="forCogShift">
+                    Blogging App
                 </a>
-                <a href="page-edit.html" class="pull-right">
+                <a href="website-edit.html" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
-                    About
+                <a href="../page/page-list.html" class="forCogShift">
+                    Script Testing App
                 </a>
-                <a href="page-edit.html" class="pull-right">
-                    <span class="glyphicon glyphicon-cog">
-                    </span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
-                    Contact Us
-                </a>
-                <a href="page-edit.html" class="pull-right">
+                <a href="website-edit.html" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                 </a>
             </li>
         </ul>
         <div class="ks-addPaddingBottom">
+
         </div>
     </div>
-
     <div class="col-sm-8">
         <div class="form-group mycontent-left">
             <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name"
-            value="Blog Post">
-        <label for="name">Page Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Page Title">
+            <input type="text" class="form-control" id="name" placeholder="Name">
         </div>
-            <div class="ks-addPaddingBottom ">
-        <a class="btn btn-danger  btn-block"
-           href="user/login.html">Delete</a>
+        <div class="form-group">
+            <label for="desc">Description</label>
+            <textarea class="form-control" rows="5" id="desc"
+                      placeholder="Description"></textarea>
         </div>
     </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="profile.html">
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+            <a href="../user/profile.html">
                     <span class="glyphicon glyphicon-user makeItWhite">
                     </span>
-                </a>
-            </div>
+            </a>
         </div>
-    </nav>
-
-</div>
+    </div>
+</nav>
 </body>
 </html>

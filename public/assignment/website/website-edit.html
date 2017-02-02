@@ -3,34 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
     <title>Website List</title>
 </head>
 <body class="ks-forList">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
-        <div class="col-sm-4 hidden-xs ">
+        <div class="col-sm-4 hidden-xs">
             <div class="navbar-text pull-left wbdv-no-left-margin">
-                <a href="profile.html">
+                <a href="website-list.html">
                 <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="website-new.html">
+                <a href="website-list.html">
                     <span class="glyphicon glyphicon-plus makeItWhite">
                     </span>
                 </a>
             </div>
-            <div class="navbar-header ">
+            <div class="navbar-header">
                 <a class="navbar-brand">
-                    <b class="makeItWhite">Websites </b>
+                    <b class="makeItWhite">Websites</b>
                 </a>
             </div>
-        </div>
-        <div class="col-sm-8 col-xs-8">
+         </div>
+        <div class="col-sm-8 col-xs-12">
             <div class="navbar-text pull-left visible-xs wbdv-no-left-margin">
-                <a href="profile.html">
+                <a href="website-list.html">
                 <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
@@ -42,18 +42,18 @@
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand no-margin-left makeItWhite">
-                   <b class="makeItWhite"> New Website </b>
+                <a class="navbar-brand no-margin-left">
+                 <b class="makeItWhite">   Edit Website </b>
                 </a>
             </div>
         </div>
     </div>
 </nav>
 <div class="row container-fluid ">
-    <div class="col-sm-4 hidden-xs border-laga ">
+    <div class="col-sm-4 hidden-xs">
         <ul class="list-group">
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
+                <a href="../page/page-list.html" class="forCogShift">
                     Address Book App
                 </a>
                 <a href="website-edit.html" class="pull-right">
@@ -62,7 +62,7 @@
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
+                <a href="../page/page-list.html" class="forCogShift">
                     Blogger
                 </a>
                 <a href="website-edit.html" class="pull-right">
@@ -71,7 +71,7 @@
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
+                <a href="../page/page-list.html" class="forCogShift">
                     Blogging App
                 </a>
                 <a href="website-edit.html" class="pull-right">
@@ -80,7 +80,7 @@
                 </a>
             </li>
             <li class="list-group-item">
-                <a href="page-list.html" class="forCogShift">
+                <a href="../page/page-list.html" class="forCogShift">
                     Script Testing App
                 </a>
                 <a href="website-edit.html" class="pull-right">
@@ -90,30 +90,34 @@
             </li>
         </ul>
         <div class="ks-addPaddingBottom">
-
         </div>
     </div>
     <div class="col-sm-8">
-        <div class="form-group mycontent-left">
-            <label for="name">Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Name">
+        <div class="form-group">
+            <label for="name"> Website Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name"
+                   value="Blogger">
         </div>
         <div class="form-group">
-            <label for="desc">Description</label>
-            <textarea class="form-control" rows="5" id="desc"
-                      placeholder="Description"></textarea>
+            <label for="desc"> Website Description</label>
+            <textarea class="form-control" rows="6"  id="desc">A blogger is someone that writes a blog. A blog is an online journal that a writer can use to share his ideas, thoughts, expertise, or interests. Therefore, a blogger is someone that writes his ideas and thoughts online. Blogging is about self-expression.Bloggers write about their lives,their experiences, their expertise, their passions, and their opinions</textarea>
+        </div>
+        <a class="btn btn-danger  btn-block"
+        href="website-list.html">Delete</a>
+        <div class="ks-addPaddingBottom">
         </div>
     </div>
-</div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right wbdv-no-right-margin">
-            <a href="profile.html">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right wbdv-no-right-margin">
+                <a href="../user/profile.html">
                     <span class="glyphicon glyphicon-user makeItWhite">
                     </span>
-            </a>
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
+
+</div>
 </body>
 </html>
