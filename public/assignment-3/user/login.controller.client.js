@@ -8,11 +8,10 @@
 
     function loginController(){
         var vm=this; //its going to hold that will be sent to the view for rendering. vm means view model which is always meant for display
-        
-        function () {
-            
+        function init() {
+            vm.hello ="Hello again from LC";
         }
-        vm.hello ="Hello again from LC";
+        init();
 
     }
 })();
