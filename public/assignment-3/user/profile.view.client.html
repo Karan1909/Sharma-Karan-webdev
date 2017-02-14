@@ -1,25 +1,40 @@
 <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right wbdv-no-right-margin">
 
-        <div>
+                    <span  ng-click="model.updateUser(model.user)" class="glyphicon glyphicon-ok makeItWhite" >
+                    </span>
+        </div>
             <div class="navbar-header">
                 <a class="navbar-brand">
                     <b class="makeItWhite">Profile</b>
                 </a>
+
             </div>
-        </div>
+    </div>
 </nav>
 <div class="container-fluid">
+
         <h1>Profile</h1>
+
+    <div ng-show ="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div ng-show ="model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
             <label for="first">First Name</label>
             <input id="first"
                    class="form-control"
                    placeholder="John"
+                   ng-model="model.user.firstName"
             value="Karan"/>
 
             <label for="last">Last Name</label>
             <input id="last"
                    class="form-control"
                    placeholder="Doe"
+                   ng-model="model.user.lastName"
             value="Sharma"/>
 
             <label for="email">Email</label>
@@ -27,19 +42,22 @@
                    type="email"
                    class="form-control"
                    placeholder="john@doe.com"
+                   ng-model="model.user.email"
             value="your-name@example.com"/>
 
             <label for="username">Username</label>
             <input id="username"
                    class="form-control"
                    placeholder="john123"
-            value="Karan12345"/>
+                   ng-model="model.user.username"
+            />
 
             <label for="password">Password</label>
             <input id="password"
                    class="form-control"
                    type="password"
                    placeholder="req4321"
+                   ng-model="model.user.password"
             value="password"/>
 
             <label for="password2">Validate Password</label>
@@ -47,7 +65,7 @@
                    class="form-control"
                    type="password"
                    placeholder="req4321"
-            value="req12344"/>
+                   ng-model="model.user.password"/>
 
             <div class="ks-addPaddingBottom">
             <a href="#/websites" class="btn btn-primary btn-block ">Websites</a>
