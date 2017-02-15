@@ -41,7 +41,7 @@
                     {
                         users[u].firstName=newUser.firstName;
                         users[u].lastName=newUser.lastName;
-                        return users[u];
+                        return angular.copy(users[u]);
                     }
 
                 }

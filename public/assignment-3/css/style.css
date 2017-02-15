@@ -63,6 +63,7 @@ h1.ks-bringDowm
 .list-group
 {
     padding-top:18px;
+    margin-bottom:0px;
 }
 
 .navbar-brand.ks-toShiftLeft
@@ -75,7 +76,7 @@ body.ks-forWebList
     padding-top:32px;
 }
 
-.list-group.ks-pushForList
+.ks-pushForList
 {
     padding-top: 52px;
 }
@@ -154,13 +155,11 @@ a.forCogShift
     text-decoration: none;
 }
 
-
-
 .input-group {
     margin-bottom: 15px;
 }
 .ks-websiteList {
-    overflow: hidden;margin-top: 32px;
+    overflow: hidden;margin-top: 52px;
 }
 .wbdv-no-left-margin {
     margin-left: 0px;
@@ -175,7 +174,7 @@ a.forCogShift
 .wbdv-margin-left-15 {
     margin-left: 15px;
 }
-
-#img.source-image {
-
+.forList
+{
+    margin-bottom: -38px;
 }
