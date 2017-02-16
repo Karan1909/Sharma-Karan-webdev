@@ -1,40 +1,40 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="row container-fluid">
-        <div class="col-sm-4 hidden-xs">
+        <div class="hidden-xs col-sm-4">
             <div class="navbar-text pull-left wbdv-no-left-margin">
-                <a href="website-list.view.client.html">
+                <a href="page-list.view.client.html">
                 <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="#/user/{{model.userId}}/website/new">
+                <a href="page-new.view.client.html">
                     <span class="glyphicon glyphicon-plus makeItWhite">
                     </span>
                 </a>
             </div>
-            <div class="navbar-header">
+            <div class="navbar-header ">
                 <a class="navbar-brand">
-                    <b class="makeItWhite">Websites</b>
+                    <b class="makeItWhite">Pages </b>
                 </a>
             </div>
         </div>
         <div class="col-sm-8 col-xs-12">
             <div class="navbar-text pull-left visible-xs wbdv-no-left-margin">
-                <a href="website-list.view.client.html">
+                <a href="page-list.view.client.html">
                 <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="website-list.view.client.html">
+                <a href="page-list.view.client.html">
                     <span class="glyphicon glyphicon-ok makeItWhite">
                     </span>
                 </a>
             </div>
             <div class="navbar-header">
-                <a class="navbar-brand no-margin-left">
-                    <b class="makeItWhite"> New Website </b>
+                <a class="navbar-brand no-margin-left makeItWhite">
+                    <b class="makeItWhite"> Edit Page </b>
                 </a>
             </div>
         </div>
@@ -43,44 +43,40 @@
 <div>
     <div class="col-sm-4 hidden-xs">
         <ul class="list-group ks-pushForList">
-            <li ng-repeat="website in model.websites" class="list-group-item">
-                <a href="../../page/views/page-list.view.client.html" class="forCogShift">
-                    {{website.name}}
+            <li ng-repeat="page in model.pages" class="list-group-item">
+                <a href="#" class="forCogShift">
+                    {{page.name}}
                 </a>
                 <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                 </a>
-
             </li>
         </ul>
         <div class="ks-addPaddingBottom">
         </div>
     </div>
-    <div class="col-sm-8">
-
-            <div class="form-group ks-pushForList">
-                <label for="name"> Website Name</label>
-                <input type="text" class="form-control" id="name" placeholder="Name"
-                       ng-model="model.website.name">
-            </div>
-            <div class="form-group">
-                <label for="desc"> Website Description</label>
-                <textarea class="form-control" rows="6"
-                          id="desc" ng-model="model.website.description"></textarea>
-            </div>
+    <div class="col-sm-8 col-xs-12">
+        <div class="form-group mycontent-left ks-pushForList">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name"
+            value="Blog Post">
+        <label for="name">Page Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Page Title">
         </div>
-<div class="col-xs-12">
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right wbdv-no-right-margin">
-            <a href="../../user/views/profile.view.client.html">
-                    <span class="glyphicon glyphicon-user makeItWhite">
-                    </span>
-            </a>
+            <div class="ks-addPaddingBottom ">
+        <a class="btn btn-danger  btn-block"
+            href="page-list.view.client.html">Delete</a>
         </div>
     </div>
-
-</nav>
-</div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right ">
+                <a href="../../user/views/profile.view.client.html">
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+                </a>
+            </div>
+        </div>
+    </nav>
 </div>

@@ -1,23 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../css/style.css" rel="stylesheet"/>
-    <title>Website List</title>
-</head>
-<body class="ks-forList">
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left wbdv-no-left-margin">
-            <a href="widget-list.html">
+            <a href="widget-list.view.client.html">
                 <span class="glyphicon glyphicon-chevron-left makeItWhite">
                 </span>
             </a>
         </div>
         <div class="navbar-text pull-right wbdv-no-right-margin">
-            <a href="widget-list.html">
+            <a ng-click="model.updateWidget(model.widget)">
                     <span class="glyphicon glyphicon-ok makeItWhite">
                     </span>
             </a>
@@ -32,6 +22,7 @@
 <div class="container-fluid">
     <label for="name">Name</label>
     <input id="name"
+           ng-model="model.widget.name"
            class="form-control"/>
 
     <label for="text">Text</label>
@@ -41,7 +32,7 @@
     <label for="url">URL</label>
     <input id="url"
            class="form-control"
-    value="http://youtube.com"/>
+           ng-model="model.widget.url"/>
 
     <label for="width">Width</label>
     <input id="width"
@@ -49,18 +40,16 @@
            placeholder="Number"/>
 
     <div class="ks-addPaddingBottom">
-        <a href="widget-list.html" class="btn btn-danger btn-block">Delete</a>
+        <a href="widget-list.view.client.html" class="btn btn-danger btn-block">Delete</a>
     </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right wbdv-no-right-margin">
-            <a href="../user/views/profile.view.client.html">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right wbdv-no-right-margin">
+                <a href="../../user/views/profile.view.client.html">
                     <span class="glyphicon glyphicon-user makeItWhite">
                     </span>
-            </a>
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 </div>
-</body>
-</html>

@@ -1,21 +1,16 @@
 (function () {
     angular.
-        module("WebAppMaker")
-        .controller("ProfileController",profileController) ;
+    module("WebAppMaker")
+        .controller("RegisterController",registerController) ;
 
-    function profileController($routeParams,UserService) {
+    function registerController($routeParams,UserService,$location) {
         var vm=this;
-        vm.updateUser=updateUser;
-        var userId=$routeParams['uid'];
+        vm.createUser=createUser;
 
-        
-        function init() {
-            var user=UserService.findUserById(userId);
-            vm.user=user;
+        function createUser(newUser) {
+            var user=UserService.createUser(newUser);
+            $location.url("/");
         }
-
-        init();
-
 
         function updateUser(newUser)
         {
@@ -23,7 +18,7 @@
             var user=UserService.updateUser(userId,newUser);
             if(user!= null)
             {
-                    vm.message="User updated successfully";
+                vm.message="User updated successfully";
             }
             else
             {
@@ -31,7 +26,6 @@
             }
 
         }
-
 
         function deleteUser(currentUser)
         {
@@ -57,3 +51,4 @@
 
 
 })();
+

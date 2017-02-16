@@ -16,9 +16,26 @@
             "createWebsite": createWebsite,
             "findWebsiteById": findWebsiteById,
             "deleteWebsite": deleteWebsite,
-            "findAllWebsitesForUser": findAllWebsitesForUser
+            "findWebsitesForUser": findWebsitesForUser,
+            "updateWebsite": updateWebsite
         };
         return api;
+        
+        function updateWebsite(websiteId,website) {
+
+            for(var u in websites)
+            {
+                if(websites[u]._id==websiteId)
+                {
+                    websites[u].name=website.name;
+                    websites[u].description=website.description;
+                    return angular.copy(websites[u]);
+                }
+
+            }
+            return null;
+
+        }
 
 
         function findWebsiteById(wid) {
@@ -43,7 +60,7 @@
             websites.push(website);
         }
 
-        function findAllWebsitesForUser(userId) {
+        function findWebsitesForUser(userId) {
             var sites = [];
             for(var w in websites) {
                 if(websites[w].developerId === userId) {

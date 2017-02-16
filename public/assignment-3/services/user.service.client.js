@@ -15,10 +15,41 @@
             var api={
                 "findUserByCredentials": findUserByCredentials,
                 "findUserById": findUserById,
-                "updateUser":updateUser
+                "updateUser":updateUser,
+                "deleteUser":deleteUser,
+                "createUser":createUser,
+                "findUserByUsername": findUserByUsername
+
             };
             return api;
+
+            function findUserByUsername(username) {
+                for(var u in users)
+                {
+                    if(users[u].username==username)
+                    {
+                        console.log("hello");
+                        return users[u];
+                    }
+                }
+                return null;
+            }
+
+
+            function deleteUser(userId) {
+                for(var w in users) {
+                    if(users[w]._id === userId) {
+                        users.splice(w, 1);
+                    }
+                }
+            }
             
+            
+            function createUser(user) {
+                user._id=(new Date()).getTime().toString();
+                users.push(user);
+            }
+
             function findUserByCredentials(username,password) {
                 for(var u in users)
                 {
@@ -41,12 +72,11 @@
                     {
                         users[u].firstName=newUser.firstName;
                         users[u].lastName=newUser.lastName;
-                        return angular.copy(users[u]);
+                        return users[u];
                     }
 
                 }
                 return null;
-
             }
             function findUserById(userId) {
 
@@ -60,9 +90,6 @@
                 }
                 return null;
             }
-
-
-
 
         }
 })();
