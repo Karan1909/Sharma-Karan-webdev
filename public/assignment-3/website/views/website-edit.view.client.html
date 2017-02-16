@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="website-list.view.client.html">
+                <a ng-click="model.updateWebsite(model.website)">
                     <span class="glyphicon glyphicon-ok makeItWhite">
                     </span>
                 </a>
@@ -69,7 +69,7 @@
                       id="desc" ng-model="model.website.description"></textarea>
         </div>
         <a class="btn btn-danger  btn-block"
-        href="website-list.view.client.html">Delete</a>
+        ng-click="model.deleteWebsite(model.websiteId)">Delete</a>
         <div class="ks-addPaddingBottom">
         </div>
     </div>
