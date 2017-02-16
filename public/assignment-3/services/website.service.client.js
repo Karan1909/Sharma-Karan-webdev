@@ -16,7 +16,7 @@
             "createWebsite": createWebsite,
             "findWebsiteById": findWebsiteById,
             "deleteWebsite": deleteWebsite,
-            "findWebsitesForUser": findWebsitesForUser,
+            "findWebsitesByUser": findWebsitesByUser,
             "updateWebsite": updateWebsite
         };
         return api;
@@ -56,11 +56,11 @@
 
         function createWebsite(userId, website) {
             website.developerId = userId;
-            website._id = (new Date()).getTime();
+            website._id = (new Date()).getTime().toString();
             websites.push(website);
         }
 
-        function findWebsitesForUser(userId) {
+        function findWebsitesByUser(userId) {
             var sites = [];
             for(var w in websites) {
                 if(websites[w].developerId === userId) {
