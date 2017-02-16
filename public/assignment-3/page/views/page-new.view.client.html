@@ -8,7 +8,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="page-new.view.client.html">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
                     <span class="glyphicon glyphicon-plus makeItWhite">
                     </span>
                 </a>
@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="page-list.view.client.html">
+                <a ng-click="model.createPage(model.paged)">
                     <span class="glyphicon glyphicon-ok makeItWhite">
                     </span>
                 </a>
@@ -43,9 +43,9 @@
 <div>
     <div class="col-sm-4 hidden-xs">
         <ul class="list-group ks-pushForList">
-            <li ng-repeat="website in model.websites" class="list-group-item">
+            <li ng-repeat="page in model.websites" class="list-group-item">
                 <a href="../../page/views/page-list.view.client.html" class="forCogShift">
-                    {{website.name}}
+                    {{page.name}}
                 </a>
                 <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
@@ -60,11 +60,13 @@
     <div class="col-sm-8 ks-pushForList">
         <div class="form-group mycontent-left">
             <label for="name">Page Name</label>
-            <input type="text" class="form-control" id="name" placeholder="Page Name">
+            <input type="text" class="form-control" id="name" placeholder="Page Name"
+                   ng-model="model.paged.name">
         </div>
         <div class="form-group ks-addPaddingBottom">
             <label for="name">Page Title</label>
-            <input type="text" class="form-control" id="title" placeholder="Page Title">
+            <input type="text" class="form-control" id="title" placeholder="Page Title"
+            ng-model="model.paged.title">
         </div>
     </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">

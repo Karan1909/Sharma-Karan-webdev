@@ -52,11 +52,10 @@
             }
         }
 
-        function createPage(websiteId, page) {
-            page.websiteId = websiteId;
-            page._id = (new Date()).getTime();
-            page.name="New page";
-            pages.push(page);
+        function createPage(websiteId, paged) {
+            paged._id = (new Date()).getTime().toString();
+            paged.websiteId=websiteId;
+            pages.push(paged);
         }
 
         function findPageByWebsiteId(websiteId) {
