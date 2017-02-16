@@ -27,7 +27,8 @@
                 <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="forCogShift">
                     {{page.name}}
                 </a>
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
+                <a ng-click="model.findPageById(page._id)"
+                   href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                 </a>

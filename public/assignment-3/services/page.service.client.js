@@ -28,6 +28,7 @@
                 {
                     pages[u].name=page.name;
                     pages[u].description=page.description;
+                    pages[u].title=page.title;
                     return angular.copy(pages[u]);
                 }
 

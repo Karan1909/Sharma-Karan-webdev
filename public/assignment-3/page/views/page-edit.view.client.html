@@ -27,7 +27,7 @@
                 </a>
             </div>
             <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="page-list.view.client.html">
+                <a ng-click="model.updatePage(model.paged)">
                     <span class="glyphicon glyphicon-ok makeItWhite">
                     </span>
                 </a>
@@ -60,13 +60,13 @@
         <div class="form-group mycontent-left ks-pushForList">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" placeholder="Name"
-            value="Blog Post">
+            ng-model="model.paged.name">
         <label for="name">Page Title</label>
-        <input type="text" class="form-control" id="title" placeholder="Page Title">
+        <input type="text" class="form-control" id="title" placeholder="Page Title" ng-model="model.paged.title">
         </div>
             <div class="ks-addPaddingBottom ">
         <a class="btn btn-danger  btn-block"
-            href="page-list.view.client.html">Delete</a>
+           ng-click="model.deletePage(model.paged._id)">Delete</a>
         </div>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
