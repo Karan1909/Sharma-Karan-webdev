@@ -23,10 +23,18 @@
             "setYouTubeWidgetType":setYouTubeWidgetType,
             "setHeaderWidgetType":setHeaderWidgetType,
             "findWidgetsByPageId":findWidgetsByPageId,
-            "createWidget":createWidget
+            "createWidget":createWidget,
+            "deleteWidget":deleteWidget
      };
         return api;
 
+        function deleteWidget(widgetId) {
+                for(var w in widgets) {
+                    if(widgets[w]._id === widgetId) {
+                        widgets.splice(w, 1);
+                    }
+                }
+        }
 
         function createWidget(pageId,widget) {
             widget.pageId=pageId;
@@ -112,6 +120,8 @@
                     {
 
                         widgets[u].url=widget.url;
+                        widgets[u].text=widget.text;
+
                     }
                 }
 
@@ -142,9 +152,11 @@
                 "url": "https://youtu.be/AM2Ivdi9c4E","text": "" };
             newYouTubeWidget._id=(new Date()).getTime().toString();
 
+
             return newYouTubeWidget;
 
         }
+
     }
 
 })();

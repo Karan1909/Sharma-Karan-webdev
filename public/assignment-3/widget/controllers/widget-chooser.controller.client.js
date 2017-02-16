@@ -60,7 +60,7 @@
             WidgetService.createWidget(pageId,vm.widget);
             //WidgetService.findWidgetById(vm.widgetId);
 
-           // $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgetId);
+           $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgetId);
         }
 
 
