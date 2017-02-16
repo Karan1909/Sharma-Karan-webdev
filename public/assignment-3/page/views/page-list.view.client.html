@@ -24,7 +24,7 @@
         <ul class="list-group ks-pushForList">
             <li ng-repeat="page in model.pages" class="list-group-item">
 
-                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="forCogShift">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget" class="forCogShift">
                     {{page.name}}
                 </a>
                 <a ng-click="model.findPageById(page._id)"
