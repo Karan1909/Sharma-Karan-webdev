@@ -3,10 +3,11 @@
         module("WebAppMaker")
         .controller("ProfileController",profileController) ;
 
-    function profileController($routeParams,UserService) {
+    function profileController($routeParams,UserService,$location) {
         var vm=this;
         vm.updateUser=updateUser;
         var userId=$routeParams['uid'];
+        vm.deleteUser=deleteUser;
 
         
         function init() {
@@ -33,11 +34,12 @@
         }
 
 
-        function deleteUser(currentUser)
+        function deleteUser(userId)
         {
 
-            var userArray=UserService.updateUser(userId);
-            return userArray;
+            UserService.deleteUser(userId);
+            $location.url("/");
+
         }
 
         function findUserByUsername(user) {
