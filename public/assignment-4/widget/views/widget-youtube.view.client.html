@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left wbdv-no-left-margin">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">
+                <span class="glyphicon glyphicon-chevron-left makeItWhite">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+            <a ng-click="model.updateWidget(model.widget)">
+                    <span class="glyphicon glyphicon-ok makeItWhite">
+                    </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <b class="makeItWhite"> Choose Widget</b>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <label for="name">Name</label>
+    <input id="name"
+           ng-model="model.widget.name"
+           class="form-control"/>
+
+    <label for="text">Text</label>
+    <input id="text"ng-model="model.widget.text"
+           class="form-control"
+           />
+
+    <label for="url">URL</label>
+    <input id="url"
+           class="form-control"
+           ng-model="model.widget.url"/>
+
+    <label for="width">Width</label>
+    <input id="width"
+           class="form-control"
+           ng-model="model.widget.width"/>
+
+    <div class="ks-addPaddingBottom">
+        <a ng-click="model.deleteWidget()" class="btn btn-danger btn-block">Delete</a>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right wbdv-no-right-margin">
+                <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>

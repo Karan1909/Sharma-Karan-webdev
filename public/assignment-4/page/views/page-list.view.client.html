@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left wbdv-no-left-margin">
+            <a href="#/user/{{model.userId}}/website">
+                <span class="glyphicon glyphicon-chevron-left makeItWhite">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/new">
+                    <span class="glyphicon glyphicon-plus makeItWhite">
+                    </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <b class="makeItWhite"> Pages </b>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid ">
+        <ul class="list-group ks-pushForList">
+            <li ng-repeat="page in model.pages" class="list-group-item">
+
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}/widget" class="forCogShift">
+                    {{page.name}}
+                </a>
+                <a ng-click="model.findPageById(page._id)"
+                   href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}" class="pull-right">
+                    <span class="glyphicon glyphicon-cog">
+                    </span>
+                </a>
+            </li>
+        </ul>
+        <div class="ks-addPaddingBottom">
+        </div>
+    </div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+            <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+            </a>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,180 @@
+input.form-control {
+    margin-bottom: 5px;
+}
+h1
+{
+    font-weight: bold;
+    color:red;
+    padding-top: 34px;
+}
+table
+{
+    padding-top: 80px;
+}
+
+body.kar-imageForLogin {
+    padding-top: 36px;
+    padding-bottom: 60px;
+
+}
+.kar-colorclass
+{
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+
+}
+.container
+{
+    padding-top:65px;
+}
+body.ks-forList
+{
+    padding-top: 53px;
+}
+.no-padding-left
+{
+    padding-left:0px;
+}
+
+.no-margin-left
+{
+    margin-left:0px;
+}
+
+/*.glyphicon-cog
+{
+    position: relative;
+    top: -12px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+
+
+}*/
+h1.ks-bringDowm
+{
+    margin-top:30px;
+    color: black;
+}
+
+.list-group
+{
+    padding-top:18px;
+    margin-bottom:0px;
+}
+
+.navbar-brand.ks-toShiftLeft
+{
+    padding-left: 0px;
+}
+
+body.ks-forWebList
+{
+    padding-top:32px;
+}
+
+.ks-pushForList
+{
+    padding-top: 52px;
+}
+.navbar-fixed-top
+{
+    background-color: blue;
+    text-decoration-color: white;
+    color: white;
+    font-family: sans-serif;
+
+}
+
+.makeItWhite
+{
+    color: white;
+}
+
+.navbar-fixed-bottom
+{
+    background-color: blue;
+    text-decoration-color: white;
+    color: white;
+    font-family: sans-serif;
+
+}
+
+.makeItBlue
+{
+    color: blue;
+}
+
+.list-group.ks-putItUp
+{
+    padding-top: 50px;
+}
+
+.list-group.ks-forPageList
+{
+    padding-top: 5px;
+}
+
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover {
+    color: white;
+    background-color: #555555;
+}
+
+
+.jga-toolbar {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    opacity: 0.75;
+}
+.jga-toolbar:hover
+{
+    opacity: 1;
+}
+
+.ks-addPaddingBottom
+{
+    padding-bottom: 60px;
+}
+
+.ks-alignWithGizmo
+{
+    padding-top: 50px;
+}
+
+a.forCogShift
+{
+    text-decoration: none;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+.ks-websiteList {
+    overflow: hidden;margin-top: 52px;
+}
+.wbdv-no-left-margin {
+    margin-left: 0px;
+}
+.wbdv-no-right-margin {
+    margin-right: 0px;
+}
+.wbdv-footer-tabs {
+    width: 100%;
+    text-align: center;
+}
+.wbdv-margin-left-15 {
+    margin-left: 15px;
+}
+.forList
+{
+    margin-bottom: -38px;
+}
