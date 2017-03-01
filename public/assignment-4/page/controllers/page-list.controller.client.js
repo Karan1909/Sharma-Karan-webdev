@@ -19,15 +19,6 @@
             );
         }init();
 
-            // promise=PageService.findPageById(vm.pageId);
-            // promise.success(
-            //     function(page)
-            //     {
-            //         vm.page=page;
-            //     }
-            // );
-
-
 
 
         // function findPageByPageId(pageId) {

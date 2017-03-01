@@ -21,22 +21,13 @@
         return api;
 
         function updatePage(pageId,page) {
+            return $http.put("/api/page/"+pageId,page);
 
-            for(var u in pages)
-            {
-                if(pages[u]._id==pageId)
-                {
-                    pages[u].name=page.name;
-                    pages[u].description=page.description;
-                    pages[u].title=page.title;
-                    return angular.copy(pages[u]);
-                }
 
-            }
-            return null;
         }
 
         function findPageById(pid) {
+
             return $http.get("/api/page/"+pid);
 
             // for(var w in pages) {
@@ -47,17 +38,18 @@
             // return null;
         }
         function deletePage(pageId) {
-            for(var w in pages) {
-                if(pages[w]._id === pageId) {
-                    pages.splice(w, 1);
-                }
-            }
+            return $http.delete("/api/page/"+pageId);
+
+
         }
 
         function createPage(websiteId, paged) {
-            paged._id = (new Date()).getTime().toString();
-            paged.websiteId=websiteId;
-            pages.push(paged);
+
+            return $http.post("/api/website/"+websiteId+"/page",paged);
+
+            // paged._id = (new Date()).getTime().toString();
+            // paged.websiteId=websiteId;
+            // pages.push(paged);
         }
 
         function findPageByWebsiteId(websiteId) {

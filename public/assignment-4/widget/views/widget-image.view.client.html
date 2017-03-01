@@ -42,14 +42,21 @@
            placeholder="Number"
            ng-model="model.widget.width"/>
 
-    <div class="form-group">
-        <label for="exampleInputFile">Upload</label>
-        <input type="file" id="exampleInputFile" class="form-control">
 
+
+
+
+    <div class="form-group">
+        <form action="/api/upload"  method="post" enctype="multipart/form-data">
+            <input  name="myFile"   type="file" class="form-control"/>
+            <input  name="width"    value="{{model.widget.width}}" style="display: none"/>
+            <input  name="widgetId" value="{{model.widget._id}}"   style="display: none"/>
+            <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+        </form>
     </div>
     <div class="ks-addPaddingBottom">
     <a href="widget-list.view.client.html" class="btn btn-success btn-block">Upload</a>
-        <a href="widget-list.view.client.html" class="btn btn-danger btn-block">Delete</a>
+        <a ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
     </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">

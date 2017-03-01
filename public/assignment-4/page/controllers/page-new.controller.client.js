@@ -10,14 +10,23 @@
         vm.createPage = createPage;
 
         function init() {
-            vm.websites = PageService.findPageByWebsiteId(vm.websiteId);
-        }
-        init();
 
-        function createPage (page) {
-            PageService.createPage(vm.websiteId,page);
-            //vm.websites = WebsiteService.findAllWebsitesForUser(vm.userId);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+            var promise = PageService.findPageByWebsiteId(vm.websiteId);
+            promise.success(
+                function (page) {
+                    vm.pages = page;
+                }
+            );
+        }init();
+
+        function createPage (paged) {
+            var promise= PageService.createPage(vm.websiteId,paged);
+            promise.success(
+              function (paged) {
+                  $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
+              }
+            );
+
         }
     }
 })();

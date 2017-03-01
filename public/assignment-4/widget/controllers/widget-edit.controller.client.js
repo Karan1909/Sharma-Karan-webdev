@@ -11,23 +11,43 @@
         vm.widgetId = $routeParams.wgid;
         vm.updateWidget=updateWidget;
         vm.deleteWidget=deleteWidget;
+        vm.widgets=WidgetService.findAllWidgetsForPage(vm.pageId);
         
         function deleteWidget() {
-         WidgetService.deleteWidget(vm.widgetId);
-         $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+
+            var promise= WidgetService.deleteWidget(vm.widgetId);
+            promise.success(
+                function (widgets) {
+                    vm.widgets=widgets;
+                    $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                }
+            );
 
         }
 
         function init() {
 
-            vm.widget = WidgetService.findWidgetById(vm.widgetId);
+            var promise=WidgetService.findWidgetById(vm.widgetId,vm.widgets);
+            promise.success(
+                function (widget) {
+                    vm.widget =widget;
+                }
+            );
+
         }
         init();
 
         function updateWidget(widget){
 
-            WidgetService.updateWidget(vm.widgetId,widget);
-            $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+
+            var promise= WidgetService.updateWidget(vm.widgetId,widget);
+            console.log("inside updatecont");
+            promise.success(
+                function () {
+                    $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget");
+                }
+            );
+
         }
 
 
