@@ -13,11 +13,11 @@
         vm.pageId = $routeParams.pid;
 
 
-        $('#widget-list').sortable(
-            {
-                axis: "y"
-            }
-        );
+        // $('#widget-list').sortable(
+        //     {
+        //         axis: "y"
+        //     }
+        // );
 
 
         function init () {
