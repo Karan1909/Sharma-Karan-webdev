@@ -13,7 +13,7 @@
         vm.pageId = $routeParams.pid;
         vm.widgets = WidgetService.findAllWidgets(vm.pageId);
 
-        $('#widget-list');
+
 
         function getWidgetTemplateUrl(widgetType) {
             var url = 'widget/views/widget-'+widgetType+'.view.client.html';
