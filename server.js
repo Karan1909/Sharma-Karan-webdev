@@ -9,9 +9,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));
 
 require ("./assignment/app.js")(app);
+// require("./assignment/model/models.server")(app); //now switching to mongoose
+
 require ("./test/app.js")(app);
 
-
+// require ("./public/lectures-wed/mongo/movies.js")(app);
 
 var port = process.env.PORT || 3000;
 

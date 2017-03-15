@@ -24,19 +24,17 @@
      <ul class="list-group">
          <li ng-repeat="website in model.websites" class="list-group-item">
 
-                 <a href="#/user/{{website.developerId}}/website/{{website._id}}/page/" class="forCogShift">
+                 <a href="#/user/{{model.userId}}/website/{{website._id}}/page/" class="forCogShift">
                      {{website.name}}
                  </a>
-                 <a href="#/user/{{website.developerId}}/website/{{website._id}}" class="pull-right">
+                 <a href="#/user/{{model.userId}}/website/{{website._id}}" class="pull-right">
                     <span class="glyphicon glyphicon-cog">
                     </span>
                  </a>
-
              </li>
          </ul>
          <div class="ks-addPaddingBottom">
-
-         </div>
+        </div>
      </div>
  <div class="col-xs-12">
 <nav class="navbar navbar-default navbar-fixed-bottom">
@@ -51,4 +49,3 @@
 </nav>
  </div>
  </div>
-</div>

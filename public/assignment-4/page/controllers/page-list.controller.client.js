@@ -12,6 +12,7 @@
         function init() {
 
             var promise = PageService.findPageByWebsiteId(vm.websiteId);
+            console.log("aaya fpttp");
             promise.success(
                 function (page) {
                     vm.pages = page;

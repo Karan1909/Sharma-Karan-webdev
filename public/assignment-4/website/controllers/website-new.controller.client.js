@@ -11,7 +11,7 @@
         function init() {
             var promise=WebsiteService.findWebsitesByUser(vm.userId);
             promise.success(
-                function (websites) {//whichever websites the other page returns, assign it to vm.websites.
+                function (websites) {//whichever websites the other website returns, assign it to vm.websites.
                     vm.websites=websites;
                 }
             );

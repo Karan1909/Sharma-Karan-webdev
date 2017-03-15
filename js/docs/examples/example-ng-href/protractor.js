@@ -15,14 +15,14 @@ it('should execute ng-click and change url when ng-href specified', function() {
 
   element(by.id('link-3')).click();
 
-  // At this point, we navigate away from an Angular page, so we need
+  // At this point, we navigate away from an Angular website, so we need
   // to use browser.driver to get the base webdriver.
 
   browser.wait(function() {
     return browser.driver.getCurrentUrl().then(function(url) {
       return url.match(/\/123$/);
     });
-  }, 5000, 'page should navigate to /123');
+  }, 5000, 'website should navigate to /123');
 });
 
 it('should execute ng-click but not reload when href empty string and name specified', function() {
@@ -44,11 +44,11 @@ it('should only change url when only ng-href', function() {
 
   element(by.id('link-6')).click();
 
-  // At this point, we navigate away from an Angular page, so we need
+  // At this point, we navigate away from an Angular website, so we need
   // to use browser.driver to get the base webdriver.
   browser.wait(function() {
     return browser.driver.getCurrentUrl().then(function(url) {
       return url.match(/\/6$/);
     });
-  }, 5000, 'page should navigate to /6');
+  }, 5000, 'website should navigate to /6');
 });

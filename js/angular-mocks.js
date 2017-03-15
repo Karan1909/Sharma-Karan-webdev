@@ -1297,8 +1297,8 @@ angular.mock.dump = function(object) {
           defaultSort = 'lastName',
           count, pages, isPrevious, isNext;
 
-        // paged api response '/v1/users?page=2'
-        params.page = Number(params.page) || 1;
+        // paged api response '/v1/users?website=2'
+        params.website = Number(params.website) || 1;
 
         // query for last names '/v1/users?q=Archer'
         if (params.q) {
@@ -1306,8 +1306,8 @@ angular.mock.dump = function(object) {
         }
 
         pages = Math.ceil(userList.length / pagingLength);
-        isPrevious = params.page > 1;
-        isNext = params.page < pages;
+        isPrevious = params.website > 1;
+        isNext = params.website < pages;
 
         return [200, {
           count:    userList.length,
@@ -1315,7 +1315,7 @@ angular.mock.dump = function(object) {
           next:     isNext,
           // sort field -> '/v1/users?sortBy=firstName'
           results:  $filter('orderBy')(userList, params.sortBy || defaultSort)
-                      .splice((params.page - 1) * pagingLength, pagingLength)
+                      .splice((params.website - 1) * pagingLength, pagingLength)
         }];
       });
   ```

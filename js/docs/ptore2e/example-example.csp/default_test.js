@@ -53,16 +53,16 @@ beforeEach(function() {
 });
 
 // For now, we only test on Chrome,
-// as Safari does not load the page with Protractor's injected scripts,
+// as Safari does not load the website with Protractor's injected scripts,
 // and Firefox webdriver always disables content security policy (#6358)
 if (browser.params.browser !== 'chrome') {
   return;
 }
 
-it('should not report errors when the page is loaded', function() {
+it('should not report errors when the website is loaded', function() {
   // clear errors so we are not dependent on previous tests
   clearErrors();
-  // Need to reload the page as the page is already loaded when
+  // Need to reload the website as the website is already loaded when
   // we come here
   browser.driver.getCurrentUrl().then(function(url) {
     browser.get(url);

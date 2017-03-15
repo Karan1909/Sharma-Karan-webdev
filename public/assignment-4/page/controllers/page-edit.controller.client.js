@@ -8,6 +8,8 @@
         vm.userId = $routeParams.uid;
         vm.pageId=$routeParams.pid;
         vm.websiteId= $routeParams.wid;
+        //vm.paged=PageService.findPageById(vm.pageId);
+
        // vm.website=PageService.updatePage(vm.pageId,website);
         //vm.page=findPageByPageId;
         vm.updatePage=updatePage;
@@ -19,6 +21,7 @@
 
         function updatePage(paged){
             var promise= PageService.updatePage(vm.pageId,paged);
+            console.log("updatpage"+paged);
             promise.success(
               function (paged) {
                   $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page");
@@ -48,13 +51,12 @@
                     vm.pages = page;
                 }
             );
-
             promise=PageService.findPageById(vm.pageId);
             promise.success(
-              function (paged) {
-                  vm.paged=paged;
-              }
-            );
+              function (page) {
+                  console.log("pages lala"+page._id);
+                  vm.paged=page;
+              });
 
             // vm.pages = PageService.findPageByWebsiteId(vm.websiteId);
 

@@ -19,7 +19,7 @@ var allThemes = [
 
 // Called by the demo.html frames loaded per theme to
 // size the iframes properly and to allow them to tile
-// the page nicely.
+// the website nicely.
 function adjustChildIframeSize(themeName, width, height) {
   if (typeof console != 'undefined') {
     try {
@@ -50,7 +50,7 @@ Print preview this page to see how the themes work on the printed page.
 <script>(function () {
   // Produce an iframe per theme.
   // We pass the threme name to the iframe via its URI query, and
-  // it loads prettify and the theme CSS, and calls back to this page
+  // it loads prettify and the theme CSS, and calls back to this website
   // to resize the iframe.
   for (var i = 0, n = allThemes.length; i < n; ++i) {
     var theme = allThemes[i];

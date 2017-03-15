@@ -1,6 +1,9 @@
 (function () {
     angular.module("WebAppMaker").config(configuration);
-    function configuration ($routeProvider){
+    function configuration ($routeProvider,$httpProvider){
+        $httpProvider.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';
+        $httpProvider.defaults.headers.put['Content-Type'] = 'application/json;charset=utf-8';
+
         $routeProvider
             .when("/",
                 {
@@ -42,19 +45,19 @@
                 controller:'WebsiteEditController',
                 controllerAs: 'model'
             }).
-        when("/user/:uid/website/:wid/page/:pid/widget",
+        when("/user/:uid/website/:wid/website/:pid/widget",
             {
                 templateUrl: 'widget/views/widget-list.view.client.html',
                 controller:'WidgetListController',
                 controllerAs: 'model'
             })
-            .when("/user/:uid/website/:wid/page/:pid/widget/new",
+            .when("/user/:uid/website/:wid/website/:pid/widget/new",
                 {
                     templateUrl: 'widget/views/widget-chooser.view.client.html',
                     controller:'WidgetChooserController',
                     controllerAs: 'model'
                 }).
-            when("/user/:uid/website/:wid/page/:pid/widget/:wgid",
+            when("/user/:uid/website/:wid/website/:pid/widget/:wgid",
                 {
                     templateUrl: 'widget/views/widget-edit.view.client.html',
                     controller:'WidgetEditController',

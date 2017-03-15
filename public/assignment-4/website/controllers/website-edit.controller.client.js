@@ -37,6 +37,7 @@
             var promise=WebsiteService.updateWebsite(vm.websiteId,websites);
             promise.success(
                 function (website) {
+                    console.log(vm.userId);
                     $location.url("/user/"+vm.userId+"/website/");
                 }
             )

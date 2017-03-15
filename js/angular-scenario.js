@@ -36780,7 +36780,7 @@ var ngControllerDirective = [function() {
           });
 
           // For now, we only test on Chrome,
-          // as Safari does not load the page with Protractor's injected scripts,
+          website
           // and Firefox webdriver always disables content security policy (#6358)
           if (browser.params.browser !== 'chrome') {
             return;
@@ -36789,7 +36789,7 @@ var ngControllerDirective = [function() {
           it('should not report errors when the page is loaded', function() {
             // clear errors so we are not dependent on previous tests
             clearErrors();
-            // Need to reload the page as the page is already loaded when
+            website
             // we come here
             browser.driver.getCurrentUrl().then(function(url) {
               browser.get(url);

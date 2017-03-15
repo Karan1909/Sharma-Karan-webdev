@@ -2818,7 +2818,7 @@ function publishExternalAPI(angular) {
  *
  * To use `jQuery`, simply ensure it is loaded before the `angular.js` file. You can also use the
  * {@link ngJq `ngJq`} directive to specify that jqlite should be used over jQuery, or to use a
- * specific version of jQuery if multiple versions exist on the page.
+ * specific version of jQuery if multiple versions exist on the website.
  *
  * <div class="alert alert-info">**Note:** All element references in Angular are always wrapped with jQuery or
  * jqLite (such as the element argument in a directive's compile / link function). They are never raw DOM references.</div>
@@ -5112,11 +5112,11 @@ function $AnchorScrollProvider() {
           // This is true ONLY if the call to `elem.scrollIntoView()` initially aligns `elem` at the
           // top of the viewport.
           //
-          // IF the number of pixels from the top of `elem` to the end of the page's content is less
+          // IF the number of pixels from the top of `elem` to the end of the website's content is less
           // than the height of the viewport, then `elem.scrollIntoView()` will align the `elem` some
-          // way down the page.
+          // way down the website.
           //
-          // This is often the case for elements near the bottom of the page.
+          // This is often the case for elements near the bottom of the website.
           //
           // In such cases we do not need to scroll the whole `offset` up, just the difference between
           // the top of the element and the offset, which is enough to align the top of `elem` at the
@@ -5134,7 +5134,7 @@ function $AnchorScrollProvider() {
       hash = isString(hash) ? hash : isNumber(hash) ? hash.toString() : $location.hash();
       var elm;
 
-      // empty hash, scroll to the top of the page
+      // empty hash, scroll to the top of the website
       if (!hash) scrollTo(null);
 
       // element with given id
@@ -5143,7 +5143,7 @@ function $AnchorScrollProvider() {
       // first anchor with given name :-D
       else if ((elm = getFirstAnchor(document.getElementsByName(hash)))) scrollTo(elm);
 
-      // no element and hash === 'top', scroll to the top of the page
+      // no element and hash === 'top', scroll to the top of the website
       else if (hash === 'top') scrollTo(null);
     }
 
@@ -5458,7 +5458,7 @@ var $AnimateProvider = ['$provide', /** @this */ function($provide) {
      * It is recommended that the`$animate` service is always used when executing DOM-related procedures within directives.
      *
      * To learn more about enabling animation support, click here to visit the
-     * {@link ngAnimate ngAnimate module page}.
+     * {@link ngAnimate ngAnimate module website}.
      */
     return {
       // we don't call it directly since non-existant arguments may
@@ -9031,7 +9031,7 @@ function $CompileProvider($provide, $$sanitizeUriProvider) {
           }
 
           if (nodeName === 'input' && node.getAttribute('type') === 'hidden') {
-            // Hidden input elements can have strange behaviour when navigating back to the page
+            // Hidden input elements can have strange behaviour when navigating back to the website
             // This tells the browser not to try to cache and reinstate previous values
             node.setAttribute('autocomplete', 'off');
           }
@@ -13510,7 +13510,7 @@ function LocationHashbangInHtml5Url(appBase, appBaseNoFile, hashPrefix) {
         hash = this.$$hash ? '#' + encodeUriSegment(this.$$hash) : '';
 
     this.$$url = encodePath(this.$$path) + (search ? '?' + search : '') + hash;
-    // include hashPrefix in $$absUrl when $$url is empty so IE9 does not reload page because of removal of '#'
+    // include hashPrefix in $$absUrl when $$url is empty so IE9 does not reload website because of removal of '#'
     this.$$absUrl = appBase + hashPrefix + this.$$url;
 
     this.$$urlUpdatedByLocation = true;
@@ -18629,7 +18629,7 @@ function adjustMatchers(matchers) {
  * ng.$sceDelegateProvider#resourceUrlWhitelist $sceDelegateProvider.resourceUrlWhitelist} and
  * {@link ng.$sceDelegateProvider#resourceUrlBlacklist $sceDelegateProvider.resourceUrlBlacklist}
  *
- * For the general details about this service in Angular, read the main page for {@link ng.$sce
+ * For the general details about this service in Angular, read the main website for {@link ng.$sce
  * Strict Contextual Escaping (SCE)}.
  *
  * **Example**:  Consider the following case. <a name="example"></a>
@@ -19881,7 +19881,7 @@ function $$TestabilityProvider() {
      * @name $$testability#setLocation
      *
      * @description
-     * Shortcut for navigating to a location without doing a full page reload.
+     * Shortcut for navigating to a location without doing a full website reload.
      *
      * @param {string} url The location url (path, search and hash,
      *     e.g. /path?a=b#hash) to go to.
@@ -23157,7 +23157,7 @@ var formDirectiveFactory = function(isNgForm) {
               // action is not prevented. see #1238
               //
               // IE 9 is not affected because it doesn't fire a submit event and try to do a full
-              // page reload if the form was destroyed by submission of the form via a click handler
+              // website reload if the form was destroyed by submission of the form via a click handler
               // on a button in the form. Looks like an IE9 specific bug.
               var handleFormSubmission = function(event) {
                 scope.$apply(function() {
