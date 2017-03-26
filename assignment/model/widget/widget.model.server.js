@@ -229,7 +229,7 @@ module.exports = function () {
                     type:newWidget.type,
                     text:newWidget.text,
                     width:newWidget.width,
-                    order:newWidget.order,
+                    // order:newWidget.order,
                     url:newWidget.url,
                     _page:newWidget._page,
                     dateCreated:newWidget.dateCreated
@@ -241,6 +241,7 @@ module.exports = function () {
                     }
                     else
                     {
+                        console.log("widget"+widget.url);
                         deferred.resolve(widget);
                     }
                 });
