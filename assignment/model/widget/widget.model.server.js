@@ -74,7 +74,7 @@ module.exports = function () {
                                         wid.save();
                                     }
                                 }});
-                        return defferred.resolve(widgets);
+                        defferred.resolve(widgets);
 
 
                     }

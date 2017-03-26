@@ -123,9 +123,11 @@ module.exports=function (app,model) {
         var pageId=req.params.pageId;
         var start=parseInt(req.query.start);
         var end=parseInt(req.query.end);
+        console.log("start service server "+start);
+        console.log("end service server "+end);
         console.log("reorder server");
         model.WidgetModel.reorderWidget(start,end,pageId).then(function (widgets) {
-            res.send(widgets);
+            res.json(widgets);
 
         },function (err) {
             res.sendStatus(500).send(err);
