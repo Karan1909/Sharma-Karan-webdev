@@ -19,34 +19,34 @@
         </div>
     </div>
 </nav>
-    <div class="container-fluid">
-        <label for="name">Name</label>
-        <input id="name"
-               class="form-control"
-        ng-model="model.widget.name"/>
+<div class="container-fluid">
+    <label for="name">Name</label>
+    <input id="name"
+           class="form-control"
+           ng-model="model.widget.name"/>
 
-        <label for="text">Text</label>
-        <input id="text"
-               class="form-control"
-               ng-model="model.widget.text"/>
+    <label for="text">Text</label>
+    <input id="text"
+           class="form-control"
+           ng-model="model.widget.text"/>
 
-        <label for="size">Size</label>
-        <input id="size"
-               class="form-control"
-        placeholder="Number"
-               ng-model="model.widget.size"/>
+    <label for="size">Size</label>
+    <input id="size"
+           class="form-control"
+           placeholder="Number"
+           ng-model="model.widget.size"/>
 
-        <div class="ks-addPaddingBottom">
-            <a ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
-        </div>
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right wbdv-no-right-margin">
-            <a href="#/user/{{model.userId}}">
+    <div class="ks-addPaddingBottom">
+        <a ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right wbdv-no-right-margin">
+                <a href="#/user/{{model.userId}}">
                     <span class="glyphicon glyphicon-user makeItWhite">
                     </span>
-            </a>
+                </a>
+            </div>
         </div>
-    </div>
-</nav>
-    </div>
+    </nav>
+</div>
