@@ -1,14 +1,21 @@
-<div ng-switch="model.widget.widgetType" class="ks-pushForList">
+<div ng-switch="model.widget.type" class="ks-pushForList">
     <div ng-switch-when="YOUTUBE">
-        <ng-include src="'widget/views/widget-youtube.view.client.html'"></ng-include>
+        <ng-include src="'widget/views/widget-YOUTUBE.view.client.html'"></ng-include>
     </div>
 
     <div ng-switch-when="IMAGE">
-        <ng-include src="'widget/views/widget-image.view.client.html'"></ng-include>
+        <ng-include src="'widget/views/widget-IMAGE.view.client.html'"></ng-include>
     </div>
 
     <div ng-switch-when="HEADING">
-        <ng-include src="'widget/views/widget-heading.view.client.html'"></ng-include>
+        <ng-include src="'widget/views/widget-HEADING.view.client.html'"></ng-include>
+
     </div>
+
+    <div ng-switch-when="HTML">
+        <ng-include src="'widget/views/widget-HTML.view.client.html'"></ng-include>
+    </div>
+    <div ng-switch-when="TEXT">
+            <ng-include src="'widget/views/widget-TEXT.view.client.html'"></ng-include>
 
 </div>

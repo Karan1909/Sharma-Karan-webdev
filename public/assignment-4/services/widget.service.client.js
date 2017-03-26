@@ -22,22 +22,29 @@
             "setImageWidgetType":setImageWidgetType,
             "setYouTubeWidgetType":setYouTubeWidgetType,
             "setHeaderWidgetType":setHeaderWidgetType,
-            "findWidgetsByPageId":findWidgetsByPageId,
             "createWidget":createWidget,
-            "deleteWidget":deleteWidget
+            "deleteWidget":deleteWidget,
+            "reorderWidget":reorderWidget
      };
         return api;
 
+        
+        function reorderWidget(index1,index2,pageId) {
+            return $http.put("/page/"+pageId+"/widget?start="+index1+"&end="+index2).
+                then(function (response) {
+                return response.data;
+            });
+        }
         function deleteWidget(widgetId) {
 
             return $http.delete("/api/widget/"+widgetId);
 
         }
 
-        function createWidget(pageId,type) {
+        function createWidget(pageId,newWidget) {
 
-            return $http.post("/api/page/"+pageId+"/widget",type);
-
+            console.log("create widget service");
+            return $http.post("/api/page/"+pageId+"/widget",newWidget);
         }
 
         function findAllWidgetsForPage(pageId) {
@@ -54,21 +61,21 @@
 
         }
 
-        function findWidgetsByPageId(pageId,widgets) {
+        // function findWidgetsByPageId(pageId,widgets) {
+        //
+        //
+        //
+        //     var widgetList=[];
+        //     for (var u in widgets) {
+        //         if (widgets[u].pageId == pageId) {
+        //             widgetList.push(widgets[u]);
+        //         }
+        //     }
+        //     return widgetList;
+        //
+        // }
 
-
-
-            var widgetList=[];
-            for (var u in widgets) {
-                if (widgets[u].pageId == pageId) {
-                    widgetList.push(widgets[u]);
-                }
-            }
-            return widgetList;
-
-        }
-
-        function findWidgetById(widgetId,widgets) {
+        function findWidgetById(widgetId) {
 
             return $http.get("/api/widget/"+widgetId);
 

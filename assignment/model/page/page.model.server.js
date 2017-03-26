@@ -2,6 +2,7 @@ module.exports = function () {
 
 
     var model={};
+    var q=require('q');
     var mongoose=require('mongoose');
     var PageSchema=require("./page.schema.server")();
     var PageModel=mongoose.model('PageModel',PageSchema);// unique identifier model will allow us to manipulate objects that
@@ -12,11 +13,11 @@ module.exports = function () {
         "findPageById": findPageById,
         "updatePage": updatePage,
         "deletePage": deletePage,
+        "addWidget":addWidget,
         "setModel":setModel
     };
     return api;
-
-    function setModel(_model) {
+  function setModel(_model) {
         model=_model;
     }
 
@@ -24,10 +25,21 @@ module.exports = function () {
 
         return PageModel
             .remove({_id: pid});
-
-
     }
 
+    function addWidget(pageId,widgetId) {
+        var deferred= q.defer();
+        PageModel.findById(
+            {
+                _id:pageId
+            },function (err,page) {
+                console.log("ol");
+                page.widgets.push(widgetId);
+                page.save();
+                deferred.resolve(page);
+            });
+        return deferred.promise;
+    }
 
     function findAllPagesForWebsite(websiteId) {
         console.log("in page for website");
@@ -42,8 +54,6 @@ module.exports = function () {
                     return err;
                 }
             });
-
-
     }
 
 
@@ -67,9 +77,7 @@ module.exports = function () {
     }
 
     function findPageById(pageId) {
-
-
-        return PageModel.findById({_id:pageId},
+           return PageModel.findById({_id:pageId},
             function(err, result) {
                 if (err) { /* handle err */ }
 
@@ -78,8 +86,7 @@ module.exports = function () {
                     return result;
                 } else {
                     return err;
-                }
-            });
+                }});
 
     }
 

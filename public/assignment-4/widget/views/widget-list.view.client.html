@@ -22,7 +22,7 @@
 <div class="container-fluid ks-pushForList" >
     <div id="widget-list" wbdv-sortable="">
     <div ng-repeat="widget in model.widgets" >
-        <div ng-switch="widget.widgetType">
+        <div ng-switch="widget.type">
             <div class="jga-toolbar">
 
                 <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
@@ -42,13 +42,15 @@
             <div ng-switch-when="IMAGE">
                 <img ng-src="{{widget.url}}" width="{{widget.width}}"/>
             </div>
-            <div ng-switch-when="YOUTUBE">
-
+            <div ng-switch-when="YOUTUBE" class="youtube-widget">
                 <iframe width="100%" height="500" ng-src="{{model.getYouTubeEmbedUrl(widget.url)}}" frameborder="0" allowfullscreen>
                 </iframe>
             </div>
             <div ng-switch-when="HTML">
-                <ng-include src="'widget/views/widget-HTML.view.client.html'"></ng-include>
+                <ng-include src="'widget/views/widget-HTML.edit.view.client.html'"></ng-include>
+            </div>
+            <div ng-switch-when="TEXT">
+                <ng-include src="'widget/views/widget-TEXT.edit.view.client.html'"></ng-include>
             </div>
         </div>
         <div class="ks-addPaddingBottom">

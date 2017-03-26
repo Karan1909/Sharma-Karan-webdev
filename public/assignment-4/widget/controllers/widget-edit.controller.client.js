@@ -12,6 +12,7 @@
         vm.updateWidget=updateWidget;
         vm.deleteWidget=deleteWidget;
         vm.widgets=WidgetService.findAllWidgetsForPage(vm.pageId);
+        vm.getWidgetTemplateUrl=getWidgetTemplateUrl;
         
         function deleteWidget() {
 
@@ -27,7 +28,7 @@
 
         function init() {
 
-            var promise=WidgetService.findWidgetById(vm.widgetId,vm.widgets);
+            var promise=WidgetService.findWidgetById(vm.widgetId);
             promise.success(
                 function (widget) {
                     vm.widget =widget;
@@ -36,6 +37,11 @@
 
         }
         init();
+
+        function getWidgetTemplateUrl(widgetType) {
+            var url = 'widget/views/widget-'+widgetType+'.view.client.html';
+            return url;
+        }
 
         function updateWidget(widget){
 

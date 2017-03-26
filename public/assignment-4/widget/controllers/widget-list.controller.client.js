@@ -8,6 +8,7 @@
         vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         vm.getTrustedHtml = getTrustedHtml;
         vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
+        vm.reorderWidget=reorderWidget;
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
@@ -31,6 +32,14 @@
 
         }
         init();
+
+        function reorderWidget(start,end) {
+
+            WidgetService.reorderWidget(start,end,vm.pageId)
+                .then(function (widgets) {
+                    return widgets;
+                });
+        }
 
         function getWidgetTemplateUrl(widgetType) {
             var url = 'widget/views/widget-'+widgetType+'.view.client.html';

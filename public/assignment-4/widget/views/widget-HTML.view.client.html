@@ -1,1 +1,43 @@
-<div ng-bind-html="model.getTrustedHtml(widget.text)"></div>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-left wbdv-no-left-margin">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/">
+                <span class="glyphicon glyphicon-chevron-left makeItWhite">
+                </span>
+            </a>
+        </div>
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+            <a>
+                    <span  ng-click="model.updateWidget(model.widget)"
+                           class="glyphicon glyphicon-ok makeItWhite">
+                    </span>
+            </a>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <b class="makeItWhite"> Widget Edit </b>
+            </a>
+        </div>
+    </div>
+</nav>
+<div ng-model="model.widget.text" text-angular ta-toolbar="[['h1','h2','h3'],
+['bold','italics','underline','strikeThrough'],
+['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+['indent','outdent'],['html']]">
+</div>
+
+<div class="ks-addPaddingBottom">
+    <a ng-click="model.deleteWidget(model.widget._id)" class="btn btn-danger btn-block">Delete</a>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+            <a href="#/user/{{model.userId}}">
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+            </a>
+        </div>
+    </div>
+</nav>
+
+

@@ -4,6 +4,7 @@ module.exports=function (app,model) {
     app.get("/api/widget/:widgetId",findWidgetById);
     app.put("/api/widget/:widgetId",updateWidget);
     app.delete("/api/widget/:widgetId",deleteWidget);
+    app.put('/page/:pageId/widget',reorderWidget);
 
     // var widgets=[
     //     { "_id": "123", "widgetType": "HEADING", "pageId": "321", "size": 2, "text": "GIZMODO"},
@@ -22,141 +23,113 @@ module.exports=function (app,model) {
     function uploadImage(req, res) {
         var myFile = req.file;
         var filename = myFile.filename;
-        for (var w in widgets) {
-            if (widgets[w]._id ==req.body.widgetId) {
-                widgets[w].url = req.protocol + '://' + req.get('host') + "/uploads/" + filename;
-                widgets[w].width=req.body.width;
+        var widget={};
+        widget.url=req.protocol+'://'+req.get('host')+"/uploads/"+filename;
+        widget.type="IMAGE";
+        widget._id=req.body.widgetId;
+        widget.width=req.body.width;
+        widget._page=req.body.pageId;
+        widget.text=req.body.text;
+        widget.name=req.body.name;
+        model.
+        WidgetModel.
+        updateWidget(widget._id,widget).
+        then(
+            function (widget) {
+                res.redirect("/assignment-4/#/user/"+req.body.userId+"/website/"+req.body.websiteId + "/page/" + req.body.pageId +"/widget");
             }
-        }
-        res.redirect("/assignment-4/#/user/"+req.body.userId+"/website/"+req.body.websiteId + "/page/" + req.body.pageId +"/widget");
+        ,function (err) {
+            res.sendStatus(500).send(err);
+
+        });
+        // for (var w in widgets) {
+        //     if (widgets[w]._id ==req.body.widgetId) {
+        //         widgets[w].url = req.protocol + '://' + req.get('host') + "/uploads/" + filename;
+        //         widgets[w].width=req.body.width;
+        //     }
+        // }
+        // res.redirect("/assignment-4/#/user/"+req.body.userId+"/website/"+req.body.websiteId + "/page/" + req.body.pageId +"/widget");
     }
 
     function deleteWidget(req,res) {
         var widgetId=req.params.widgetId;
 
-        for(var w in widgets) {
-            if(widgets[w]._id === widgetId) {
-                widgets.splice(w, 1);
-            }
-        }
-        res.json(widgets);
-    }
+        model.WidgetModel
+            .deleteWidget(widgetId)
+            .then(function(widget){
+                res.json(widget);
+            }, function (err) {
+                res.sendStatus(400).send(err);
+            });
+ }
 
     function findWidgetById(req,res) {
 
         var widgetId=req.params.widgetId;
-            for (var u in widgets) {
-            if (widgets[u]._id == widgetId) {
-                res.json(widgets[u]);
-                break;
-            }
-        }
-
+        model.WidgetModel
+            .findWidgetById(widgetId)
+            .then(function(widget){
+                res.json(widget);
+            }, function (err) {
+                res.sendStatus(400).send(err);
+            });
     }
     function createWidget(req,res) {
 
         var pageId=req.params.pageId;
-        // var widget=req.body;
-        // widget.pageId=pageId;
-        var newHeader={ "_id": "123","name":" New Header","widgetType": "HEADING", "pageId": "321", "size": 2, "text": "Enter Text here"};
-        var type=req.body;
-        var id=(new Date()).getTime();
-        newHeader.pageId=pageId;
-        newHeader._id=id.toString();
-        if(type.widgetType=="HEADING")
-        {
-            newHeader.widgetType="HEADING";
-
-            console.log("hello inside heading")
-        }
-
-        else if(type.widgetType=="IMAGE")
-        {
-            newHeader.widgetType="IMAGE";
-        }
-        else if(type.widgetType=="YOUTUBE")
-        {
-            newHeader.widgetType="YOUTUBE";
-        }
-
-        widgets.push(newHeader);
-        console.log(newHeader);
-        res.json(newHeader);
-
-    }
+        var newWidget=req.body;
+        console.log("create widget service server"+newWidget.type);
+        console.log("placeholder "+newWidget.placeholder);
+        console.log("rows "+newWidget.rows);
+        model.WidgetModel
+            .createWidget(pageId,newWidget)
+            .then(function(widget)
+            {
+                model.PageModel
+                    .addWidget(pageId, widget._id)
+                    .then(function (page) {
+                        res.send(widget);
+                    })
+            }, function (err) {
+                res.sendStatus(500).send(err);
+            });}
 
     function updateWidget(req,res) {
          var widget=req.body;
         var widgetId=req.params.widgetId;
 
-        console.log("inside update");
-        if(widget.widgetType=="HEADING")
-        {
-
-            for(var u in widgets)
-            {
-                if(widgets[u]._id==widgetId)
-                {
-
-                    widgets[u].text=widget.text;
-                    widgets[u].size=widget.size;
-                    res.json(widgets);
-                    break;
-
-                }
-            }
-
-        }
-        else if (widget.widgetType=="IMAGE")
-        {
-
-            for(var u in widgets)
-            {
-                if(widgets[u]._id==widgetId)
-                {
-
-                    widgets[u].url=widget.url;
-                    res.json(widgets);
-                    break;
-                }
-            }
-
-        }
-        else if (widget.widgetType=="YOUTUBE")
-        {
-            for(var u in widgets)
-            {
-                if(widgets[u]._id==widgetId)
-                {
-
-                    widgets[u].url=widget.url;
-                    widgets[u].text=widget.text;
-                    res.json(widgets);
-                    break;
-
-                }
-            }
-
-        }
-
+        model.WidgetModel
+            .updateWidget(widgetId,widget)
+            .then(function(widget){
+                res.json(widget);
+            }, function (err) {
+                res.sendStatus(400).send(err);
+            });
     }
 
     function findAllWidgetsForPage(req,res) {
-        var arrayOfWidgets=[];
-        var pageId=req.params.pageId;
-        for(var u in widgets)
-        {
-            if(widgets[u].pageId==pageId)
-            {
-                arrayOfWidgets.push(widgets[u]);
-            }
-        }
-        res.json(arrayOfWidgets) ;
 
+        var pageId = req.params.pageId;
+        model.WidgetModel
+            .findAllWidgetsForPage(pageId)
+            .then(function (widgets) {
+                res.json(widgets);
+            }, function (err) {
+                res.sendStatus(400).send(err);
+            });
     }
 
+    function reorderWidget(req,res) {
+        var pageId=req.params.pageId;
+        var start=parseInt(req.query.start);
+        var end=parseInt(req.query.end);
+        console.log("reorder server");
+        model.WidgetModel.reorderWidget(start,end,pageId).then(function (widgets) {
+            res.send(widgets);
 
-
+        },function (err) {
+            res.sendStatus(500).send(err);
+        });}
 };
 
 

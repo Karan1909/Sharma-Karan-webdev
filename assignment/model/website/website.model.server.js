@@ -54,8 +54,6 @@ module.exports = function () {
 
 
     function updateWebsite(wid,website) {
-
-
         console.log(wid);
         console.log(website._user);
 
@@ -75,14 +73,6 @@ module.exports = function () {
         return WebsiteModel.findById(wid);
 
     }
-
-
-
-
-
-
-
-
 
 
 };
