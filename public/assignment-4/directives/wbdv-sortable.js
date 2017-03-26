@@ -5,7 +5,7 @@
 
     function sortableDir($routeParams) {
         var pageId=$routeParams.pid;
-        function linkFunc(scope, element, attributes) {
+        function linkFunc(scope, element, attr) {
             var start=-1;
             var end=-1;
             element.sortable({axis: 'y'},
@@ -15,12 +15,13 @@
                 }, stop:function (event,ui)
                 {
                 end=(ui.item).index();
-                scope.sortableController.reorderWidget(start,end,pageId);
+                scope
+                    .sortableController.reorderWidget(start,end,pageId);
                 }});
         }
         return {
-            link: linkFunc,
             scope:{},
+            link: linkFunc,
             controller:sortableController,
             controllerAs:'sortableController'
         };

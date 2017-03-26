@@ -40,22 +40,23 @@ module.exports = function () {
                     {
                         widgets.forEach(
                             
-                            function (wid) {
+                            function (widget) {
                                 var s=parseInt(start);
                                 var e=parseInt(end);
                                 console.log("start "+s);
+                                console.log("end "+e);
                                 if(s<e)
                                 {
-                                    if(wid.order===s)
+                                    if(widget.order===s)
                                     {
-                                        wid.order=e;
-                                        wid.save();
+                                        widget.order=e;
+                                        widget.save();
                                     }
-                                    else if(wid.order>s && wid.order<=e)
+                                    else if(widget.order>s && widget.order<=e)
                                     {
-                                        wid.order--;
+                                        widget.order--;
                                         console.log("end "+e);
-                                        wid.save();
+                                        widget.save();
 
                                     }
 
@@ -63,15 +64,15 @@ module.exports = function () {
                                 else
                                 {
 
-                                    if(wid.order===s)
+                                    if(widget.order===s)
                                     {
-                                        wid.order=e;
-                                        wid.save();
+                                        widget.order=e;
+                                        widget.save();
                                     }
-                                    else if(wid.order<s && wid.order>=e)
+                                    else if(widget.order<s && widget.order>=e)
                                     {
-                                        wid.order++;
-                                        wid.save();
+                                        widget.order++;
+                                        widget.save();
                                     }
                                 }});
                         defferred.resolve(widgets);
@@ -228,7 +229,7 @@ module.exports = function () {
                     type:newWidget.type,
                     text:newWidget.text,
                     width:newWidget.width,
-                    //order:newWidget.order,
+                    order:newWidget.order,
                     url:newWidget.url,
                     _page:newWidget._page,
                     dateCreated:newWidget.dateCreated

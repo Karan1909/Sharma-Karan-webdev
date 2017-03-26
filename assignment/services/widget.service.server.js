@@ -127,7 +127,7 @@ module.exports=function (app,model) {
         console.log("end service server "+end);
         console.log("reorder server");
         model.WidgetModel.reorderWidget(start,end,pageId).then(function (widgets) {
-            res.json(widgets);
+            res.send(widgets);
 
         },function (err) {
             res.sendStatus(500).send(err);

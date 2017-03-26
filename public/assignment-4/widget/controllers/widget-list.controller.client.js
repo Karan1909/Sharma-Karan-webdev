@@ -12,6 +12,7 @@
         vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
+        //vm.compareWidgets=compareWidgets;
 
 
         // $('#widget-list').sortable(
@@ -32,6 +33,7 @@
 
         }
         init();
+
 
         function reorderWidget(start,end) {
 
