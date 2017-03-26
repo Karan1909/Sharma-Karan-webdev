@@ -1,7 +1,7 @@
 (function(){
     angular
         .module("WebAppMaker")
-        .controller("WidgetChooserController",WidgetChooserController)
+        .controller("WidgetChooserController",WidgetChooserController);
 
     function WidgetChooserController($sce,$routeParams,$location,WidgetService) {
 
