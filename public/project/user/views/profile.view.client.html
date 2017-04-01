@@ -1,0 +1,114 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <img alt="Brand" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS6Zwpu05izPO8gYJk95o_58Pj0B1H4Po9Q9c5Y7cvmrWAh9olqdxDPht4">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+
+                    <span  ng-click="model.updateUser(model.user)" class="glyphicon glyphicon-ok makeItWhite" >
+                    </span>
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <b class="makeItWhite">User Profile</b>
+            </a>
+
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <h1></h1>
+    <div ng-show ="model.error" class="alert alert-danger" role="alert">
+        {{model.error}}
+    </div>
+    <div ng-show ="model.message" class="alert alert-success" role="alert">
+        {{model.message}}
+    </div>
+    <label for="first">First Name</label>
+    <input id="first"
+           class="form-control"
+           placeholder="John"
+           ng-model="model.user.firstName"
+           value="Karan"/>
+
+    <label for="last">Last Name</label>
+    <input id="last"
+           class="form-control"
+           placeholder="Doe"
+           ng-model="model.user.lastName"
+           value="Sharma"/>
+
+    <label for="email">Email</label>
+    <input id="email"
+           type="email"
+           class="form-control"
+           placeholder="john@doe.com"
+           ng-model="model.user.email"
+           value="your-name@example.com"/>
+
+    <label for="username">Username</label>
+    <input id="username"
+           class="form-control"
+           placeholder="john123"
+           ng-model="model.user.username" disabled/>
+
+    <label for="password">Password</label>
+    <input id="password"
+           class="form-control"
+           type="password"
+           placeholder="req4321"
+           ng-model="model.user.password"
+           value="password"/>
+
+    <label for="password2">Validate Password</label>
+    <input id="password2"
+           class="form-control"
+           type="password"
+           placeholder="req4321"
+           ng-model="model.user.password"/>
+
+    <label for="datepicker">Date of Birth</label>
+    <div class='date' id='datepicker'>
+            <input type="text" id="datepicker1" ng-model="model.user.dateOfBirth" class="form-control"/>
+        <span class="glyphicon glyphicon-calendar pull-right ks-shiftCalIconUp">
+                </span>
+
+    </div>
+    <label for="address">Address</label>
+    <input id="address"
+           class="form-control"
+           ng-model="model.user.address" height="200px"/>
+
+
+    <label for="phonenumber">Phone Number</label>
+    <input id="phonenumber"
+           class="form-control"
+           ng-model="model.user.phoneNumber" height="200px"/>
+
+    <div class="radio">
+      <label><input type="radio" name="optradio" ng-model="model.user.gender" value="Male">Male</label>
+    </div>
+    <div class="radio">
+      <label><input type="radio" name="optradio" ng-model="model.user.gender" value="Female">Female</label>
+    </div>
+    <div class="form-group">
+        <form action="/api/upload/"  method="post" enctype="multipart/form-data">
+            <input  name="myFile"   type="file" class="form-control"/>
+            <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
+            <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+        </form>
+    </div>
+    <div class="ks-addPaddingBottom">
+        <a href="#" class="btn btn-danger btn-block">Logout</a>
+        <a href="#/user/{{model.user._id}}/viewProfile" class="btn btn-success btn-block">View Profile</a>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right wbdv-no-right-margin">
+                <a href="#/user/{{model.user._id}}">
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
+

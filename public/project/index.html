@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="BookLook">
 <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <!--<script-->
+            <!--src="https://code.jquery.com/jquery-3.2.1.js"-->
+            <!--integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="-->
+            <!--crossorigin="anonymous"></script>-->
+    <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+    <script
+            src="http://code.jquery.com/ui/1.12.0/jquery-ui.js"
+            integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+
+
+
+    <!--<link href="css/textAngular.css" rel="stylesheet"/>-->
+    <!--<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>-->
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.js"></script>
+
+
+
+    <script src="user/js/verifyPass.js" rel="script"></script>
+
+    <script src="user/js/viewProfile.js"></script>
+
+    <script src ="app.js"></script>
+    <script src ="config.js"></script>
+
+
+
+    <!--<script src="directives/wbdv-sortable.js"></script>-->
+
+    <!--<script src="./js/textAngular-rangy-min.js"></script>-->
+    <!--<script src="./js/textAngular-sanitize.min.js"></script>-->
+    <!--<script src="./js/textAngular.min.js"></script>-->
+
+
+    <script src="user/controller/login.controller.client.js"></script>
+    <script src="user/controller/register.controller.client.js"></script>
+    <script src="user/controller/profile.controller.client.js"></script>
+    <script src="booksearch/controller/googlebookssearch.controller.client.js"></script>
+    <script src="booksearch/controller/bookdetail.controller.client.js"></script>
+    <script src="services/user.service.client.js"></script>
+    <script src="services/googlebooks.service.client.js"></script>
+
+    <!--<script src="services/website.service.client.js"></script>-->
+    <!--<script src="services/widget.service.client.js"></script>-->
+    <!--<script src="services/page.service.client.js"></script>-->
+    <!--<script src="services/flickr.service.client.js"></script>-->
+    <!--<script src="user/controllers/profile.controller.client.js"></script>-->
+    <!--<script src="user/controllers/register.controller.client.js"></script>-->
+    <!--<script src="website/controllers/website-list.controller.client.js"></script>-->
+    <!--<script src="website/controllers/website-edit.controller.client.js"></script>-->
+    <!--<script src="website/controllers/website-new.controller.client.js"></script>-->
+    <!--<script src="widget/controllers/widget-list.controller.client.js"></script>-->
+    <!--<script src="widget/controllers/widget-edit.controller.client.js"></script>-->
+    <!--<script src="widget/controllers/widget-chooser.controller.client.js"></script>-->
+    <!--<script src="widget/controllers/widget-flickr-search-controller.client.js"></script>-->
+
+    <!--<script src="page/controllers/page-list.controller.client.js"></script>-->
+    <!--<script src="page/controllers/page-new.controller.client.js"></script>-->
+    <!--<script src="page/controllers/page-edit.controller.client.js"></script>-->
+
     <meta charset="UTF-8">
-    <title>Project Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookLook Home Page</title>
 </head>
 <body>
-    <h1>Project Home Page</h1>
+<div ng-view></div>
 </body>
 </html>

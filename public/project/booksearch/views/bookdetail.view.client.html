@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.user._id}}" ng-click=model.update(model.user)>
+            <span class="glyphicon glyphicon-ok">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/user/{{model.user._id}}">
+                    <b class="kp-navbar-text">Profile</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!--{{model.selected.volumeInfo.imageLinks.thumbnail}}-->
+    <!--{{model.selected}}-->
+
+
+    <div class="container-fluid ks-pushForList" >
+        <div>
+        <img ng-src="{{model.selected.volumeInfo.imageLinks.medium}}"/>
+            <h3><b>Author</b><br/></h3>
+            <div ng-repeat="author in model.selected.volumeInfo.authors">
+                <h4>{{author}}<br/>
+                </h4>
+            </div>
+            <h3><b>Categories</b><br/></h3>
+            <div ng-repeat="category in model.selected.volumeInfo.categories">
+                <h4>{{category}}<br/>
+                </h4>
+            </div>
+
+        </div>
+    <h3><b>Description </b><br/></h3>
+    <p id="Description">{{model.selected.volumeInfo.description}}</p>
+        <h3><b>Dimensions </b><br/></h3>
+        <p ><b>Height &nbsp &nbsp</b>{{model.selected.volumeInfo.dimensions.height}}</p>
+        <p ><b>Width &nbsp &nbsp</b>{{model.selected.volumeInfo.dimensions.width}}</p>
+        <p ><b>Thickness &nbsp &nbsp</b>{{model.selected.volumeInfo.dimensions.thickness}}</p>
+        <p><b>Web Reader Link &nbsp &nbsp</b><a href="{{model.selected.accessInfo.webReaderLink}}">Click Here</a></p>
+        <p><b>Average Rating &nbsp &nbsp{{model.selected.volumeInfo.averageRating}}</b></p>
+        <h3><b>Publisher</b><br/></h3>
+        <p >{{model.selected.volumeInfo.publisher}}</p>
+        <h3><b>Published Date </b><br/></h3>
+        <p >{{model.selected.volumeInfo.publishedDate}}</p>
+        <a ng-click="model.addToLibrary(model.selected,model.bookId,model.userId)" class="btn btn-success btn-block">Add to Library</a>
+        <div class="ks-addPaddingBottom">
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+</div>

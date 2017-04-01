@@ -7,8 +7,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // configure a public directory to host static content
 app.use(express.static(__dirname + '/public'));
-
+require ("./project/app.js")(app);
 require ("./assignment/app.js")(app);
+
 // require("./assignment/model/models.server")(app); //now switching to mongoose
 
 require ("./test/app.js")(app);
