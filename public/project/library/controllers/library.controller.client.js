@@ -7,7 +7,7 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         // vm.searchBook=searchBook;
-        
+
 
         function init() {
 
@@ -18,8 +18,7 @@
                         vm.books=books;
                         // $location.url("/user/" + vm.userId + "/viewLibrary");
                     }
-                )
-                }init();
+                )}init();
 
     }
 })();
