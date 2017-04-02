@@ -7,7 +7,7 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         // vm.searchBook=searchBook;
-         vm.viewDetails=viewDetails;
+        
 
         function init() {
 
@@ -20,12 +20,6 @@
                     }
                 )
                 }init();
-
-        function viewDetail(bookId) {
-
-
-        }
-
 
     }
 })();
