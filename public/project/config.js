@@ -50,7 +50,7 @@
             }
         ).when("/user/:uid/viewLibrary",
             {
-                templateUrl: "library/views/viewlibrary.view.client.html",
+                templateUrl: "library/views/viewLibrary.view.client.html",
                 controller: "LibraryController",
                 controllerAs:"model"
 
