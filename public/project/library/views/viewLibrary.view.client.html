@@ -1,0 +1,46 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+        </div>
+        <div class="navbar-header">
+            <a class="navbar-brand">
+                <b class="makeItWhite">My Library</b>
+            </a>
+
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <table class="table ks-forBookTablePaddingTop">
+        <thead>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="book in model.books[0].library">
+            <td scope="row">
+                <a ng-click="model.viewDetails(book.bookId)">
+                    {{book.bookId}}
+                </a>
+            </td>
+            <td>{{book.title}}</td>
+        </tr>
+        </tbody>
+        <!--<img ng-click="model.selectPhoto(photo)"-->
+        <!--ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
+    </table>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right wbdv-no-right-margin">
+            <a href="#/user/{{model.user._id}}">
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+            </a>
+        </div>
+    </div>
+</nav>
+</div>

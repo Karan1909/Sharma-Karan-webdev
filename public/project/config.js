@@ -48,7 +48,15 @@
                 controllerAs:"model"
 
             }
+        ).when("/user/:uid/viewLibrary",
+            {
+                templateUrl: "library/views/viewlibrary.view.client.html",
+                controller: "LibraryController",
+                controllerAs:"model"
+
+            }
         )
+
 
     }
 })();

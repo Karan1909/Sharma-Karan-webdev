@@ -45,7 +45,7 @@
         <p >{{model.selected.volumeInfo.publisher}}</p>
         <h3><b>Published Date </b><br/></h3>
         <p >{{model.selected.volumeInfo.publishedDate}}</p>
-        <a ng-click="model.addToLibrary(model.selected,model.bookId,model.userId)" class="btn btn-success btn-block">Add to Library</a>
+        <a ng-click="model.addToLibrary(model.bookId,model.selected.volumeInfo.title,model.userId)" class="btn btn-success btn-block">Add to Library</a>
         <div class="ks-addPaddingBottom">
         </div>
     </div>

@@ -5,6 +5,7 @@ module.exports = function (app,model) {
     app.get("/api/user/:userId",findUserById); // userId is the path paraameter
     app.put("/api/user/:userId",updateUser); // userId is the path paraameter
     app.put("/api/user/:userId/search/:bookId",addToLibrary);
+    app.get("/api/user/:userId/viewLibrary",getBooksFromLibrary);
 
 
     var multer = require('multer');
@@ -29,14 +30,40 @@ module.exports = function (app,model) {
             });
     }
 
-    function addToLibrary(req,res) {
-        var book=req.body;
+
+    function getBooksFromLibrary(req,res) {
         var userId=req.params.userId;
-        var bookId=req.params.bookId;
-        model.BookUserModel.addToLibrary(book,bookId,userId)
+        model.BookUserModel.getBooksFromLibrary(userId)
             .then(
-                function (book) {
-                    res.json(book);
+                function (books) {
+                    console.log("inside server"+books);
+                    res.json(books);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+
+            );
+    }
+
+    function addToLibrary(req,res) {
+        // var author=req.body.author;
+        // var title=req.body;
+        var userId=req.params.userId;
+        // var bookId=req.params.bookId;
+        // console.log("inside server before json"+bookEntry);
+        // var bookEntry={};
+        // // bookEntry.author=author;
+        // bookEntry.title=title;
+        // bookEntry.bookId=bookId;
+        var bookEntry=req.body;
+        console.log("inside server"+bookEntry);
+        model.BookUserModel.addToLibrary(bookEntry,userId)
+            .then(
+                function (bookEntry) {
+
+                    console.log("inside server"+bookEntry);
+                    res.json(bookEntry);
                 },
                 function (error) {
                     res.sendStatus(400).send(error);

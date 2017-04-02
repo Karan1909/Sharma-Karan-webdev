@@ -13,6 +13,7 @@ module.exports = function () {
         "findUserByUsername": findUserByUsername,
         "updateImage": updateImage,
         "addToLibrary":addToLibrary,
+        "getBooksFromLibrary":getBooksFromLibrary,
         "setModel":setModel
 
     };
@@ -20,6 +21,17 @@ module.exports = function () {
 
     function setModel(_model) {
         model=_model;
+    }
+
+    function getBooksFromLibrary(userId) {
+        return BookUserModel.find(
+            {
+                _id:userId
+            },
+            {
+                library:1
+            }
+        );
     }
 
     function updateImage(uid,widgetS) {
@@ -33,7 +45,7 @@ module.exports = function () {
 
     }
 
-    function addToLibrary(book,book_Id,userId) {
+    function addToLibrary(book,userId) {
         return BookUserModel.update(
             {
                 _id:userId
@@ -43,7 +55,6 @@ module.exports = function () {
                 "library":book
             }
         }
-
         );
 
     }

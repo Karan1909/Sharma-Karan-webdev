@@ -15,13 +15,18 @@
             "deleteUser":deleteUser,
             "createUser":createUser,
             "findUserByUsername": findUserByUsername,
-            "addToLibrary":addToLibrary
+            "addToLibrary":addToLibrary,
+            "getBooksFromLibrary":getBooksFromLibrary
 
         };
         return api;
 
-        function addToLibrary(book,userId,bookId) {
-            return $http.put("/api/user/"+userId+"/search/"+bookId,book);
+
+        function getBooksFromLibrary(userId) {
+            return $http.get("/api/user/"+userId+"/viewLibrary/");
+        }
+        function addToLibrary(bookEntry,bookId,userId) {
+            return $http.put("/api/user/"+userId+"/search/"+bookId,bookEntry);
 
         }
         function findUserByUsername(username) {

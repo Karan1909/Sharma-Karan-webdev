@@ -22,59 +22,30 @@
                 })}init();
 
 
-        function addToLibrary(book) {
-            UserService.addToLibrary(book,vm.userId,vm.bookId).then(
-                function (response) {
-                    $location.url("/user/" + vm.userId + "/search/" + vm.bookId);
+        function addToLibrary(bookId,title,userId) {
+
+            var bookEntry={};
+            bookEntry={
+                "bookId":bookId,
+                "title":title
+            };
+            // var bId=bookId.toString();
+            // var tit=title.toString();
+            var promise=UserService.addToLibrary(bookEntry,bookId,userId);
+            promise.success(
+                function (user) {
+                    if(user)
+                    {
+                        $location.url("/user/" + vm.userId + "/search/" );
+                    }
+                    else
+                    {
+
+                    }
+
                 }
             );
         }
-        //
-        // function viewDetails(booki,bookId) {
-        //
-        //     GoogleBookService.getDetailsOfOneBook(booki.selfLink)
-        //         .then(function (response) {
-        //             var data=response.data;
-        //             console.log(data);
-        //             // data=JSON.stringify(data);
-        //             vm.selected=data;
-        //             vm.link=booki.selfLink;
-        //             // $location.url("/user/" + vm.userId + "/search/" + bookId);
-        //
-        //         });
-        //
-        // }
-        //
-        //
-        // function searchBook(searchTerm) {
-        //     console.log("inside search book");
-        //     GoogleBookService
-        //         .searchBook(searchTerm)
-        //         .then(function(response) {
-        //             console.log(response.data);
-        //             var data = response.data;
-        //             // data = data.substring(0,data.length - 1);
-        //             // data = JSON.parse(data);
-        //             vm.book = data.items;
-        //         });
-        // }
-
-
-
-
-        // function selectPhoto(photo) {
-        //     var url = "https://farm" + photo.farm + ".staticflickr.com/" + photo.server;
-        //     url += "/" + photo.id + "_" + photo.secret + "_b.jpg";
-        //     var newWidget={};
-        //     newWidget.url = url;
-        //     newWidget.type = "IMAGE";
-        //     newWidget._page=vm.pageId;
-        //     WidgetService
-        //         .updateWidget(vm.widgetId,newWidget)
-        //         .then(function(widget){
-        //             $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page/" + vm.pageId + "/widget");
-        //         });
-        // }
 
 
     }
