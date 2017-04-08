@@ -3,25 +3,43 @@
         .module("BookLook")
         .controller("GoogleBookSearchController", GoogleBookSearchController);
 
-    function GoogleBookSearchController($location, $routeParams, GoogleBookService) { // should add userservice
+    function GoogleBookSearchController($location, $routeParams, GoogleBookService,SellerBookService) { // should add userservice
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.searchBook=searchBook;
         vm.viewDetails=viewDetails;
+        vm.viewSellers=viewSellers;
+        // vm.sellBook=sellBook;
+
+
+
+        // vm.sell={
+        //     "userId":String,
+        //     "bookId":String,
+        //     "price":String,
+        //     "comments":String,
+        //     "condition":String
+        // };
+
+        function viewSellers(bookId) {
+            $location.url("/user/" + vm.userId + "/buyBooks/" + bookId);
+            // var promise=GoogleBookService.viewSellers(vm.userId,bookId);
+            // promise.success(
+            //     function (values) {
+            //         var data=values;
+            //         vm.sellers=data;
+            //         vm.jss=angular.toJson(data);
+            //         console.log(vm.sellers);
+
+                // }
+
+
+
+        }
 
         function viewDetails(bookId) {
 
             $location.url("/user/" + vm.userId + "/search/" + bookId);
-            // GoogleBookService.getDetailsOfOneBook(booki.selfLink)
-            //     .then(function (response) {
-            //         var data=response.data;
-            //         console.log(data);
-            //         // data=JSON.stringify(data);
-            //         vm.selected=data;
-            //         vm.link=booki.selfLink;
-            //
-            //
-            //         });
 
         }
 
@@ -33,8 +51,6 @@
                 .then(function(response) {
                     console.log(response.data);
                     var data = response.data;
-                    // data = data.substring(0,data.length - 1);
-                    // data = JSON.parse(data);
                     vm.book = data.items;
                 });
         }

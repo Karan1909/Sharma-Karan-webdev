@@ -7,11 +7,17 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         // vm.searchBook=searchBook;
+        vm.viewDetails=viewDetails;
 
+        function viewDetails(bookId) {
+
+            $location.url("/user/" + vm.userId + "/viewLibrary/" + bookId);
+
+        }
 
         function init() {
 
-            var promise= UserService.getBooksFromLibrary(vm.userId)
+            var promise= UserService.getBooksFromLibrary(vm.userId);
                 promise.success(
                     function (books) {
                         console.log("inside controller"+books);

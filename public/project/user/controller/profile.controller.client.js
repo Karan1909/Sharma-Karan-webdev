@@ -9,6 +9,7 @@
         var userId=$routeParams['uid'];
         vm.deleteUser=deleteUser;
 
+        vm.userId=$routeParams['uid'];
 
         function init() {
             var promise=UserService.findUserById(userId);

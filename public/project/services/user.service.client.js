@@ -16,11 +16,20 @@
             "createUser":createUser,
             "findUserByUsername": findUserByUsername,
             "addToLibrary":addToLibrary,
-            "getBooksFromLibrary":getBooksFromLibrary
+            "getBooksFromLibrary":getBooksFromLibrary,
+            "getImageLink":getImageLink,
+            "findUserByIdUsingObjects":findUserByIdUsingObjects
 
         };
         return api;
 
+        function getImageLink(uIds,userId) {
+            return $http.get("/api/get/Image/user/"+userId,uIds);
+        }
+
+        function findUserByIdUsingObjects(userId) {
+            return $http.get("/api/usingObjects/user/"+userId);
+        }
 
         function getBooksFromLibrary(userId) {
             return $http.get("/api/user/"+userId+"/viewLibrary/");
@@ -34,6 +43,8 @@
             return $http.get("/api/user?username="+username);
 
         }
+
+
 
 
         function deleteUser(userId) {
@@ -75,6 +86,7 @@
         }
         function findUserById(userId) {
 
+            console.log("userId"+userId);
             return $http.get("/api/user/"+userId);
 
             /*  for(var u in users)

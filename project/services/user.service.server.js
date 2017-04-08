@@ -6,7 +6,10 @@ module.exports = function (app,model) {
     app.put("/api/user/:userId",updateUser); // userId is the path paraameter
     app.put("/api/user/:userId/search/:bookId",addToLibrary);
     app.get("/api/user/:userId/viewLibrary",getBooksFromLibrary);
+    app.get("/api/usingObjects/user/:userId",findUserByIdUsingObjects);
+    app.get("/api/get/Image/user/:userId",getImageLinkForUser);
 
+    var q=require('q');
 
     var multer = require('multer');
     var upload = multer({ dest: __dirname+'/../../public/uploads' });
@@ -30,7 +33,35 @@ module.exports = function (app,model) {
             });
     }
 
+    function getImageLinkForUser(req,res) {
+        var userId=req.params.userId;
+        var uIds=req.body;
+console.log("isnide server "+uIds);
+        model.BookUserModel
+            .getImageLinkForUser(userId,uIds)
+            .then(
+            function(arrayLinks){
+                res.json(arrayLinks);
+            },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
 
+    }
+
+
+
+    function findUserByIdUsingObjects(req,res) {
+        var userId=req.params.userId;
+
+        model.BookUserModel
+            .findUserByIdUsingObjects(userId)
+            .then(function(user){
+                res.json(user);
+            });
+
+    }
     function getBooksFromLibrary(req,res) {
         var userId=req.params.userId;
         model.BookUserModel.getBooksFromLibrary(userId)
@@ -47,22 +78,17 @@ module.exports = function (app,model) {
     }
 
     function addToLibrary(req,res) {
-        // var author=req.body.author;
-        // var title=req.body;
+
         var userId=req.params.userId;
-        // var bookId=req.params.bookId;
-        // console.log("inside server before json"+bookEntry);
-        // var bookEntry={};
-        // // bookEntry.author=author;
-        // bookEntry.title=title;
-        // bookEntry.bookId=bookId;
+        console.log(userId);
+
         var bookEntry=req.body;
-        console.log("inside server"+bookEntry);
+        console.log("inside server add to library"+bookEntry);
         model.BookUserModel.addToLibrary(bookEntry,userId)
             .then(
                 function (bookEntry) {
 
-                    console.log("inside server"+bookEntry);
+                    console.log("inside server add to library"+bookEntry);
                     res.json(bookEntry);
                 },
                 function (error) {
@@ -148,6 +174,7 @@ module.exports = function (app,model) {
     function findUserById(req, res)
     {
         var userId=req.params.userId;
+        console.log("serveer"+userId);
         model.BookUserModel
             .findUserById(userId)
             .then(function(user){

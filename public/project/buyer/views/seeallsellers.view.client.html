@@ -1,0 +1,73 @@
+
+
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.user._id}}" ng-click=model.update(model.user)>
+            <span class="glyphicon glyphicon-ok">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/user/{{model.user._id}}">
+                    <b class="kp-navbar-text">Profile</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <table class="table ks-forBookTablePaddingTop">
+        <thead>
+        <tr>
+            <th>Profile Pic</th>
+            <th>User Name</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="element in model.sellers">
+            <td scope="row">
+
+                    <img ng-src={{element.userId.imageWidget.url}} class="img-thumbnail" width="75" height="75">
+
+            </td>
+
+            <td>
+                <a ng-click="model.viewSeller(element,element.bookId,element.userId)">{{element.sellerusername}}
+                </a>
+            </td>
+
+            <td>
+                {{element.sellerfirstname}}
+            </td>
+            <td>
+                {{element.sellerlastname}}
+            </td>
+
+            <td>{{element.price}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="ks-addPaddingBottom">
+
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.user._id}}">
+            <span class="glyphicon glyphicon-user">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>

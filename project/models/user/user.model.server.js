@@ -14,15 +14,46 @@ module.exports = function () {
         "updateImage": updateImage,
         "addToLibrary":addToLibrary,
         "getBooksFromLibrary":getBooksFromLibrary,
+        "getImageLinkForUser":getImageLinkForUser,
+        "findUserByIdUsingObjects":findUserByIdUsingObjects,
         "setModel":setModel
 
     };
     return api;
 
+    var q=require('q');
     function setModel(_model) {
         model=_model;
     }
 
+    function findUserByIdUsingObjects(userId) {
+        var objectId = mongoose.Types.ObjectId(userId);
+        console.log("finduserByID"+objectId);
+        return BookUserModel.find(
+            {
+                _id:objectId
+            }
+        );
+    }
+    
+    function getImageLinkForUser(userId,uIds) {
+        var arrayOfLinks=[];
+        console.log("print array"+uIds[0]);
+        for(var i=0;i<uIds.length;i++)
+        {
+            console.log("in db"+uIds[i]);
+            arrayOfLinks[i]=BookUserModel.find(
+                {
+                    _id:uIds[i]
+                },
+                {
+                    imageWidget:1
+                }
+            )
+        }
+        return arrayOfLinks;
+
+    }
     function getBooksFromLibrary(userId) {
         return BookUserModel.find(
             {
@@ -46,6 +77,7 @@ module.exports = function () {
     }
 
     function addToLibrary(book,userId) {
+        console.log("add to lib mongo"+userId);
         return BookUserModel.update(
             {
                 _id:userId
@@ -55,6 +87,7 @@ module.exports = function () {
                 "library":book
             }
         }
+
         );
 
     }

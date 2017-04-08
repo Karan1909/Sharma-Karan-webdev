@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.user._id}}" ng-click=model.update(model.user)>
+            <span class="glyphicon glyphicon-ok">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/user/{{model.user._id}}">
+                    <b class="kp-navbar-text">Profile</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="input-group">
+        <input ng-model="searchText" type="text" class="form-control ks-addForFlickrPadding">
+        <span class="input-group-btn">
+        <a ng-click="model.searchBook(searchText)" class="btn btn-default" type="button">
+            <span class="glyphicon glyphicon-search"></span>
+        </a>
+    </span>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID Number</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>ID</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="book in model.book">
+            <td scope="row">
+                <a ng-click="model.viewSellers(book.id)">
+                    {{book.id}}
+                </a>
+            </td>
+            <td>{{book.volumeInfo.title}}</td>
+            <td>
+                {{book.volumeInfo.authors[0]}}
+            </td>
+            <td>{{book.volumeInfo.publisher}}</td>
+        </tr>
+        </tbody>
+        <!--<img ng-click="model.selectPhoto(photo)"-->
+        <!--ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
+    </table>
+
+    <!--<div ng-repeat="b in model.selected">-->
+    <!--{{b}}-->
+    <!--</div>-->
+    <!--<p>Hello</p>-->
+    <!--<h2>{{model.selected.id}}</h2>-->
+    <!--<h1>{{model.selected}}</h1>-->
+    <!--{{model.link}}-->
+    <!--model.book-->
+
+
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.user._id}}">
+            <span class="glyphicon glyphicon-user">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>

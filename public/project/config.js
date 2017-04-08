@@ -55,7 +55,48 @@
                 controllerAs:"model"
 
             }
-        )
+        ).when("/user/:uid/viewLibrary/:bid",
+            {
+                templateUrl: "library/views/sellbook.view.client.html",
+                controller: "BookDetailController",
+                controllerAs:"model"
+
+            }
+        ).when("/user/:uid/buyBooks",
+            {
+                templateUrl: "buyer/views/buyer.view.client.html",
+                controller: "GoogleBookSearchController",
+                controllerAs:"model"
+
+            }
+        ).when("/user/:uid/buyBooks/:bid",
+            {
+                templateUrl: "buyer/views/seeallsellers.view.client.html",
+                controller: "ViewSellersController",
+                controllerAs:"model"
+
+            }
+        ).when("/user/:uid/buyBooks/:bid/:sid",
+            {
+                templateUrl: "buyer/views/viewseller.view.client.html",
+                controller: "ViewBookToBuyController",
+                controllerAs:"model"
+
+            }).when("/user/:uid/viewAllSellers",
+            {
+                templateUrl: "preferredSellers/views/preferredseller.view.client.html",
+                controller: "ViewAllSellersController",
+                controllerAs:"model"
+
+            }).when("/user/:uid/viewOrders",
+            {
+                templateUrl: "orders/views/vieworders.view.client.html",
+                controller: "OrdersController",
+                controllerAs:"model"
+
+            });
+
+
 
 
     }

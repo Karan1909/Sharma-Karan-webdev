@@ -1,0 +1,78 @@
+
+<!--<div ng-repeat="o in model.orders">-->
+    <!--{{o.orders}}-->
+<!--</div>-->
+
+<!--{{model.orders}}-->
+
+
+
+
+
+<div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.user._id}}" ng-click=model.update(model.user)>
+            <span class="glyphicon glyphicon-ok">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/user/{{model.user._id}}">
+                    <b class="kp-navbar-text">Profile</b>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <table class="table ks-forBookTablePaddingTop">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Comments</th>
+            <th>Condition</th>
+            <th>Seller Username</th>
+            <th>Seller Name</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="o in model.orders">
+            <td scope="row">
+
+                {{o.title}}
+
+            </td>
+            <td>
+                {{o.price}}
+            </td>
+            <td>
+                {{o.comments}}
+            </td>
+
+            <td>{{o.condition}}</td>
+            <td>{{o.sellerUserName}}</td>
+            <td>{{o.sellerFirstName}} {{o.sellerLastName}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="ks-addPaddingBottom">
+
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="navbar-text pull-right">
+                <a href="#/user/{{model.user._id}}">
+            <span class="glyphicon glyphicon-user">
+            </span>
+                </a>
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>

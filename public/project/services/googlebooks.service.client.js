@@ -9,10 +9,28 @@
     function GoogleBookService($http) {
         var api = {
             "searchBook": searchBook,
-            "getDetailsOfOneBook":getDetailsOfOneBook
+            "getDetailsOfOneBook":getDetailsOfOneBook,
+            "viewSellers":viewSellers,
+            "setElement":setElement,
+            "getElement":getElement
         };
         return api;
 
+        var ele={};
+
+        function setElement(element) {
+            ele = element;
+        }
+
+        function getElement() {
+            return ele;
+        }
+
+
+        function viewSellers(userId,bookId) {
+            return $http.get("/api/user/"+userId+"/buyBooks/"+bookId);
+
+        }
 
 
         function getDetailsOfOneBook(id) {
