@@ -11,7 +11,7 @@ module.exports = function (app,model) {
     var googleConfig = {
         clientID     : "557184475880-tokdbetmhekop75uivafr862nnm7rcrl.apps.googleusercontent.com",
         clientSecret : "Og0AMs-3R33kucRAjoO69RU0",
-        callbackURL  : "http://127.0.0.1:3000/callback"
+        callbackURL  : "http://sharma-karan-webdev.herokuapp.com/callback"
     };
     app.get("/api/user",findUser);
     app.post("/api/user",passport.authenticate('local'),login);// somebody to take this request, we want passport to take look at request
