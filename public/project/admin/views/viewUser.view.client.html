@@ -2,12 +2,12 @@
     <div class="container-fluid">
         <div class="navbar-text pull-right wbdv-no-right-margin">
 
-                    <span  ng-click="model.updateUser(model.user)" class="glyphicon glyphicon-ok makeItWhite" >
+                    <span  ng-click="model.adminupdateUser(model.user)" class="glyphicon glyphicon-ok makeItWhite" >
                     </span>
         </div>
         <div class="navbar-header">
             <a class="navbar-brand">
-                <b class="makeItWhite">User Profile</b>
+                <b class="makeItWhite">Edit Profile By Admin</b>
             </a>
 
         </div>
@@ -21,6 +21,7 @@
     <div ng-show ="model.message" class="alert alert-success" role="alert">
         {{model.message}}
     </div>
+    <div >
     <label for="first">First Name</label>
     <input id="first"
            class="form-control"
@@ -47,12 +48,11 @@
     <input id="username"
            class="form-control"
            placeholder="john123"
-           ng-model="model.user.username" disabled/>
+           ng-model="model.user.username"/>
 
     <label for="password">Password</label>
     <input id="password"
            class="form-control"
-           type="password"
            placeholder="req4321"
            ng-model="model.user.password"
            value="password"/>
@@ -60,13 +60,12 @@
     <label for="password2">Validate Password</label>
     <input id="password2"
            class="form-control"
-           type="password"
            placeholder="req4321"
            ng-model="model.user.password"/>
 
     <label for="datepicker">Date of Birth</label>
     <div class='date' id='datepicker'>
-            <input type="text" id="datepicker1" ng-model="model.user.dateOfBirth" class="form-control"/>
+        <input type="text" id="datepicker1" ng-model="model.user.dateOfBirth" class="form-control"/>
         <span class="glyphicon glyphicon-calendar pull-right ks-shiftCalIconUp">
                 </span>
 
@@ -75,29 +74,28 @@
     <input id="address"
            class="form-control"
            ng-model="model.user.address" height="200px"/>
-
-
     <label for="phonenumber">Phone Number</label>
     <input id="phonenumber"
            class="form-control"
            ng-model="model.user.phoneNumber" height="200px"/>
+        <label for="role">Role</label>
+
+        <select id="role" ng-model="model.user.role">
+            <option value="ADMIN">ADMIN</option>
+            <option value="BUYER">BUYER</option>
+            <option value="SELLER">SELLER</option>
+            <option value="USER">USER</option>
+        </select>
+
 
     <div class="radio">
-      <label><input type="radio" name="optradio" ng-model="model.user.gender" value="Male">Male</label>
+          <label><input type="radio" name="optradio" ng-model="model.user.gender" value="Male">Male</label>
     </div>
     <div class="radio">
-      <label><input type="radio" name="optradio" ng-model="model.user.gender" value="Female">Female</label>
+          <label><input type="radio" name="optradio" ng-model="model.user.gender" value="Female">Female</label>
     </div>
-    <div class="form-group">
-        <form action="/api/upload/"  method="post" enctype="multipart/form-data">
-            <input  name="myFile"   type="file" class="form-control"/>
-            <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
-            <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
-        </form>
     </div>
     <div class="ks-addPaddingBottom">
-        <a href="#" class="btn btn-danger btn-block">Logout</a>
-        <a href="#/user/viewProfile" class="btn btn-success btn-block">View Profile</a>
     </div>
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">

@@ -9,7 +9,7 @@
 
         function createUser(newUser) {
             var user=UserService.createUser(newUser);
-            $location.url("/");
+            $location.url("/user/viewProfile");
         }
 
         vm.register=register;
@@ -24,7 +24,7 @@
                 function () {
                     var promise=UserService.createUser(user);
                     promise.success(function (user) {
-                        $location.url("/");
+                        $location.url("/user/viewProfile");
                     });
 
                 }

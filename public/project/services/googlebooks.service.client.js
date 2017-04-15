@@ -28,7 +28,7 @@
 
 
         function viewSellers(userId,bookId) {
-            return $http.get("/api/user/"+userId+"/buyBooks/"+bookId);
+            return $http.get("/api/user/userId/buyBooks/"+bookId);
 
         }
 

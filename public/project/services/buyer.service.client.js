@@ -10,10 +10,28 @@
         var api = {
             "buyBook": buyBook,
             "removeFromSeller":removeFromSeller,
-            "preferredSeller":preferredSeller
+            "preferredSeller":preferredSeller,
+            "getPreferredSellers":getPreferredSellers,
+            "makePreferred":makePreferred
 
         };
         return api;
+
+
+        function makePreferred(sellerId,userId) {
+            // var sellId=sellerId.toString();
+            // var usid=userId.toString();
+           var obj={
+               "userId":userId,
+               "sellerId":sellerId
+           }
+            return $http.put("/api/user/makePreferredSeller/"+userId,obj);
+        }
+
+        function getPreferredSellers(userId) {
+            return $http.get("/api/user/getPreferredSeller/"+userId);
+
+        }
 
         function preferredSeller(sellerId,userId) {
             var isellerId=sellerId.toString();

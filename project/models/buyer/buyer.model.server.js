@@ -8,11 +8,43 @@ module.exports = function () {
         "buyBook": buyBook,
         "setModel": setModel,
         "preferredSeller":preferredSeller,
-        "viewOrders":viewOrders
+        "viewOrders":viewOrders,
+        "getAllPreferredSellers":getAllPreferredSellers,
+        "makePreferred":makePreferred
 
     };
     return api;
 
+
+    function makePreferred(userId,sellerId) {
+        console.log("MongoUsr"+userId);
+        console.log("MongoSeller"+sellerId);
+
+        var objusr=Object(userId);
+        var objslrId=Object(sellerId);
+
+        return BuyerModel.update(
+            {
+                "userId":userId.toString()
+            },
+            {
+                $push:{
+                    "preferredSellers":sellerId.toString()
+                }
+            }
+        );
+    }
+
+    function getAllPreferredSellers(userId) {
+        return BuyerModel.find(
+            {
+                "userId":userId
+            },
+            {
+                "preferredSellers":1
+            }
+        );
+    }
 
     function viewOrders(userId) {
         return BuyerModel.find(
@@ -59,7 +91,7 @@ module.exports = function () {
 
      return  BuyerModel.update(
             {
-                "userId":userId,
+                "userId":userId
 
             },
          {

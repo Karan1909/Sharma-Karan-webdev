@@ -18,10 +18,30 @@
             "addToLibrary":addToLibrary,
             "getBooksFromLibrary":getBooksFromLibrary,
             "getImageLink":getImageLink,
-            "findUserByIdUsingObjects":findUserByIdUsingObjects
+            "findUserByIdUsingObjects":findUserByIdUsingObjects,
+            "logggedIn":logggedIn,
+            "logout":logout,
+            "isAdmin":isAdmin,
+            "findAllUsers":findAllUsers,
+            "findByIdUser":findByIdUser,
+            "adminupdateUser":adminupdateUser
 
         };
         return api;
+
+
+
+        function adminupdateUser(userId,newUser) {
+
+            return $http.post("/api/admin/user/"+userId,newUser);
+        }
+        function findByIdUser(userId) {
+            return $http.get("/api/admin/user/"+userId);
+        }
+
+        function findAllUsers() {
+            return $http.get("/api/admin/user");
+        }
 
         function getImageLink(uIds,userId) {
             return $http.get("/api/get/Image/user/"+userId,uIds);
@@ -32,7 +52,7 @@
         }
 
         function getBooksFromLibrary(userId) {
-            return $http.get("/api/user/"+userId+"/viewLibrary/");
+            return $http.get("/api/user/userId/viewLibrary/");
         }
         function addToLibrary(bookEntry,bookId,userId) {
             return $http.put("/api/user/"+userId+"/search/"+bookId,bookEntry);
@@ -48,25 +68,20 @@
 
 
         function deleteUser(userId) {
-            return $http.delete("/api/user/"+userId);
-            // for(var w in users) {
-            //     if(users[w]._id === userId) {
-            //         users.splice(w, 1);
-            //     }
-            // }
+            return $http.delete("/api/admin/user/"+userId);
         }
 
 
         function createUser(user) {
 
-            return $http.post("/api/user", user);
+            return $http.post("/api/user/createUser", user);
 
             // user._id=(new Date()).getTime().toString();
             // users.push(user);
         }
 
         function findUserByCredentials(username,password) {
-            return $http.get("/api/user?username="+username+"&password="+password);
+            return $http.post("/api/user?username="+username+"&password="+password);
             //retrieve data from the server on server will listen to this request
         }
         function updateUser(userId,newUser) {
@@ -88,16 +103,39 @@
 
             console.log("userId"+userId);
             return $http.get("/api/user/"+userId);
+            
+        }
+        
+        function logggedIn() {
+            return $http.post('/api/user/loggedin')
+                .then(
+                    function (response) {
+                        return response.data;
+                    }
+                )
 
-            /*  for(var u in users)
-             {
-             if(users[u]._id==userId)
-             {
-             return users[u];
-             }
 
-             }
-             return null;*/
+            
+        }
+        
+        function logout() {
+           return $http.post("/api/user/logout")
+               .then(
+                   function (response) {
+                       return response.data;
+                   }
+               )
+        }
+
+        function isAdmin() {
+
+            return $http.post('/api/user/isadmin')
+                .then(
+                    function (response) {
+                        return response.data;
+                    }
+                )
+
         }
 
     }

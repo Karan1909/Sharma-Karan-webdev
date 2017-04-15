@@ -5,8 +5,8 @@ module.exports = function () {
 
     var BookUserSchema=mongoose.Schema(
         {
-            username: {type: String},
-            password: {type: String},
+            username: {type: String, required:true },
+            password: {type: String, required:true },
             firstName: {type: String},
             lastName: {type: String},
             email: {type: String},
@@ -19,8 +19,12 @@ module.exports = function () {
             imageWidget:{
               "url":{type: String}, "width":{type:String}},
             url:{type:String},
-            library:{type:Array, "default":[]},
-            dateCreated: {type: Date, default: Date.now}
+            library:[{type: mongoose.Schema.Types.ObjectId, ref: 'BookModel'}],
+            // library:{type:Array, "default":[]},
+            dateCreated: {type: Date, default: Date.now},
+            googleId:{type:String},
+            role:{type: String, enum:['SELLER','BUYER','ADMIN','USER'], default:'USER'}
+
         });
     return BookUserSchema;
 

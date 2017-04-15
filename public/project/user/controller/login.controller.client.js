@@ -10,8 +10,6 @@
         var vm=this;//its going to hold that will be sent to the view for rendering. vm means view model which is always meant for display
         // event handlers
         vm.login=login;
-
-
         //the view will manipulate the model and we controller will send the model to view for rendering. vice versa relationship
         //things that should happen as the controller loads we will put in init
         function init() {
@@ -29,7 +27,8 @@
 
                 if(user)
                 {
-                    $location.url("/user/"+user._id+"/viewProfile");
+                    $location.url("/user/viewProfile");
+                     // $location.url("/user/"+user._id+"/viewProfile");
 
                 }
                 else

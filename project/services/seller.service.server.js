@@ -1,6 +1,6 @@
 module.exports = function (app,model) {
-    app.post("/api/user/:userId/viewLibrary/:bookId",sellBook);
-    app.get("/api/user/:userId/buyBooks/:bookId",viewSellers);
+    app.post("/api/user/userId/viewLibrary/:bookId",sellBook);
+    app.get("/api/user/userId/buyBooks/:bookId",viewSellers);
     app.delete("/api/user/:userId/buyBooks/:bookId/:sellerId",removeFromSeller);
     // app.get("/api/user/:userId/getAllSellers/:bookId/isSelling",isSelling);
     app.get("/api/user/:userId/getAllSellers",getAllSellers);
@@ -12,17 +12,25 @@ module.exports = function (app,model) {
 
 
     function getAllSellers(req,res) {
+
+
         model.SellerModel.getAllSellers()
             .then(
                 function (values) {
+
+                    console.log("At server "+values);
                     res.json(values);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
                 }
+
             );
 
     }
 
     function viewSellers(req,res) {
-        var userId=req.params.userId;
+        var userId=req.user._id;
         var bookId=req.params.bookId;
         model.SellerModel.viewSellers(bookId)
             .then(
@@ -58,9 +66,6 @@ module.exports = function (app,model) {
                     res.sendStatus(400).send(error);
                 }
             );
-
-
-
     }
 
 

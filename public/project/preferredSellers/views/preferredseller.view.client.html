@@ -1,5 +1,3 @@
-
-
 <div class="container-fluid">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -16,39 +14,43 @@
             </div>
         </div>
     </nav>
+
     <table class="table ks-forBookTablePaddingTop">
         <thead>
         <tr>
-            <th>Profile Pic</th>
-            <th>User Name</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+
+            <th>#ID</th>
+            <th>Seller Username</th>
+            <th>Seller Firstname</th>
+            <th>Seller Lastname</th>
+            <th>Make Preferred</th>
         </tr>
         </thead>
 
         <tbody>
         <tr ng-repeat="element in model.sellers">
-            <td scope="row">
-
-                <img ng-src={{element.userId.imageWidget.url}} class="img-thumbnail" width="75" height="75">
-
+            <td>
+                {{$index+1}}
             </td>
 
             <td>
-                <a ng-click="model.viewSeller(element,element.bookId,element.userId)">{{element.sellerusername}}
-                </a>
+                {{element.sellerusername[0]}}
+            </td>
+            <td>
+                {{element.sellerfirstname[0]}}
             </td>
 
             <td>
-                {{element.sellerfirstname}}
+                {{element.sellerlastname[0]}}
             </td>
             <td>
-                {{element.sellerlastname}}
-            </td>
+                <div ng-if=(model.preferredsellers.indexOf(element._id)==-1)>
+                    <button class="btn btn-info btn-sm"
+                            ng-click="model.makePreferred(element._id)">Make Preferred</button>
+                </div>
 
-            <td>{{element.price}}</td>
+            </td>
         </tr>
-        {{model.sellers}}
         </tbody>
     </table>
 
@@ -71,3 +73,16 @@
         </div>
     </nav>
 </div>
+
+
+
+
+
+
+
+<!--<div ng-repeat="element in model.sellers">-->
+    <!--{{element._id}}-->
+    <!--{{element.sellerusername[0]}}-->
+    <!--&lt;!&ndash;{{element.sellerfirstname[0]}}&ndash;&gt;-->
+
+<!--</div>-->

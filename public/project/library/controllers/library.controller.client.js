@@ -3,15 +3,15 @@
         .module("BookLook")
         .controller("LibraryController", LibraryController);
 
-    function LibraryController($location, $routeParams,UserService) { // should add userservice
+    function LibraryController($location, $routeParams,UserService,someName) { // should add userservice
         var vm = this;
-        vm.userId = $routeParams.uid;
+        vm.userId = someName._id;
         // vm.searchBook=searchBook;
         vm.viewDetails=viewDetails;
 
         function viewDetails(bookId) {
 
-            $location.url("/user/" + vm.userId + "/viewLibrary/" + bookId);
+            $location.url("/user/userId/viewLibrary/"+bookId);
 
         }
 
@@ -19,9 +19,9 @@
 
             var promise= UserService.getBooksFromLibrary(vm.userId);
                 promise.success(
-                    function (books) {
-                        console.log("inside controller"+books);
-                        vm.books=books;
+                    function (user) {
+                        console.log("inside controller"+user.library);
+                        vm.books=user.library;
                         // $location.url("/user/" + vm.userId + "/viewLibrary");
                     }
                 )}init();

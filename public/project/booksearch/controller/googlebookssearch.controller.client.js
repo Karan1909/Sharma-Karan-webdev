@@ -3,9 +3,9 @@
         .module("BookLook")
         .controller("GoogleBookSearchController", GoogleBookSearchController);
 
-    function GoogleBookSearchController($location, $routeParams, GoogleBookService,SellerBookService) { // should add userservice
+    function GoogleBookSearchController($location, $routeParams, GoogleBookService,SellerBookService,someName) { // should add userservice
         var vm = this;
-        vm.userId = $routeParams.uid;
+        vm.userId = someName._id;
         vm.searchBook=searchBook;
         vm.viewDetails=viewDetails;
         vm.viewSellers=viewSellers;
@@ -22,7 +22,7 @@
         // };
 
         function viewSellers(bookId) {
-            $location.url("/user/" + vm.userId + "/buyBooks/" + bookId);
+            $location.url("/user/userId/buyBooks/" + bookId);
             // var promise=GoogleBookService.viewSellers(vm.userId,bookId);
             // promise.success(
             //     function (values) {
@@ -39,7 +39,7 @@
 
         function viewDetails(bookId) {
 
-            $location.url("/user/" + vm.userId + "/search/" + bookId);
+            $location.url("/user/userId/search/" + bookId);
 
         }
 

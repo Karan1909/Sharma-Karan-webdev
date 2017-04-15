@@ -3,11 +3,21 @@
     module("BookLook")
         .controller("ProfileController",profileController) ;
 
-    function profileController($routeParams,UserService,$location) {
+    function profileController($routeParams,$location,someName,UserService) {
         var vm=this;
+        console.log("current user "+someName);
         vm.updateUser=updateUser;
         var userId=$routeParams['uid'];
         vm.deleteUser=deleteUser;
+        vm.logout=logout;
+        
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                    $location.url("/")
+            );
+        }
 
         vm.userId=$routeParams['uid'];
 

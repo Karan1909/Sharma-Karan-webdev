@@ -1,13 +1,57 @@
 module.exports = function (app,model) {
     app.put("/api/user/addPreferredSeller/:sellerId",preferredSeller);
     app.post("/api/user/:userId/buyBooks/:bookId/:sellerId",buyBook);
-    app.get("/api/user/:userId/viewAllOrders",viewOrders);
+    app.get("/api/user/userId/viewAllOrders",viewOrders);
+    app.get("/api/user/getPreferredSeller/:userId",getAllPreferredSellers);
+    app.put("/api/user/makePreferredSeller/:userId",makePreferred);
+
+
+    function makePreferred(req,res) {
+        console.log("isnie make pref");
+        var obj=req.body;
+        var userId=req.params.userId;
+        // var sellerId=req.body;
+
+        model.BuyerModel.makePreferred(userId,obj.sellerId)
+            .then(
+                function (values) {
+                    res.json(values);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+            );
+
+
+
+    }
+
+
+
+    function getAllPreferredSellers(req,res) {
+        var userId=req.params.userId;
+        model.BuyerModel.getAllPreferredSellers(userId)
+            .then(
+                function (values) {
+                    console.log("===================================");
+                    console.log(values);
+                    res.json(values);
+
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+
+
+            )
+    }
 
 
 
     function viewOrders(req,res) {
-        var userId=req.params.userId;
+        var userId=req.user._id;
 
+        console.log("vieworders buyer service "+userId);
         model.BuyerModel.viewOrders(userId)
             .then(
                 function (values) {

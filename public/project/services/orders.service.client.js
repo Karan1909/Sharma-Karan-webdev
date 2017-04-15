@@ -10,7 +10,7 @@
         return api;
 
         function viewOrders(userId) {
-            return $http.get("/api/user/"+userId+"/viewAllOrders");
+            return $http.get("/api/user/userId/viewAllOrders");
         }
 
     }

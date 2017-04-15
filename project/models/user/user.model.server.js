@@ -16,15 +16,77 @@ module.exports = function () {
         "getBooksFromLibrary":getBooksFromLibrary,
         "getImageLinkForUser":getImageLinkForUser,
         "findUserByIdUsingObjects":findUserByIdUsingObjects,
-        "setModel":setModel
+        "findUserByGoogleId":findUserByGoogleId,
+        "createThroughGoogleUser":createThroughGoogleUser,
+        "updateUserByAdmin":updateUserByAdmin,
+        "setModel":setModel,
+        "findAllUsers":findAllUsers
+
+
 
     };
     return api;
+
+
+
+    function updateUserByAdmin(userId,user) {
+        return BookUserModel.update(
+            {
+                _id:userId
+            },
+            {
+                "username": user.username,
+                "password": user.password,
+                "firstName": user.firstName,
+                "lastName": user.lastName,
+                "email": user.email,
+                "phone": user.phone,
+                "gender": user.gender,
+                "address": user.address,
+                "dateOfBirth": user.dateOfBirth,
+                "placeOfResidence": user.placeOfResidence,
+                "phoneNumber":user.phoneNumber,
+                "role":user.role,
+                imageWidget:{
+                    "url":user.imageWidget.url}
+
+            }
+        )
+
+    }
+
+    function findAllUsers() {
+        return BookUserModel.find();
+    }
+
 
     var q=require('q');
     function setModel(_model) {
         model=_model;
     }
+
+
+    function findUserByGoogleId(profileId) {
+        return BookUserModel.findOne(
+            {
+                "googleId":profileId
+            }
+        );
+    }
+
+
+    function createThroughGoogleUser(googleUser) {
+        return BookUserModel.create(
+            {
+                "username":googleUser.username,
+                "firstName":googleUser.firstName,
+                "lastName":googleUser.lastName,
+                "email":googleUser.email,
+                "googleId":googleUser.google.id
+            }
+        );
+    }
+
 
     function findUserByIdUsingObjects(userId) {
         var objectId = mongoose.Types.ObjectId(userId);
@@ -55,14 +117,31 @@ module.exports = function () {
 
     }
     function getBooksFromLibrary(userId) {
-        return BookUserModel.find(
-            {
-                _id:userId
-            },
-            {
-                library:1
-            }
-        );
+
+        console.log("inside model getbookfromlib"+userId);
+        return BookUserModel
+            .findOne({_id:userId})
+            .populate('library')
+            .exec(function(err, element){
+              if(err)
+              {
+                  console.log("err"+err);
+                  return err;
+              }
+              else
+              {
+                  console.log("element"+err);
+                  return element;
+              }
+            });
+        // return BookUserModel.find(
+        //     {
+        //         _id:userId
+        //     },
+        //     {
+        //         library:1
+        //     }
+        // );
     }
 
     function updateImage(uid,widgetS) {
@@ -76,7 +155,7 @@ module.exports = function () {
 
     }
 
-    function addToLibrary(book,userId) {
+    function addToLibrary(bookId,userId) {
         console.log("add to lib mongo"+userId);
         return BookUserModel.update(
             {
@@ -84,7 +163,7 @@ module.exports = function () {
             },
         {
             "$push":{
-                "library":book
+                "library":bookId
             }
         }
 

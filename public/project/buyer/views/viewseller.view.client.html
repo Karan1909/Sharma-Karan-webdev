@@ -53,11 +53,9 @@
         <div ng-if=(model.userId!==model.sellerId)>
         <a ng-click="model.buyBook(model.bookId,model.selected.volumeInfo.title,model.userId,model.element.condition,model.element.price,model.element.comments,model.element.sellerusername,model.element.sellerfirstname,model.element.sellerlastname)"
            class="btn btn-success btn-block" ng-show=model.element.condition!=null>Buy this book</a>
-            <a ng-click="model.preferredSeller(model.sellerId)" class="btn btn-success btn-block">Preferred Seller</a>
+            <!--<a ng-click="model.preferredSeller(model.sellerId)" class="btn btn-success btn-block">Preferred Seller</a>-->
         </div>
-
-
-        <!--if the condition is not null, then only buy button will be shown. Hence make the condition element compulsory-->
+      <!--if the condition is not null, then only buy button will be shown. Hence make the condition element compulsory-->
         <div class="ks-addPaddingBottom">
         </div>
     </div>

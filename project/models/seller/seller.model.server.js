@@ -39,9 +39,24 @@ module.exports = function () {
 
     function getAllSellers() {
 
-        return SellerModel.find();
+        // return SellerModel.aggregate(
+        //     {$group:{_id:"userId"}});
+        //
+        // }
 
-    }
+        return SellerModel.aggregate(
+
+        [
+            { $group : { _id : "$userId", sellerusername: { $push: "$sellerusername" },
+                sellerfirstname: { $push: "$sellerfirstname" },
+                sellerlastname: { $push: "$sellerlastname" }
+        } }
+        ]);}
+
+
+
+        // return SellerModel.distinct("sellerusername");
+
     function viewSellers(bkId) {
 
         console.log(bkId);
@@ -54,8 +69,6 @@ module.exports = function () {
         model=_model;
     }
     function sellBook(sellingBook) {
-
-
         console.log("inside seller service model");
         return SellerModel.create(sellingBook);
     }

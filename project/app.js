@@ -3,6 +3,8 @@ module.exports = function (app) {
     require("./services/user.service.server")(app,model);
     require("./services/seller.service.server")(app,model);
     require("./services/buyer.service.server")(app,model);
+    require("./services/books.service.server")(app,model);
+
     // require("./services/website.service.server")(app,model);
     // require("./services/page.service.server")(app,model);
     // require("./services/widget.service.server")(app,model);

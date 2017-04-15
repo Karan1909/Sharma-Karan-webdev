@@ -3,21 +3,42 @@
         .module("BookLook")
         .controller("ViewSellersController", ViewSellersController);
 
-    function ViewSellersController($location, $routeParams, GoogleBookService,UserService) { // should add userservice
+    function ViewSellersController($location, $routeParams, GoogleBookService,BuyerService,someName) { // should add userservice
         var vm = this;
-        vm.userId = $routeParams.uid;
+        vm.userId = someName._id;
         vm.bookId=$routeParams.bid;
         var uIds=[];
         vm.viewSeller=viewSeller;
+        // vm.isPresent=isPresent;
         function init() {
-            var promise=GoogleBookService.viewSellers(vm.userId,vm.bookId);
-            promise.success(
-                function (values) {
-                    var data = values;
-                    vm.sellers = data;
-
-
-        })}
+            GoogleBookService
+                .viewSellers(vm.userId,vm.bookId)
+                .then(
+                    function (response) {
+                        vm.sellers = response.data;
+                        console.log(vm.sellers);
+                        return BuyerService.getPreferredSellers(vm.userId)
+                    })
+                .then(
+                    function (ps) {
+                        if(ps.data.length==0)
+                        {
+                            vm.newArray=vm.sellers;
+                        }
+                        else {
+                            vm.preferredsellers = ps.data[0].preferredSellers;
+                            console.log(vm.preferredsellers);
+                            vm.newArray = [];
+                            for (var s in vm.sellers) {
+                                if (vm.preferredsellers.indexOf(vm.sellers[s].userId._id) > -1) {
+                                    vm.newArray.splice(0, 0, vm.sellers[s]);
+                                } else {
+                                    vm.newArray.push(vm.sellers[s]);
+                                }
+                            }
+                        }
+                    });
+        }
 
         init();
 
@@ -35,12 +56,32 @@
             //         // var sellerId=element.userId;
             //         console.log(sellerId._id);
             vm.sellerId=element.userId._id;
-                    $location.url("/user/" + vm.userId + "/buyBooks/" + bookId+"/"+element.userId._id);
+            $location.url("/user/userId/buyBooks/" + bookId+"/"+element.userId._id);
+                    // $location.url("/user/" + vm.userId + "/buyBooks/" + bookId+"/"+element.userId._id);
 
 
         }
 
+        // function changeOrder(userId) {
+        //
+        //     var userId=vm.userId;
+        //
+        //
+        // }
 
+
+        // function isPresent(sellers) {
+        //     console.log("preferrred sellers"+usrId);
+        //     for(var i=0;i<sellers.length;i++)
+        //     {
+        //
+        //     }
+        //
+        //     return (vm.preferredsellers.indexOf(usrId));
+        //
+        // }
+        //
+        //
 
 
     }

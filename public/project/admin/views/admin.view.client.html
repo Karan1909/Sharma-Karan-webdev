@@ -22,38 +22,41 @@
             <th>No.</th>
             <th>Profile Pic</th>
             <th>User Name</th>
+            <th>Password</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Price</th>
+            <th>Delete User</th>
         </tr>
         </thead>
 
         <tbody>
-        <tr ng-repeat="element in model.newArray">
+        <tr ng-repeat="element in model.users">
             <td>
                 {{$index+1}}
             </td>
             <td scope="row">
-                    <img ng-src={{element.userId.imageWidget.url}} class="img-thumbnail" width="75" height="75">
+                <img ng-src={{element.imageWidget.url}} class="img-thumbnail" width="75" height="75">
             </td>
-
             <td>
-                <a ng-click="model.viewSeller(element,element.bookId,element.userId)">{{element.sellerusername}}
+                <a ng-click="model.viewUser(element._id)">{{element.username}}</a>
+            </td>
+            <td>{{element.password}}</td>
+            <td>
+                {{element.firstName}}
+            </td>
+            <td>
+                {{element.lastName}}
+            </td>
+            <td>
+                <a ng-click="model.deleteUser(element._id)">
+                 <span class="glyphicon glyphicon-remove-sign ">
+            </span>
                 </a>
             </td>
 
-            <td>
-                {{element.sellerfirstname}}
-            </td>
-            <td>
-                {{element.sellerlastname}}
-            </td>
-
-            <td>{{element.price}}</td>
         </tr>
         </tbody>
     </table>
-
     <div class="ks-addPaddingBottom">
 
     </div>

@@ -1,13 +1,156 @@
 module.exports = function (app,model) {
+
+    var passport=require('passport');
+    var LocalStrategy=require('passport-local').Strategy;
+    passport.use(new LocalStrategy(localStrategy));
+    var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
+    passport.serializeUser(serializeUser);
+    passport.deserializeUser(deserializeUser);
+
+    var googleConfig = {
+        clientID     : "557184475880-tokdbetmhekop75uivafr862nnm7rcrl.apps.googleusercontent.com",
+        clientSecret : "Og0AMs-3R33kucRAjoO69RU0",
+        callbackURL  : "http://localhost:3000/callback"
+    };
     app.get("/api/user",findUser);
-    app.post("/api/user",createUser);
-    app.delete("/api/user/:userId",deleteUser);
+    app.post("/api/user",passport.authenticate('local'),login);// somebody to take this request, we want passport to take look at request
+    app.post("/api/user/createUser",createUser);
+    app.delete("/api/admin/user/:userId",deleteUser);
     app.get("/api/user/:userId",findUserById); // userId is the path paraameter
     app.put("/api/user/:userId",updateUser); // userId is the path paraameter
-    app.put("/api/user/:userId/search/:bookId",addToLibrary);
-    app.get("/api/user/:userId/viewLibrary",getBooksFromLibrary);
+    // app.put("/api/user/:userId/search/:bookId",addToLibrary);
+    app.get("/api/user/userId/viewLibrary",getBooksFromLibrary);
     app.get("/api/usingObjects/user/:userId",findUserByIdUsingObjects);
     app.get("/api/get/Image/user/:userId",getImageLinkForUser);
+    app.post('/api/user/isadmin',isAdmin);
+
+    app.post('/api/user/loggedin',loggedin);
+    app.post("/api/user/logout", logout);
+
+
+    app.get("/api/admin/user",findAllUsers);
+    app.post("/api/admin/user/:userId",updateUserByAdmin);
+
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+    // app.get("/auth/google",function (req,res) {
+    //     console.log("login with google");
+    // });
+
+    app.get('/callback',
+        passport.authenticate('google', {
+            successRedirect: '/project/#/user/viewProfile',
+            failureRedirect: '/#'
+        }));
+
+    app.get('/api/admin/user/:userId',findByIdUser);
+
+
+    passport.use(new GoogleStrategy(googleConfig, googleStrategy));
+
+    function googleStrategy(token, refreshToken, profile, done) {
+        model.BookUserModel
+            .findUserByGoogleId(profile.id)
+            .then(
+                function(user) {
+                    if(user) {
+                        return done(null, user);
+                    } else {
+                        var email = profile.emails[0].value;
+                        var emailParts = email.split("@");
+                        var newGoogleUser = {
+                            username:  emailParts[0],
+                            firstName: profile.name.givenName,
+                            lastName:  profile.name.familyName,
+                            email:     email,
+                            google: {
+                                id:    profile.id,
+                                token: token
+                            }
+                        };
+                        return model.BookUserModel.createThroughGoogleUser(newGoogleUser);
+                    }
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            )
+            .then(
+                function(user){
+                    return done(null, user);
+                },
+                function(err){
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+
+    function login(req,res) { // next is for chaining the requests unitl somewhere the response is generated
+        var user=req.user;
+        console.log("inside login it is ");
+        res.json(user);
+
+    }
+
+    function updateUserByAdmin(req,res)
+    {
+        var userId=req.params.userId;
+        var user=req.body;
+    model.BookUserModel.updateUserByAdmin(userId,user)
+        .then(function(status){
+            res.json(user);
+        });
+
+    }
+
+
+    function findByIdUser(req,res) {
+        var userId=req.params.userId;
+        model.BookUserModel
+            .findUserById(userId)
+            .then(
+                function (user) {
+                    if(user)
+                    {
+                        res.json(user);
+                    }
+                    else
+                    {
+                        res.send(400);
+                    }
+                }
+
+            );
+
+
+    }
+
+
+    function localStrategy(username, password, done) {
+        console.log(username);
+        console.log(password);
+        model.BookUserModel
+            .findUserByCredentials(username, password)
+            .then(
+                function(user) {
+                    console.log('[0]');
+                    console.log(user);
+                    if (!user) {
+                        console.log('[1]');
+                        return done(null, false);
+                    }
+                    console.log('[2]');
+                    return done(null, user);
+                },
+                function(err) {
+                    if (err) { return done(err); }
+                }
+            );
+    }
+
+
+
 
     var q=require('q');
 
@@ -25,7 +168,7 @@ module.exports = function (app,model) {
         var uId = req.body.userId;
         model.BookUserModel.updateImage(uId, widget).then(
             function (widget) {
-                res.redirect("/project/#/user/" + req.body.userId);
+                res.redirect("/project/#/user/editProfile");
             }
             , function (err) {
                 res.sendStatus(500).send(err);
@@ -63,11 +206,12 @@ console.log("isnide server "+uIds);
 
     }
     function getBooksFromLibrary(req,res) {
-        var userId=req.params.userId;
+        var userId=req.user._id;
+        console.log("inside getbookfromlib");
         model.BookUserModel.getBooksFromLibrary(userId)
             .then(
                 function (books) {
-                    console.log("inside server"+books);
+                    console.log("inside server getting user with its library"+books);
                     res.json(books);
                 },
                 function (error) {
@@ -115,11 +259,13 @@ console.log("isnide server "+uIds);
 
         if(username && password)
         {
+            console.log("get only username  and pass");
             findUserByCredentials(req,res);
 
         }
         else if(username)
         {
+            console.log("get only username ");
             findUserByUsername(req,res);
 
         }
@@ -134,7 +280,18 @@ console.log("isnide server "+uIds);
         model.BookUserModel
             .createUser(newUser)
             .then(function(newUser){
-                res.json(newUser);
+                req.login(newUser,function (err) {
+                    if(err)
+                    {
+                        console.log("inside create user error encountered "+err);
+                        res.send(400);
+                    }
+                    else
+                    {
+                        res.json(newUser);
+                    }
+                });
+
             }, function (err) {
                 res.sendStatus(400).send(err);
             });
@@ -162,7 +319,8 @@ console.log("isnide server "+uIds);
     }
     function updateUser(req,res) {
 
-        var userId=req.params.userId;
+        // var userId=req.params.userId;
+        var userId=req.user._id;
         var newUser=req.body;
         model.BookUserModel
             .updateUser(userId,newUser)
@@ -173,7 +331,8 @@ console.log("isnide server "+uIds);
 
     function findUserById(req, res)
     {
-        var userId=req.params.userId;
+        // var userId=req.params.userId;
+        var userId=req.user._id;
         console.log("serveer"+userId);
         model.BookUserModel
             .findUserById(userId)
@@ -199,4 +358,66 @@ console.log("isnide server "+uIds);
                 res.send(err);
             }
         );}
-};
+
+
+    function serializeUser(user, done) {
+        done(null, user);
+    }
+
+    function deserializeUser(user, done) {
+        model.BookUserModel
+            .findUserById(user._id)
+            .then(
+                function(user){
+                    console.log("serial"+user);
+                    done(null, user);
+                },
+                function(err){
+                    console.log(err);
+                    done(err, null);
+                }
+            );
+
+        }
+    function loggedin(req,res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
+        // res.send('0');
+    }
+    
+    function logout(req,res) {
+        console.log("inside logout");
+        req.logout();
+        res.send(200);
+    }
+
+
+    function isAdmin(req,res) {
+        res.send(req.isAuthenticated() && req.user.role=="ADMIN"? req.user : '0');
+    }
+
+
+    function findAllUsers(req,res) {
+
+        if(req.user && req.user.role=='ADMIN')
+        {
+            model.BookUserModel
+                .findAllUsers()
+                .then(
+                    function(users){
+                        res.json(users);
+                    },
+                    function(err){
+                        res.send(400);
+                    }
+                );
+
+        }
+        else
+        {
+            res.send(401);
+        }
+
+
+    }
+
+    };

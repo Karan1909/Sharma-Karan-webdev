@@ -1,9 +1,9 @@
 (function () {
     angular.module("BookLook").controller("OrdersController", OrdersController);
 
-    function OrdersController(OrdersService, $routeParams) { // should add userservice
+    function OrdersController(OrdersService, $routeParams,someName) { // should add userservice
         var vm = this;
-        vm.userId = $routeParams.uid;
+        vm.userId = someName._id;
         // vm.searchBook=searchBook;
         console.log("insdie");
 

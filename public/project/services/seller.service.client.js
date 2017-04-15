@@ -21,7 +21,7 @@
         }
 
         function sellBook(sellingBook,userId,bookId) {
-            return $http.post("/api/user/"+userId+"/viewLibrary/"+bookId,sellingBook);
+            return $http.post("/api/user/userId/viewLibrary/"+bookId,sellingBook);
         }
 
 

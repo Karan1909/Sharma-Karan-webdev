@@ -3,9 +3,9 @@
         .module("BookLook")
         .controller("BookDetailController", BookDetailController);
 
-    function BookDetailController($location, $routeParams, GoogleBookService,UserService,SellerBookService) { // should add userservice
+    function BookDetailController($location, $routeParams, GoogleBookService,UserService,SellerBookService,someName) { // should add userservice
         var vm = this;
-        vm.userId = $routeParams.uid;
+        vm.userId = someName._id;
         vm.bookId=$routeParams.bid;
         vm.addToLibrary=addToLibrary;
         // vm.searchBook=searchBook;
@@ -31,8 +31,7 @@
             promise.success(
                 function (sellingBook) {
 
-
-                    $location.url("/user/" + vm.userId + "/viewLibrary/");
+                    $location.url("/user/userId/viewLibrary/");
                 }
             );
         }
@@ -57,41 +56,42 @@
                     // data=JSON.stringify(data);
                     vm.selected=data;
                 });
+            vm.answer=true;
 
-            SellerBookService.isSelling(vm.bookId,vm.userId)
-                .then(
-                    function (response) {
-                        if(response)
-                        {
-                            vm.answer=false;
-                        }
-                        else
-                        {
-                            vm.answer=true;
-                        }
-
-                    }
-                );
+            // SellerBookService.isSelling(vm.bookId,vm.userId)
+            //     .then(
+            //         function (response) {
+            //             if(response)
+            //             {
+            //                 vm.answer=false;
+            //             }
+            //             else
+            //             {
+            //                 vm.answer=true;
+            //             }
+            //
+            //         }
+            //     );
 
             console.log("value is "+Boolean(vm.answer));
                 }init();
 
 
-        function addToLibrary(bookId,title,userId) {
+        function addToLibrary(bookId,title,userId,publisher) {
 
+            // model.bookId,model.selected.volumeInfo.title,model.userId,model.selected.volumeInfo.publisher
             var bookEntry={};
             bookEntry={
                 "bookId":bookId,
-                "title":title
+                "title":title,
+                "publisher":publisher
             };
-            // var bId=bookId.toString();
-            // var tit=title.toString();
             var promise=UserService.addToLibrary(bookEntry,bookId,userId);
             promise.success(
                 function (user) {
                     if(user)
                     {
-                        $location.url("/user/" + vm.userId + "/viewLibrary/" );
+                        $location.url("/user/userId/viewLibrary/" );
                     }
                     else
                     {

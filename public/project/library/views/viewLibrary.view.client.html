@@ -16,16 +16,18 @@
         <tr>
             <th>Book ID</th>
             <th>Book Name</th>
+            <th>Publisher</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="book in model.books[0].library">
+        <tr ng-repeat="book in model.books">
             <td scope="row">
                 <a ng-click="model.viewDetails(book.bookId)">
                     {{book.bookId}}
                 </a>
             </td>
             <td>{{book.title}}</td>
+            <td>{{book.publisher}}</td>
         </tr>
         </tbody>
         <!--<img ng-click="model.selectPhoto(photo)"-->

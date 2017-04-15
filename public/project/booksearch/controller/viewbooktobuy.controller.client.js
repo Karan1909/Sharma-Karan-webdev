@@ -3,18 +3,18 @@
             .module("BookLook")
             .controller("ViewBookToBuyController", ViewBookToBuyController);
 
-        function ViewBookToBuyController($location, $routeParams, GoogleBookService, BuyerService) { // should add userservice
+        function ViewBookToBuyController($location, $routeParams, GoogleBookService, BuyerService,someName) { // should add userservice
 
             var vm=this;
             vm.sellerId = $routeParams.sid;
-            vm.userId = $routeParams.uid;
+            vm.userId = someName._id;
             vm.bookId = $routeParams.bid;
             vm.buyBook=buyBook;
             vm.preferredSeller=preferredSeller;
 
 
             function preferredSeller(sellerId) {
-                var promise=BuyerService.preferredSeller(vm.sellerId,vm.userId)
+                var promise=BuyerService.preferredSeller(vm.sellerId,vm.userId);
                     promise.then(
                         function (response,err) {
                             if(response) {
@@ -63,10 +63,6 @@
                         $location.url("/user/" + vm.userId + "/search/" + bookId);
                     }
                 );
-
-
-
-
             }
 
 
