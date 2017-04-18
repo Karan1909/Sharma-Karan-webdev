@@ -6,13 +6,28 @@
 
 
         $routeProvider
+            // login page route change do add it
             .when("/",
                 {
                     templateUrl: "user/views/login.view.client.html",
                     controller:"LoginController",
                     controllerAs:"model" // within the template, we can access this controller with name model// call me by name model from view
+                }).when("/home",
+                {
+                    templateUrl: "homepage/views/home.view.client.html",
+                    controller:"HomePageViewController",
+                    controllerAs:"model" // within the template, we can access this controller with name model// call me by name model from view
                 }
-            ).when("/admin",
+            ).when("/home/search/:bid",
+            {
+                templateUrl: "homepage/views/homebookdetail.view.client.html",
+                controller:"DetailsHomePageViewController",
+                controllerAs:"model" // within the template, we can access this controller with name model// call me by name model from view
+            }
+        )
+
+
+            .when("/admin",
             {
                 templateUrl: "admin/views/admin.view.client.html",
                 controller:"AdminController",
@@ -93,7 +108,6 @@
                 controllerAs:"model",
                 resolve:{
                     someName: checkLogin
-                    //you can put checkAdmin means are they admin, if yes then we let them through with that route
 
                 }
 
@@ -150,7 +164,8 @@
                 controller: "GoogleBookSearchController",
                 controllerAs:"model",
                 resolve:{
-                    someName: checkLogin
+                    someName: checkLogin,
+                    checkBuyer:checkBuyer//you can put checkAdmin means are they admin, if yes then we let them through with that route
                     //you can put checkAdmin means are they admin, if yes then we let them through with that route
                 }
 
@@ -165,7 +180,8 @@
                 controller: "ViewSellersController",
                 controllerAs:"model",
                 resolve:{
-                    someName: checkLogin
+                    someName: checkLogin,
+                    checkBuyer:checkBuyer//you can put checkAdmin means are they admin, if yes then we let them through with that route
                     //you can put checkAdmin means are they admin, if yes then we let them through with that route
                 }})
             .otherwise(
@@ -178,7 +194,8 @@
                 controller: "ViewBookToBuyController",
                 controllerAs:"model",
                 resolve:{
-                    someName: checkLogin
+                    someName: checkLogin,
+                    checkBuyer:checkBuyer//you can put checkAdmin means are they admin, if yes then we let them through with that route
                     //you can put checkAdmin means are they admin, if yes then we let them through with that route
 
                 }
@@ -209,7 +226,8 @@
                 controller: "OrdersController",
                 controllerAs:"model",
                 resolve:{
-                    someName: checkLogin
+                    someName: checkLogin,
+                    checkBuyer:checkBuyer//you can put checkAdmin means are they admin, if yes then we let them through with that route
                     //you can put checkAdmin means are they admin, if yes then we let them through with that route
                 }
 
@@ -258,6 +276,30 @@
                             deffered.resolve(user);
                         }
                     }
+                );
+            return deffered.promise;
+
+        }
+
+
+        function checkBuyer($q, UserService,$location) {
+
+            var deffered=$q.defer();
+            UserService.checkBuyer()
+                .then(
+                    function (user) {
+
+                            if(user==0){
+                                deffered.reject();
+                                $location.url('/user/viewProfile');
+                            }
+                            if(user)
+
+                            {
+                                deffered.resolve(user);
+                            }
+                        }
+
                 );
             return deffered.promise;
 

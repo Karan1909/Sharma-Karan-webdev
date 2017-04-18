@@ -27,18 +27,14 @@
                    placeholder="Password" id='password' aria-describedby="basic-addon2">
         </div>
     </div>
+    <label for="role">Register As</label>
 
-    <div class="form-group">
-        <div class="input-group">
-                <span class="input-group-addon" id="basic-addon3">
-                    <span class="glyphicon glyphicon-lock" aria-hidden="true">
-                    </span>
-                </span>
-            <input type="password"  class="form-control ng-pristine ng-valid ng-touched"
-                   placeholder="Verify Password" aria-describedby="basic-addon3" id='confirm_password'>
-            <span id='message'></span>
-        </div>
-     </div>
+    <select id="role" ng-model="model.user.role">
+        <option value="ADMIN">ADMIN</option>
+        <option value="BUYER">BUYER</option>
+        <option value="SELLER">SELLER</option>
+        <option value="USER">USER</option>
+    </select>
     <a class="btn btn-primary btn-block"
        ng-click="model.register(model.user)">Register</a>
     <a class="btn btn-danger  btn-block"

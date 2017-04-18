@@ -7,6 +7,7 @@ module.exports = function () {
             bookId: {type: String},
             title:{type: String},
             publisher:{type:String},
+            url:{type:String},
             dateCreated: {type: Date, default: Date.now}
         });
     return BookSchema;

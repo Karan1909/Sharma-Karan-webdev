@@ -82,7 +82,7 @@ body.ks-forWebList
 }
 .navbar-fixed-top
 {
-    background-color: blue;
+    background-color: #777;
     text-decoration-color: white;
     color: white;
     font-family: sans-serif;
@@ -96,7 +96,7 @@ body.ks-forWebList
 
 .navbar-fixed-bottom
 {
-    background-color: blue;
+    background-color: #777;
     text-decoration-color: white;
     color: white;
     font-family: sans-serif;
@@ -230,7 +230,8 @@ a.forCogShift
     border-top: 0;
 }
 .toppad
-{margin-top:20px;
+{
+    margin-top:-7px;
 }
 
 .ks-shiftCalIconUp
@@ -263,3 +264,65 @@ a.forCogShift
 {
     margin-top:51px;
 }
+.thumbnail:hover
+{
+    background-color: darkred;
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.img-responsive{
+    max-width:247px;
+    max-height:162px;
+}
+
+.fordisplay{
+    color: #000080;
+    font-weight: bold;
+    font-style: normal;
+}
+
+.btn-right
+{
+    margin-right: 21px;
+    margin-bottom:-9px;
+    margin-top:-14px;
+}
+
+.shift-down-image
+{
+    padding-top: 17px;
+}
+
+.ks-shift-arrow-in-position
+{
+    padding-left: 4px;
+    padding-top:16px;
+}
+.ks-changeMargin
+{
+    margin-bottom: -23px;
+
+}
+
+/*.put-some-image*/
+/*{*/
+    /*background:url(img/header.jpg);*/
+
+/*}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

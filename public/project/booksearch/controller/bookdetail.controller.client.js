@@ -77,14 +77,16 @@
                 }init();
 
 
-        function addToLibrary(bookId,title,userId,publisher) {
+        function addToLibrary(bookId,title,userId,publisher,imgUrl) {
 
             // model.bookId,model.selected.volumeInfo.title,model.userId,model.selected.volumeInfo.publisher
             var bookEntry={};
+            console.log("img url"+imgUrl);
             bookEntry={
                 "bookId":bookId,
                 "title":title,
-                "publisher":publisher
+                "publisher":publisher,
+                "url":imgUrl
             };
             var promise=UserService.addToLibrary(bookEntry,bookId,userId);
             promise.success(

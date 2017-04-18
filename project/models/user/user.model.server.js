@@ -20,13 +20,29 @@ module.exports = function () {
         "createThroughGoogleUser":createThroughGoogleUser,
         "updateUserByAdmin":updateUserByAdmin,
         "setModel":setModel,
-        "findAllUsers":findAllUsers
+        "findAllUsers":findAllUsers,
+        "removeFromLibrary":removeFromLibrary,
+        "getUserId":getUserId
 
 
 
     };
     return api;
 
+
+
+    function getUserId(userId) {
+        return BookUserModel.findById
+        (
+            {
+                _id:userId
+            },
+            {
+                _id:1
+            }
+
+        );
+    }
 
 
     function updateUserByAdmin(userId,user) {
@@ -181,6 +197,8 @@ module.exports = function () {
     function createUser(newUser) {
         console.log("in db createuser"+newUser.type);
         console.log("in db createuser"+newUser.username);
+
+
         return BookUserModel.create(newUser);
 
     }
@@ -244,6 +262,37 @@ module.exports = function () {
                 }
             );
 
+    }
+
+    function removeFromLibrary(bookId,userId) {
+        console.log("bookId in model is"+bookId);
+        // var useId=Object(userId);
+        console.log("userid is model is "+String(userId));
+        // var objectIdf=
+
+        // userId=toString(userId);
+        // userId=userId.toString();
+        var luserId=BookUserModel.find(
+            {
+                "_id":String(userId)
+            }
+        );
+
+        console.log("id is "+luserId);
+        console.log("id is "+luserId.username);
+        // console.log("uid"+uid);
+        return BookUserModel.update(
+            {
+                _id:String(userId)
+            },
+            {
+                $pull:
+                    {
+                        "library":String(bookId)
+
+                    }
+            }
+        );
     }
 
 

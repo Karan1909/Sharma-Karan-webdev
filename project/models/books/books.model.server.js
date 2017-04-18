@@ -7,11 +7,24 @@ module.exports = function () {
     var api = {
         "findBookPresentLibrary": findBookPresentLibrary,
         "setModel": setModel,
-        "addToLibrary":addToLibrary
+        "addToLibrary":addToLibrary,
+        "getIdFromGoogleBookId":getIdFromGoogleBookId
 
     };
     return api;
 
+
+    function getIdFromGoogleBookId(bookId) {
+        return BookModel.findOne(
+            {
+                bookId:bookId
+            },
+            {
+                _id:1
+            }
+        );
+
+    }
 
     function findBookPresentLibrary(bookEntry,userId) {
         var googleBookId=bookEntry.bookId;
@@ -47,6 +60,9 @@ module.exports = function () {
         var googleBookId=bookEntry.bookId;
         var title=bookEntry.title;
         var publisher=bookEntry.publisher;
+        var url=bookEntry.url;
+
+        console.log("url is "+bookEntry.url);
 
         // bookId: {type: String},
         // title:{type: String},
@@ -57,7 +73,8 @@ module.exports = function () {
             {
                 "bookId": googleBookId,
                 "title":title,
-                "publisher":publisher
+                "publisher":publisher,
+                "url":url
             });
 
 

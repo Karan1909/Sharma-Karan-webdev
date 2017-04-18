@@ -24,9 +24,11 @@ module.exports = function (app,model) {
     app.get("/api/usingObjects/user/:userId",findUserByIdUsingObjects);
     app.get("/api/get/Image/user/:userId",getImageLinkForUser);
     app.post('/api/user/isadmin',isAdmin);
+    app.post('/api/user/isBuyer',isBuyer);
 
     app.post('/api/user/loggedin',loggedin);
     app.post("/api/user/logout", logout);
+    app.post("/api/user/userId/viewLibrary",removeFromLibrary);
 
 
     app.get("/api/admin/user",findAllUsers);
@@ -417,6 +419,33 @@ console.log("isnide server "+uIds);
             res.send(401);
         }
 
+
+    }
+
+
+    function removeFromLibrary(req,res) {
+        var obj=req.body;
+        var bookId=obj.bookId;
+        var userId=req.user._id;
+        console.log("book id is server "+bookId);
+
+        var id=model.BookModel.getIdFromGoogleBookId(bookId);
+        // var userid=model.BookUserModel.getUserId(userId);
+         console.log("id returned from bookmodel is "+userId);
+        console.log("bookid returned from bookmodel is "+id);
+
+        model.BookUserModel.removeFromLibrary(id,userId)
+            .then(
+
+                function (user) {
+                    res.json(user);
+                }
+            )
+
+    }
+
+    function isBuyer(req,res) {
+        res.send(req.isAuthenticated() && req.user.role=="BUYER"? req.user : '0');
 
     }
 

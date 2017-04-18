@@ -1,48 +1,72 @@
+<div>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
-        <div class="navbar-text pull-right wbdv-no-right-margin">
-        </div>
         <div class="navbar-header">
-            <a class="navbar-brand">
-                <b class="makeItWhite">My Library</b>
+            <a class="navbar-brand" href="#/">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <b class="makeItWhite">LookBook App</b>
+                </div>
             </a>
-
         </div>
     </div>
 </nav>
-<div class="container-fluid">
-    <table class="table ks-forBookTablePaddingTop">
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <table class="table">
         <thead>
         <tr>
             <th>Book ID</th>
             <th>Book Name</th>
             <th>Publisher</th>
+            <th>Remove From Library</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="book in model.books">
-            <td scope="row">
+            <td>
                 <a ng-click="model.viewDetails(book.bookId)">
-                    {{book.bookId}}
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <img class="img-responsive thumbnail" ng-src="{{book.url}}"/>
+                </div>
                 </a>
             </td>
-            <td>{{book.title}}</td>
-            <td>{{book.publisher}}</td>
+            <td>
+                <div class="col-xs-2 col-sm-4 col-md-8 col-lg-10">
+                {{book.title}}
+                </div>
+            </td>
+            <td>
+                <div class="col-xs-2 col-sm-4 col-md-8 col-lg-10">
+                {{book.publisher}}
+                </div>
+            </td>
+            <td>
+                <div class="col-xs-2 col-sm-4 col-md-8 col-lg-10">
+                <span class="glyphicon glyphicon-remove-sign "
+                      ng-click="model.removeFromLibrary(book.bookId,model.userId)">
+            </span>
+                </div>
+            </td>
         </tr>
         </tbody>
-        <!--<img ng-click="model.selectPhoto(photo)"-->
-        <!--ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
     </table>
-</div>
-
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <div class="navbar-text pull-right wbdv-no-right-margin">
-            <a href="#/user/{{model.user._id}}">
-                    <span class="glyphicon glyphicon-user makeItWhite">
-                    </span>
-            </a>
+        <div class="ks-addPaddingBottom">
         </div>
     </div>
-</nav>
+</div>
+<div class="col-xs-2">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <a ng-href="#/user/viewProfile" class="makeItWhite">
+                <i class="fa fa-chevron-left ks-shift-arrow-in-position" aria-hidden="true"></i>
+            </a>
+            <div class="navbar-text pull-right wbdv-no-right-margin">
+
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+
+            </div>
+        </div>
+    </nav>
+</div>
 </div>

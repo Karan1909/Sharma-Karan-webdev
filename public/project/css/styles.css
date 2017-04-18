@@ -158,3 +158,27 @@ body {
     height: 100%;
     z-index: -1;
 }
+.thumbnail:hover{
+    background-color: darkred;
+    transform: scale3d(1.1,1.1,1.1);
+}
+
+.img-responsive{
+    max-width:250px;
+    max-height:152px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

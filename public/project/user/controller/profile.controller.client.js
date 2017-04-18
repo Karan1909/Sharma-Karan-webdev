@@ -22,6 +22,7 @@
         vm.userId=$routeParams['uid'];
 
         function init() {
+            vm.backgrndimg="http://tesseraguild.com/wp-content/uploads/2014/06/collage-of-elmore-leonard-books.jpg";
             var promise=UserService.findUserById(userId);
             console.log(promise);
             promise.success(function (user) {

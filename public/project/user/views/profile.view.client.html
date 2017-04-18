@@ -1,8 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-right wbdv-no-right-margin">
-
-                    <span  ng-click="model.updateUser(model.user)" class="glyphicon glyphicon-ok makeItWhite" >
+                <span  ng-click="model.updateUser(model.user)" class="glyphicon glyphicon-ok makeItWhite">
                     </span>
         </div>
         <div class="navbar-header">
@@ -13,13 +12,15 @@
         </div>
     </div>
 </nav>
-<div class="container-fluid">
-    <h1></h1>
+<div class="container">
+
+    <div id="#1">
     <div ng-show ="model.error" class="alert alert-danger" role="alert">
         {{model.error}}
     </div>
     <div ng-show ="model.message" class="alert alert-success" role="alert">
         {{model.message}}
+    </div>
     </div>
     <label for="first">First Name</label>
     <input id="first"
@@ -93,21 +94,26 @@
             <input  name="myFile"   type="file" class="form-control"/>
             <input  name="userId" value="{{model.user._id}}"   style="display: none"/>
             <button type="submit"   class="btn btn-block btn-primary">Upload Image</button>
+            <a ng-click="model.logout()" class="btn btn-danger btn-block">Logout</a>
+            <a href="#/user/viewProfile" class="btn btn-success btn-block">View Profile</a>
         </form>
     </div>
     <div class="ks-addPaddingBottom">
-        <a href="#" class="btn btn-danger btn-block">Logout</a>
-        <a href="#/user/viewProfile" class="btn btn-success btn-block">View Profile</a>
+
     </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="#/user/viewProfile">
+    <div class="col-xs-12">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <a ng-href="#/user/viewProfile" class="makeItWhite">
+                    <i class="fa fa-chevron-left ks-shift-arrow-in-position"
+                       aria-hidden="true"></i>
+                </a>
+                <div class="navbar-text pull-right wbdv-no-right-margin">
+
                     <span class="glyphicon glyphicon-user makeItWhite">
                     </span>
-                </a>
-            </div>
-        </div>
-    </nav>
-</div>
 
+                </div>
+            </div>
+        </nav>
+    </div>
