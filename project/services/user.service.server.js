@@ -35,9 +35,9 @@ module.exports = function (app,model) {
     app.post("/api/admin/user/:userId",updateUserByAdmin);
     app.post('/api/user/is/Seller',checkSeller);
 
-    app.get('/auth/google/callback',
+    app.get('/oauth2callback',
         passport.authenticate('google', {
-            successRedirect: '/project/#/user/viewProfile',
+            successRedirect: '/#',
             failureRedirect: '/#'
         }));
 
