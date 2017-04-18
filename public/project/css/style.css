@@ -303,7 +303,10 @@ a.forCogShift
     margin-bottom: -23px;
 
 }
-
+.icon:hover{
+    cursor: pointer;
+    font-size: 28px;
+}
 /*.put-some-image*/
 /*{*/
     /*background:url(img/header.jpg);*/

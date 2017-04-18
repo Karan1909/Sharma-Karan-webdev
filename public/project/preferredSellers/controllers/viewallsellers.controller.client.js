@@ -3,10 +3,23 @@
         .module("BookLook")
         .controller("ViewAllSellersController", ViewAllSellersController);
 
-    function ViewAllSellersController($location, $routeParams,SellerBookService,BuyerService,someName) { // should add userservice
+    function ViewAllSellersController($location,UserService,SellerBookService,BuyerService,someName) { // should add userservice
         var vm = this;
         vm.userId = someName._id;
         vm.makePreferred=makePreferred;
+
+        vm.logout=logout;
+
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                $location.url("/")
+            );
+        }
+
+
+
         function init() {
 
             var promise= SellerBookService.getAllSellers(vm.userId);

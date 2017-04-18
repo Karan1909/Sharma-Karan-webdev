@@ -149,7 +149,8 @@
                 controller: "BookDetailController",
                 controllerAs:"model",
                 resolve:{
-                    someName: checkLogin
+                    someName: checkLogin,
+                    checkSeller:checkSeller
                     //you can put checkAdmin means are they admin, if yes then we let them through with that route
                 }
 
@@ -304,6 +305,31 @@
             return deffered.promise;
 
         }
+
+
+        function checkSeller($q, UserService,$location) {
+
+            var deffered=$q.defer();
+            UserService.checkSeller()
+                .then(
+                    function (user) {
+
+                        if(user==0){
+                            deffered.reject();
+                            $location.url('/user/viewProfile');
+                        }
+                        if(user)
+
+                        {
+                            deffered.resolve(user);
+                        }
+                    }
+
+                );
+            return deffered.promise;
+
+        }
+
 
 
 

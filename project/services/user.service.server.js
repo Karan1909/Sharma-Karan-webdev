@@ -33,6 +33,7 @@ module.exports = function (app,model) {
 
     app.get("/api/admin/user",findAllUsers);
     app.post("/api/admin/user/:userId",updateUserByAdmin);
+    app.post('/api/user/is/Seller',checkSeller);
 
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     // app.get("/auth/google",function (req,res) {
@@ -447,6 +448,11 @@ console.log("isnide server "+uIds);
     function isBuyer(req,res) {
         res.send(req.isAuthenticated() && req.user.role=="BUYER"? req.user : '0');
 
+    }
+
+    function checkSeller(req,res)
+    {
+        res.send(req.isAuthenticated() && req.user.role=="SELLER"? req.user : '0');
     }
 
     };

@@ -1,79 +1,61 @@
-<div class="container-fluid">
+<div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <div class="navbar-text pull-right">
-                <a href="#/user/{{model.user._id}}" ng-click=model.update(model.user)>
-            <span class="glyphicon glyphicon-ok">
-            </span>
-                </a>
-            </div>
             <div class="navbar-header">
-                <a class="navbar-brand" href="#/user/{{model.user._id}}">
-                    <b class="kp-navbar-text">Profile</b>
+                <a class="navbar-brand" href="#/">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <b class="makeItWhite">LookBook App</b>
+                    </div>
                 </a>
+
             </div>
         </div>
     </nav>
 
-    <div class="input-group">
-        <input ng-model="searchText" type="text" class="form-control ks-addForFlickrPadding">
-        <span class="input-group-btn">
-        <a ng-click="model.searchBook(searchText)" class="btn btn-default" type="button">
-            <span class="glyphicon glyphicon-search"></span>
-        </a>
+
+
+    <div class="input-group ks-pushForList">
+        <input ng-model="searchText" type="text" class="form-control border-for-textbox" placeholder="Search for Books!"/>
+        <span class="input-group-addon">
+            <a>
+               <i ng-click="model.searchBook(searchText)" class="fa fa-search"></i>
+            </a>
     </span>
     </div>
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID Number</th>
-            <th>Book Name</th>
-            <th>Author</th>
-            <th>ID</th>
-        </tr>
-        </thead>
+    <div class="container-fluid">
+        <div class="row container-fluid" ng-show="model.book">
+            <div ng-repeat="book in model.book" >
+                <!--{{book.volumeInfo.imageLinks.smallThumbnail}}-->
+                <!--{{book.volumeInfo.imageLinks.Thumbnail}}-->
+                <div class ="col-lg-3 col-md-3 col-sm-6 col-xs-8" ng-if="book.volumeInfo.imageLinks.thumbnail">
 
-        <tbody>
-        <tr ng-repeat="book in model.book">
-            <td scope="row">
-                <a ng-click="model.viewSellers(book.id)">
-                    {{book.id}}
-                </a>
-            </td>
-            <td>{{book.volumeInfo.title}}</td>
-            <td>
-                {{book.volumeInfo.authors[0]}}
-            </td>
-            <td>{{book.volumeInfo.publisher}}</td>
-        </tr>
-        </tbody>
-        <!--<img ng-click="model.selectPhoto(photo)"-->
-        <!--ng-src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_s.jpg"/>-->
-    </table>
+                    <a ng-click="model.viewSellers(book.id)">
+                        <img class="img-responsive thumbnail" ng-src="{{book.volumeInfo.imageLinks.thumbnail}}"
+                             alt="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRpjY4hmzAu4LDaXUCy2oLK6vkfC459JsafkcXSqURVbs6vZF-1z3ji8Q"/>
+                    </a>
 
-    <!--<div ng-repeat="b in model.selected">-->
-    <!--{{b}}-->
-    <!--</div>-->
-    <!--<p>Hello</p>-->
-    <!--<h2>{{model.selected.id}}</h2>-->
-    <!--<h1>{{model.selected}}</h1>-->
-    <!--{{model.link}}-->
-    <!--model.book-->
+                </div>
 
 
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-text pull-right">
-                <a href="#/user/{{model.user._id}}">
-            <span class="glyphicon glyphicon-user">
-            </span>
-                </a>
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                </a>
             </div>
         </div>
-    </nav>
+    </div>
+    <div class="ks-addPaddingBottom">
+    </div>
+    <div class="col-xs-12">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <a ng-href="#/user/viewProfile" class="makeItWhite">
+                    <i class="fa fa-chevron-left ks-shift-arrow-in-position" aria-hidden="true"></i>
+                </a>
+                <div class="navbar-text pull-right wbdv-no-right-margin">
+
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+
+                </div>
+            </div>
+        </nav>
+    </div>
 </div>

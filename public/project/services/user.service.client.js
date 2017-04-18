@@ -26,7 +26,8 @@
             "findByIdUser": findByIdUser,
             "adminupdateUser": adminupdateUser,
             "checkBuyer":checkBuyer,
-            "removeFromLibrary":removeFromLibrary
+            "removeFromLibrary":removeFromLibrary,
+            "checkSeller":checkSeller
 
         };
         return api;
@@ -157,6 +158,15 @@
                         return response.data;
                     }
                 );
+
+        }
+
+        function checkSeller() {
+            $http.post('/api/user/is/Seller') .then(
+                function (response) {
+                    return response.data;
+                }
+            );
 
         }
     }

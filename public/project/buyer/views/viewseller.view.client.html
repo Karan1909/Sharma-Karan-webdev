@@ -1,21 +1,17 @@
-<div class="container-fluid">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <div class="navbar-text pull-right">
-                <a href="#/user/{{model.user._id}}" ng-click=model.update(model.user)>
-            <span class="glyphicon glyphicon-ok">
-            </span>
-                </a>
-            </div>
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#/user/{{model.user._id}}">
-                    <b class="kp-navbar-text">Profile</b>
-                </a>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <b class="makeItWhite">LookBook App</b>
+                </div>
+            </a>
 
-    <div class="container-fluid ks-pushForList" >
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid ks-pushForList" >
         <div>
 
             <img ng-src="{{model.selected.volumeInfo.imageLinks.medium}}"/>
@@ -29,8 +25,6 @@
                 <h4>{{category}}<br/>
                 </h4>
             </div>
-
-        </div>
         <h3><b>Description </b><br/></h3>
         <p id="Description">{{model.selected.volumeInfo.description}}</p>
         <h3><b>Dimensions </b><br/></h3>
@@ -49,14 +43,25 @@
         <p>{{model.element.condition}}</p>
         <h3><b>Price</b></h3>
         <p>{{model.element.price}}</p>
-
-        <div ng-if=(model.userId!==model.sellerId)>
         <a ng-click="model.buyBook(model.bookId,model.selected.volumeInfo.title,model.userId,model.element.condition,model.element.price,model.element.comments,model.element.sellerusername,model.element.sellerfirstname,model.element.sellerlastname)"
            class="btn btn-success btn-block" ng-show=model.element.condition!=null>Buy this book</a>
             <!--<a ng-click="model.preferredSeller(model.sellerId)" class="btn btn-success btn-block">Preferred Seller</a>-->
-        </div>
       <!--if the condition is not null, then only buy button will be shown. Hence make the condition element compulsory-->
-        <div class="ks-addPaddingBottom">
+        </div>
+            <div class="ks-addPaddingBottom">
         </div>
     </div>
+<div class="col-xs-12">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <a ng-href="#/user/userId/buyBooks" class="makeItWhite">
+                <i class="fa fa-chevron-left ks-shift-arrow-in-position" aria-hidden="true"></i>
+            </a>
+            <div class="navbar-text pull-right wbdv-no-right-margin">
+
+                    <span class="glyphicon glyphicon-user makeItWhite">
+                    </span>
+            </div>
+        </div>
+    </nav>
 </div>
