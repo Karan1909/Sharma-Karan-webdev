@@ -42,13 +42,14 @@ module.exports = function (app,model) {
     app.post("/api/admin/user/:userId",updateUserByAdmin);
     app.post('/api/user/is/Seller',checkSeller);
 
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get('/google/callback',
         passport.authenticate('google', {
             successRedirect: '/project/#/user/profile',
             failureRedirect: '/#'
         }));
 
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
+
     // app.get("/auth/google",function (req,res) {
     //     console.log("login with google");
     // });
