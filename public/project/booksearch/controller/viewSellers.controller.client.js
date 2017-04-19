@@ -3,13 +3,27 @@
         .module("BookLook")
         .controller("ViewSellersController", ViewSellersController);
 
-    function ViewSellersController($location, $routeParams, GoogleBookService,BuyerService,someName) { // should add userservice
+    function ViewSellersController($location, $routeParams, GoogleBookService,BuyerService,someName,UserService) { // should add userservice
         var vm = this;
         vm.userId = someName._id;
         vm.bookId=$routeParams.bid;
         var uIds=[];
         vm.viewSeller=viewSeller;
         // vm.isPresent=isPresent;
+
+        vm.logout=logout;
+
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                $location.url("/")
+            );
+        }
+
+
+
+
         function init() {
             GoogleBookService
                 .viewSellers(vm.userId,vm.bookId)

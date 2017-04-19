@@ -3,23 +3,22 @@
         .module("BookLook")
         .controller("GoogleBookSearchController", GoogleBookSearchController);
 
-    function GoogleBookSearchController($location, $routeParams, GoogleBookService,SellerBookService,someName) { // should add userservice
+    function GoogleBookSearchController($location, $routeParams, GoogleBookService,UserService,someName) { // should add userservice
         var vm = this;
         vm.userId = someName._id;
         vm.searchBook=searchBook;
         vm.viewDetails=viewDetails;
         vm.viewSellers=viewSellers;
-        // vm.sellBook=sellBook;
+        vm.logout=logout;
 
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                $location.url("/")
+            );
+        }
 
-
-        // vm.sell={
-        //     "userId":String,
-        //     "bookId":String,
-        //     "price":String,
-        //     "comments":String,
-        //     "condition":String
-        // };
 
         function viewSellers(bookId) {
             $location.url("/user/userId/buyBooks/" + bookId);

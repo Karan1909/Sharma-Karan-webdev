@@ -9,6 +9,19 @@
         vm.profilerId=$routeParams.uid;
         vm.adminupdateUser=adminupdateUser;
 
+        vm.logout=logout;
+
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                $location.url("/")
+            );
+        }
+
+
+
+
         function adminupdateUser(user)
         {
 

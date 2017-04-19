@@ -9,6 +9,19 @@
         // vm.searchBook=searchBook;
         vm.viewDetails=viewDetails;
         vm.removeFromLibrary=removeFromLibrary;
+        vm.logout=logout;
+
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                $location.url("/")
+            );
+        }
+
+
+
+
 
         var userId=vm.userId;
         function removeFromLibrary(bookId,userId) {

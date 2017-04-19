@@ -8,6 +8,18 @@
         vm.userId = someName._id;
         vm.viewUser=viewUser;
         vm.deleteUser=deleteUser;
+        vm.logout=logout;
+
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                $location.url("/")
+            );
+        }
+
+
+
 
 
         function init() {

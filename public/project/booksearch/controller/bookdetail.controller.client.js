@@ -10,6 +10,18 @@
         vm.addToLibrary=addToLibrary;
         // vm.searchBook=searchBook;
         vm.sellBook=sellBook;
+        vm.logout=logout;
+
+        function logout() {
+            console.log("inside logout");
+            UserService
+                .logout().then(
+                $location.url("/")
+            );
+        }
+
+
+
 
 
 
