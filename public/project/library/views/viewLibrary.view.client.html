@@ -10,7 +10,10 @@
         </div>
     </div>
 </nav>
-<div class="container">
+    <div class="alert alert-danger ks-pushForList" ng-show="model.error">
+        {{model.error}}
+    </div>
+<div class="container" ng-show="model.books">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
     <table class="table">
         <thead>
@@ -42,7 +45,7 @@
             </td>
             <td>
                 <div class="col-xs-2 col-sm-4 col-md-8 col-lg-10">
-                <span class="glyphicon glyphicon-remove-sign "
+                <span class="glyphicon glyphicon-remove-sign icon"
                       ng-click="model.removeFromLibrary(book.bookId,model.userId)">
             </span>
                 </div>

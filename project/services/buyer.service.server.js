@@ -1,9 +1,32 @@
 module.exports = function (app,model) {
     app.put("/api/user/addPreferredSeller/:sellerId",preferredSeller);
+    app.post("/api/user/makeUnpreferredSeller/:userId",makeUnPreferred);
     app.post("/api/user/:userId/buyBooks/:bookId/:sellerId",buyBook);
     app.get("/api/user/userId/viewAllOrders",viewOrders);
     app.get("/api/user/getPreferredSeller/:userId",getAllPreferredSellers);
+
     app.put("/api/user/makePreferredSeller/:userId",makePreferred);
+
+
+
+
+    function makeUnPreferred(req,res) {
+        var obj=req.body;
+        var userId=req.params.userId;
+
+        model.BuyerModel.makeUnpreferred(
+            userId,obj.sellerId
+        ).then(
+            function (values) {
+                console.log("unpref values "+values);
+                res.json(values);
+            },
+            function (error) {
+                res.sendStatus(400).send(error);
+            }
+        );
+    }
+
 
 
     function makePreferred(req,res) {

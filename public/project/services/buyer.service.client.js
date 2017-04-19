@@ -12,11 +12,22 @@
             "removeFromSeller":removeFromSeller,
             "preferredSeller":preferredSeller,
             "getPreferredSellers":getPreferredSellers,
-            "makePreferred":makePreferred
+            "makePreferred":makePreferred,
+            "makeUnpreferred":makeUnpreferred
 
         };
         return api;
 
+
+        function makeUnpreferred(sellerId,userId) {
+            var obj={
+                "userId":userId,
+                "sellerId":sellerId
+            };
+
+            return $http.post("/api/user/makeUnpreferredSeller/"+userId,obj);
+
+        }
 
         function makePreferred(sellerId,userId) {
             // var sellId=sellerId.toString();

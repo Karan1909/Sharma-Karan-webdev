@@ -13,8 +13,14 @@
             var promise=OrdersService.viewOrders(vm.userId);
             promise.success(
                 function (orders) {
-                    vm.orders=orders['0'].orders;
-                    console.log(vm.orders);
+                    if(orders.length!=0) {
+                        vm.orders = orders['0'].orders;
+                        console.log(vm.orders);
+                    }
+                    else
+                    {
+                        vm.message="No orders placed yet";
+                    }
 
                 }
             )}init();

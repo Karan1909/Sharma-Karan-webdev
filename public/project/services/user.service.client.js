@@ -162,7 +162,7 @@
         }
 
         function checkSeller() {
-            $http.post('/api/user/is/Seller') .then(
+            return $http.post('/api/user/is/Seller') .then(
                 function (response) {
                     return response.data;
                 }

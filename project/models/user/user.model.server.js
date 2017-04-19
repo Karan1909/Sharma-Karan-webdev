@@ -267,28 +267,24 @@ module.exports = function () {
     function removeFromLibrary(bookId,userId) {
         console.log("bookId in model is"+bookId);
         // var useId=Object(userId);
-        console.log("userid is model is "+String(userId));
+
         // var objectIdf=
 
         // userId=toString(userId);
         // userId=userId.toString();
-        var luserId=BookUserModel.find(
-            {
-                "_id":String(userId)
-            }
-        );
 
-        console.log("id is "+luserId);
-        console.log("id is "+luserId.username);
+
+
+
         // console.log("uid"+uid);
         return BookUserModel.update(
             {
-                _id:String(userId)
+                "_id":userId
             },
             {
                 $pull:
                     {
-                        "library":String(bookId)
+                        "library":bookId
 
                     }
             }

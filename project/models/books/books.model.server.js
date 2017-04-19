@@ -15,14 +15,28 @@ module.exports = function () {
 
 
     function getIdFromGoogleBookId(bookId) {
+        console.log("googlebookid"+bookId);
         return BookModel.findOne(
             {
-                bookId:bookId
+                "bookId":bookId
             },
-            {
-                _id:1
+            function(err, result) {
+                if (err) { /* handle err */ }
+                if (result) {
+                    console.log("karan"+result._id);
+                    return result;
+                } else {
+                    console.log("fbpil "+err);
+                    return err;
+                }
             }
         );
+
+        // console.log("x is "+x);
+        // console.log("x is "+x.data._id);
+        // console.log("x is "+x['0']._id);
+
+
 
     }
 

@@ -10,10 +10,32 @@ module.exports = function () {
         "preferredSeller":preferredSeller,
         "viewOrders":viewOrders,
         "getAllPreferredSellers":getAllPreferredSellers,
-        "makePreferred":makePreferred
+        "makePreferred":makePreferred,
+        "makeUnpreferred":makeUnpreferred
 
     };
     return api;
+
+
+
+    function makeUnpreferred(userId,sellerId) {
+        console.log("insdie makeUnp"+userId);
+        console.log("insdie makeUnp seller"+sellerId);
+        return BuyerModel.update(
+            {
+                "userId":userId.toString()
+            },
+
+            {
+
+                $pull:{
+                    "preferredSellers":sellerId
+                }
+
+            }
+
+        );
+    }
 
 
     function makePreferred(userId,sellerId) {

@@ -432,20 +432,33 @@ console.log("isnide server "+uIds);
         var userId=req.user._id;
         console.log("book id is server "+bookId);
 
-        var id=model.BookModel.getIdFromGoogleBookId(bookId);
-        // var userid=model.BookUserModel.getUserId(userId);
-         console.log("id returned from bookmodel is "+userId);
-        console.log("bookid returned from bookmodel is "+id);
+       model.BookModel.getIdFromGoogleBookId(bookId).then(
+           function (id) {
+               console.log("id is "+id);
+               model.BookUserModel.removeFromLibrary(id._id,userId)
+                   .then(
+                       function (user) {
+                           res.json(user);
+                       }
+                   );
 
-        model.BookUserModel.removeFromLibrary(id,userId)
-            .then(
+           });
 
-                function (user) {
-                    res.json(user);
-                }
-            )
+           }
 
-    }
+        // // var userid=model.BookUserModel.getUserId(userId);
+        //  console.log("id returned from bookmodel is "+userId);
+        // console.log("idbook returned from bookmodel is "+x);
+        //
+        // model.BookUserModel.removeFromLibrary(x._id,userId)
+        //     .then(
+        //
+        //         function (user) {
+        //             res.json(user);
+        //         }
+        //     )
+
+
 
     function isBuyer(req,res) {
         res.send(req.isAuthenticated() && req.user.role=="BUYER"? req.user : '0');

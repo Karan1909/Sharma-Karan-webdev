@@ -7,6 +7,7 @@
         var vm = this;
         vm.userId = someName._id;
         vm.makePreferred=makePreferred;
+        vm.makeUnpreferred=makeUnpreferred;
 
         vm.logout=logout;
 
@@ -32,8 +33,15 @@
             promise=BuyerService.getPreferredSellers(vm.userId);
                 promise.then(
                     function (ps) {
-                        vm.preferredsellers=ps.data[0].preferredSellers;
-                        console.log(vm.preferredsellers);
+                        if(ps.data.length==0)
+                        {
+                            vm.error="Aww, can't make any seller preferred. Buy your first book online and unlock this feature." +
+                                "Enjoy shopping."
+                        }
+                        else {
+                            vm.preferredsellers = ps.data[0].preferredSellers;
+                            console.log(vm.preferredsellers);
+                        }
                     });
 
 
@@ -60,6 +68,18 @@
             )
 
         }
+
+       function makeUnpreferred(sellerId) {
+           var promise=BuyerService.makeUnpreferred(sellerId,vm.userId);
+           promise.then(
+               function (values) {
+                   // console.log("mkpref"+values);
+
+                   location.reload();
+                   $location.url("/user/userId/viewAllSellers");
+               }
+           )
+       }
 
     }
 })();

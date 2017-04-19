@@ -12,7 +12,10 @@
         </div>
     </nav>
 
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="alert alert-success ks-forBookTablePaddingTop container-fluid" ng-show="model.message">
+    {{model.message}}
+</div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="model.newArray">
     <table class="table ks-forBookTablePaddingTop">
         <thead>
         <tr>

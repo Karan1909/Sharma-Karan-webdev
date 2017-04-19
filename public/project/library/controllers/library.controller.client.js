@@ -12,9 +12,15 @@
 
         var userId=vm.userId;
         function removeFromLibrary(bookId,userId) {
-            UserService.removeFromLibrary(
+           var promise=UserService.removeFromLibrary(
                 bookId,userId
             );
+           promise.success(
+               function (user) {
+                    location.reload();
+                    console.log("removed"+user);
+               }
+           );
 
         }
 
@@ -30,7 +36,15 @@
                 promise.success(
                     function (user) {
                         console.log("inside controller"+user.library);
-                        vm.books=user.library;
+                        if(user.library.length!=0)
+                        {
+                            vm.books=user.library;
+                        }
+                        else
+                        {
+                            vm.error="You don't have any books in the library.Add books in library for faster access";
+                        }
+
                         // $location.url("/user/" + vm.userId + "/viewLibrary");
                     }
                 )}init();

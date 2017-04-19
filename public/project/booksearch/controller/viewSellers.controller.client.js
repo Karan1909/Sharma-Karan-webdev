@@ -15,25 +15,37 @@
                 .viewSellers(vm.userId,vm.bookId)
                 .then(
                     function (response) {
-                        vm.sellers = response.data;
-                        console.log(vm.sellers);
-                        return BuyerService.getPreferredSellers(vm.userId)
+                        if(response.data.length==0)
+                        {
+                            vm.message="It seems no booklords selling are selling this book :( ";
+
+                        }
+                        else {
+                            vm.sellers = response.data;
+                            console.log(vm.sellers);
+                            return BuyerService.getPreferredSellers(vm.userId)
+                        }
                     })
                 .then(
                     function (ps) {
-                        if(ps.data.length==0)
+                        if(ps==undefined)
                         {
-                            vm.newArray=vm.sellers;
+                         vm.error="No preferred sellers yet.";
                         }
                         else {
-                            vm.preferredsellers = ps.data[0].preferredSellers;
-                            console.log(vm.preferredsellers);
-                            vm.newArray = [];
-                            for (var s in vm.sellers) {
-                                if (vm.preferredsellers.indexOf(vm.sellers[s].userId._id) > -1) {
-                                    vm.newArray.splice(0, 0, vm.sellers[s]);
-                                } else {
-                                    vm.newArray.push(vm.sellers[s]);
+                            if (ps.data.length == 0) {
+                                vm.newArray = vm.sellers;
+                            }
+                            else {
+                                vm.preferredsellers = ps.data[0].preferredSellers;
+                                console.log(vm.preferredsellers);
+                                vm.newArray = [];
+                                for (var s in vm.sellers) {
+                                    if (vm.preferredsellers.indexOf(vm.sellers[s].userId._id) > -1) {
+                                        vm.newArray.splice(0, 0, vm.sellers[s]);
+                                    } else {
+                                        vm.newArray.push(vm.sellers[s]);
+                                    }
                                 }
                             }
                         }
