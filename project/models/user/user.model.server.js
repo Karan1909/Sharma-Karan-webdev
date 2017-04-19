@@ -257,8 +257,7 @@ module.exports = function () {
         return BookUserModel
             .findOne(
                 {
-                    username:username,
-                    password:password
+                    username:username
                 }
             );
 

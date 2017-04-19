@@ -16,7 +16,7 @@
     {{model.message}}
 </div>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="model.newArray">
-    <table class="table ks-forBookTablePaddingTop">
+    <table class="table ks-forBookTablePaddingTop" style="color: chartreuse; font-size: 120%">
         <thead>
         <tr>
             <th>No.</th>
@@ -37,8 +37,9 @@
                     <img ng-src={{element.userId.imageWidget.url}} class="img-thumbnail" width="75" height="75">
             </td>
 
-            <td>
-                <a ng-click="model.viewSeller(element,element.bookId,element.userId)">{{element.sellerusername}}
+            <td >
+                <a ng-click="model.viewSeller(element,element.bookId,element.userId)"
+                   style="color: lawngreen; font-size: 120%">{{element.sellerusername}}
                 </a>
             </td>
 

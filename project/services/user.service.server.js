@@ -1,5 +1,6 @@
 module.exports = function (app,model) {
 
+    var bcrypt = require("bcrypt-nodejs");
     var passport=require('passport');
     var LocalStrategy=require('passport-local').Strategy;
     passport.use(new LocalStrategy(localStrategy));
@@ -11,7 +12,7 @@ module.exports = function (app,model) {
     var googleConfig = {
         clientID     : "557184475880-tokdbetmhekop75uivafr862nnm7rcrl.apps.googleusercontent.com",
         clientSecret : "Og0AMs-3R33kucRAjoO69RU0",
-        callbackURL  : "http://sharma-karan-webdev.herokuapp.com/callback"
+        callbackURL  : "http://sharma-karan-webdev.herokuapp.com/google/callback"
     };
     app.get("/api/user",findUser);
     app.post("/api/user",passport.authenticate('local'),login);// somebody to take this request, we want passport to take look at request
@@ -35,9 +36,9 @@ module.exports = function (app,model) {
     app.post("/api/admin/user/:userId",updateUserByAdmin);
     app.post('/api/user/is/Seller',checkSeller);
 
-    app.get('/oauth2callback',
+    app.get('/google/callback',
         passport.authenticate('google', {
-            successRedirect: '/#',
+            successRedirect: '/project/#/user/profile',
             failureRedirect: '/#'
         }));
 
@@ -282,6 +283,7 @@ console.log("isnide server "+uIds);
         var newUser=req.body;
         newUser.firstName="New User";
         newUser.lastName="New User lastname";
+        newUser.password=bcrypt.hashSync(newUser.password);
         model.BookUserModel
             .createUser(newUser)
             .then(function(newUser){
@@ -358,7 +360,11 @@ console.log("isnide server "+uIds);
         model.BookUserModel
             .findUserByCredentials(username,password).then(
             function (user) {
-                res.json(user);
+                if(username && bcrypt.compareSync(password, user.password))
+                {
+                    console.log("bcrypt working ");
+                    res.json(user);
+                }
             },function (err) {
                 res.send(err);
             }
