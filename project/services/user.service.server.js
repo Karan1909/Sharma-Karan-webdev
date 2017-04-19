@@ -12,7 +12,7 @@ module.exports = function (app,model) {
     var googleConfig = {
         clientID     : "557184475880-tokdbetmhekop75uivafr862nnm7rcrl.apps.googleusercontent.com",
         clientSecret : "Og0AMs-3R33kucRAjoO69RU0",
-        callbackURL  : "http://sharma-karan-webdev.herokuapp.com/google/callback"
+        callbackURL  : "http://sharma-karan-webdev.herokuapp.com/oauth2callback"
     };
     app.get("/api/user",findUser);
     app.post("/api/user",passport.authenticate('local'),login);// somebody to take this request, we want passport to take look at request
@@ -36,12 +36,11 @@ module.exports = function (app,model) {
     app.post("/api/admin/user/:userId",updateUserByAdmin);
     app.post('/api/user/is/Seller',checkSeller);
 
-    app.get('/google/callback',
+    app.get('/oauth2callback',
         passport.authenticate('google', {
             successRedirect: '/project/#/user/profile',
             failureRedirect: '/#'
         }));
-
 
     app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     // app.get("/auth/google",function (req,res) {
