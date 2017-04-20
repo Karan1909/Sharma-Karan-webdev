@@ -9,17 +9,17 @@ module.exports = function (app,model) {
     passport.serializeUser(serializeUser);
     passport.deserializeUser(deserializeUser);
 
-    // var googleConfig = {
-    //     clientID     : "557184475880-tokdbetmhekop75uivafr862nnm7rcrl.apps.googleusercontent.com",
-    //     clientSecret : "Og0AMs-3R33kucRAjoO69RU0",
-    //     callbackURL  : "http://sharma-karan-webdev.herokuapp.com/oauth2callback"
-    // };
-
     var googleConfig = {
-        clientID     : process.env.GOOGLE_CLIENT_ID,
-        clientSecret : process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL  : process.env.GOOGLE_CALLBACK_URL
+        clientID     : "557184475880-tokdbetmhekop75uivafr862nnm7rcrl.apps.googleusercontent.com",
+        clientSecret : "Og0AMs-3R33kucRAjoO69RU0",
+        callbackURL  : "http://sharma-karan-webdev.herokuapp.com/google/callback"
     };
+
+    // var googleConfig = {
+    //     clientID     : process.env.GOOGLE_CLIENT_ID,
+    //     clientSecret : process.env.GOOGLE_CLIENT_SECRET,
+    //     callbackURL  : process.env.GOOGLE_CALLBACK_URL
+    // };
     app.get("/api/user",findUser);
     app.post("/api/user",passport.authenticate('local'),login);// somebody to take this request, we want passport to take look at request
     app.post("/api/user/createUser",createUser);
@@ -44,7 +44,7 @@ module.exports = function (app,model) {
 
     app.get('/google/callback',
         passport.authenticate('google', {
-            successRedirect: '/project/#/user/profile',
+            successRedirect: '/project/#/user/viewProfile',
             failureRedirect: '/#'
         }));
 
