@@ -235,7 +235,27 @@
             }).otherwise(
             {
                 redirectTo:'/login'
-            });
+            })
+            .when("/user/admin/createUser",
+                {
+                    templateUrl: "admin/views/adduserbyadmin.view.client.html",
+                    controller: "AdminAddUserController",
+                    controllerAs:"model",
+                    resolve:{
+                        someName: checkLogin,
+                        checkAdmin:isAdmin
+                    }
+
+                });
+
+
+
+
+
+
+
+
+
 
         function checkLogin($q, UserService,$location) {
 

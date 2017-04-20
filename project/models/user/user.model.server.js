@@ -22,13 +22,26 @@ module.exports = function () {
         "setModel":setModel,
         "findAllUsers":findAllUsers,
         "removeFromLibrary":removeFromLibrary,
-        "getUserId":getUserId
+        "getUserId":getUserId,
+        "createUserByAdmin":createUserByAdmin
 
 
 
     };
     return api;
 
+
+    function createUserByAdmin(user) {
+        return BookUserModel.create(
+            {
+                "username":user.username,
+                "password":user.password,
+                "gender":user.gender
+
+            }
+        );
+
+    }
 
 
     function getUserId(userId) {
@@ -98,7 +111,8 @@ module.exports = function () {
                 "firstName":googleUser.firstName,
                 "lastName":googleUser.lastName,
                 "email":googleUser.email,
-                "googleId":googleUser.google.id
+                "googleId":googleUser.google.id,
+                "password":googleUser.password
             }
         );
     }
@@ -276,7 +290,7 @@ module.exports = function () {
 
 
         // console.log("uid"+uid);
-        return BookUserModel.update(
+        return BookUserModel.findOneAndUpdate(
             {
                 "_id":userId
             },
@@ -286,6 +300,7 @@ module.exports = function () {
                         "library":bookId
 
                     }
+
             }
         );
     }

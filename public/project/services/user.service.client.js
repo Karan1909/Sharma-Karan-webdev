@@ -27,10 +27,17 @@
             "adminupdateUser": adminupdateUser,
             "checkBuyer":checkBuyer,
             "removeFromLibrary":removeFromLibrary,
-            "checkSeller":checkSeller
+            "checkSeller":checkSeller,
+            "addUserByAdmin":addUserByAdmin
 
         };
         return api;
+
+
+        function addUserByAdmin(user) {
+            return $http.post("/api/admin/createUser",user);
+        }
+
 
 
 

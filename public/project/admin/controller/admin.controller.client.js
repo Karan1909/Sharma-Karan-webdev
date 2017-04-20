@@ -9,6 +9,7 @@
         vm.viewUser=viewUser;
         vm.deleteUser=deleteUser;
         vm.logout=logout;
+        vm.createUser=createUser;
 
         function logout() {
             console.log("inside logout");
@@ -19,6 +20,9 @@
         }
 
 
+        function createUser() {
+            $location.url("/user/admin/createUser");
+        }
 
 
 

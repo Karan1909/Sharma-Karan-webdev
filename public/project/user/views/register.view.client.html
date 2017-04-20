@@ -11,23 +11,29 @@
 
                                 </span>
                             </span>
-        <input type="text" ng-model="model.user.username" class="form-control ng-pristine ng-untouched ng-valid"
-               placeholder="Username" aria-describedby="basic-addon1">
+        <input type="text" ng-model="model.user.username" class="form-control ng-pristine ng-untouched ng-valid required"
+               placeholder="Username" aria-describedby="basic-addon1"/>
     </div>
 
     <div class="form-group">
 
         <div class="input-group">
+
                 <span class="input-group-addon" id="basic-addon2">
                     <span class="glyphicon glyphicon-lock" aria-hidden="true">
 
                     </span>
                 </span>
-            <input type="password" ng-model="model.user.password" class="form-control ng-pristine ng-valid ng-touched"
-                   placeholder="Password" id='password' aria-describedby="basic-addon2">
+            <form novalidate name="form1">
+                <input name="password" required class="form-control" ng-model="model.user.password" placeholder="Password" />
+            <!--<input type="password"  class="form-control ng-pristine ng-valid ng-touched"-->
+                    <!--id='password' aria-describedby="basic-addon2" required>-->
+            </form>
+
         </div>
+
     </div>
-    <label for="role">Register As</label>
+    <label for="role" style="color: chartreuse; font-size: 120%">Register As</label>
 
     <select id="role" ng-model="model.user.role">
         <option value="ADMIN">ADMIN</option>
@@ -36,7 +42,7 @@
         <option value="USER">USER</option>
     </select>
     <a class="btn btn-primary btn-block"
-       ng-click="model.register(model.user)">Register</a>
+     ng-click="model.register(model.user)" >Register</a>
     <a class="btn btn-danger  btn-block"
        href="#/">Cancel</a>
 </div>

@@ -13,6 +13,7 @@ module.exports = function (app,model) {
         clientID     : "557184475880-tokdbetmhekop75uivafr862nnm7rcrl.apps.googleusercontent.com",
         clientSecret : "Og0AMs-3R33kucRAjoO69RU0",
         callbackURL  : "http://sharma-karan-webdev.herokuapp.com/google/callback"
+        // callbackURL  : "http://localhost:3000/google/callback"
     };
 
     // var googleConfig = {
@@ -37,6 +38,7 @@ module.exports = function (app,model) {
     app.post("/api/user/logout", logout);
     app.post("/api/user/userId/viewLibrary",removeFromLibrary);
 
+    app.post("/api/admin/createUser",createUserByAdmin);
 
     app.get("/api/admin/user",findAllUsers);
     app.post("/api/admin/user/:userId",updateUserByAdmin);
@@ -96,6 +98,34 @@ module.exports = function (app,model) {
                 }
             );
     }
+
+
+    function createUserByAdmin(req,res) {
+        var user1 = req.body;
+        var username = user1.username;
+        console.log("username"+username);
+        model.BookUserModel
+            .findUserByUsername(username).then(
+            function (user) {
+                if (user) {
+                    console.log("user findbyusername"+user);
+                    res.send(400);
+                }
+                else {
+                    console.log("could not find user"+user1);
+                    model.BookUserModel.createUserByAdmin(user1).then(
+                        function (user1) {
+                            if(user1)
+                            {
+                                res.json(user1);
+                            }
+                        });
+
+                }
+            });
+    }
+
+
 
 
     function login(req,res) { // next is for chaining the requests unitl somewhere the response is generated
