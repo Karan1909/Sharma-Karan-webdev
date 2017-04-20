@@ -42,13 +42,13 @@ module.exports = function (app,model) {
     app.post("/api/admin/user/:userId",updateUserByAdmin);
     app.post('/api/user/is/Seller',checkSeller);
 
-    app.get('/google/callback',
+    app.get('/oauth2callback',
         passport.authenticate('google', {
             successRedirect: '/project/#/user/profile',
             failureRedirect: '/#'
         }));
 
-
+    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     // app.get("/auth/google",function (req,res) {
     //     console.log("login with google");
     // });
@@ -71,7 +71,7 @@ module.exports = function (app,model) {
                         var emailParts = email.split("@");
                         var newGoogleUser = {
                             username:  emailParts[0],
-                            password: emailParts[0],
+                            password:  emailParts[0],
                             firstName: profile.name.givenName,
                             lastName:  profile.name.familyName,
                             email:     email,
@@ -109,10 +109,10 @@ module.exports = function (app,model) {
     {
         var userId=req.params.userId;
         var user=req.body;
-    model.BookUserModel.updateUserByAdmin(userId,user)
-        .then(function(status){
-            res.json(user);
-        });
+        model.BookUserModel.updateUserByAdmin(userId,user)
+            .then(function(status){
+                res.json(user);
+            });
 
     }
 
@@ -191,13 +191,13 @@ module.exports = function (app,model) {
     function getImageLinkForUser(req,res) {
         var userId=req.params.userId;
         var uIds=req.body;
-console.log("isnide server "+uIds);
+        console.log("isnide server "+uIds);
         model.BookUserModel
             .getImageLinkForUser(userId,uIds)
             .then(
-            function(arrayLinks){
-                res.json(arrayLinks);
-            },
+                function(arrayLinks){
+                    res.json(arrayLinks);
+                },
                 function (error) {
                     res.sendStatus(400).send(error);
                 }
@@ -395,12 +395,12 @@ console.log("isnide server "+uIds);
                 }
             );
 
-        }
+    }
     function loggedin(req,res) {
         res.send(req.isAuthenticated() ? req.user : '0');
         // res.send('0');
     }
-    
+
     function logout(req,res) {
         console.log("inside logout");
         req.logout();
@@ -444,31 +444,31 @@ console.log("isnide server "+uIds);
         var userId=req.user._id;
         console.log("book id is server "+bookId);
 
-       model.BookModel.getIdFromGoogleBookId(bookId).then(
-           function (id) {
-               console.log("id is "+id);
-               model.BookUserModel.removeFromLibrary(id._id,userId)
-                   .then(
-                       function (user) {
-                           res.json(user);
-                       }
-                   );
+        model.BookModel.getIdFromGoogleBookId(bookId).then(
+            function (id) {
+                console.log("id is "+id);
+                model.BookUserModel.removeFromLibrary(id._id,userId)
+                    .then(
+                        function (user) {
+                            res.json(user);
+                        }
+                    );
 
-           });
+            });
 
-           }
+    }
 
-        // // var userid=model.BookUserModel.getUserId(userId);
-        //  console.log("id returned from bookmodel is "+userId);
-        // console.log("idbook returned from bookmodel is "+x);
-        //
-        // model.BookUserModel.removeFromLibrary(x._id,userId)
-        //     .then(
-        //
-        //         function (user) {
-        //             res.json(user);
-        //         }
-        //     )
+    // // var userid=model.BookUserModel.getUserId(userId);
+    //  console.log("id returned from bookmodel is "+userId);
+    // console.log("idbook returned from bookmodel is "+x);
+    //
+    // model.BookUserModel.removeFromLibrary(x._id,userId)
+    //     .then(
+    //
+    //         function (user) {
+    //             res.json(user);
+    //         }
+    //     )
 
 
 
@@ -482,4 +482,4 @@ console.log("isnide server "+uIds);
         res.send(req.isAuthenticated() && req.user.role=="SELLER"? req.user : '0');
     }
 
-    };
+};
