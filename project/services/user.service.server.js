@@ -42,7 +42,6 @@ module.exports = function (app,model) {
     app.post("/api/admin/user/:userId",updateUserByAdmin);
     app.post('/api/user/is/Seller',checkSeller);
 
-    app.get('/auth/google', passport.authenticate('google', { scope : ['profile', 'email'] }));
     app.get('/google/callback',
         passport.authenticate('google', {
             successRedirect: '/project/#/user/profile',
@@ -72,6 +71,7 @@ module.exports = function (app,model) {
                         var emailParts = email.split("@");
                         var newGoogleUser = {
                             username:  emailParts[0],
+                            password: emailParts[0],
                             firstName: profile.name.givenName,
                             lastName:  profile.name.familyName,
                             email:     email,
