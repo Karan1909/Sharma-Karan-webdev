@@ -4,10 +4,48 @@ module.exports = function (app,model) {
     app.delete("/api/user/:userId/buyBooks/:bookId/:sellerId",removeFromSeller);
     // app.get("/api/user/:userId/getAllSellers/:bookId/isSelling",isSelling);
     app.get("/api/user/:userId/getAllSellers",getAllSellers);
+    app.get("/api/user/userId/soldItems",viewMyItems);
 
 
 
 
+
+    function viewMyItems(req,res) {
+        // var userId=req.body;
+        var userId=req.user._id;
+        console.log("selling user id viewmyitems"+userId);
+
+        model.BookUserModel.findUserById(userId).then(
+            function (user) {
+                console.log("user is "+user);
+                console.log(user.username);
+                model.SellerModel.viewMyItems(user.username)
+                    .then(
+
+                        function (user) {
+                            res.json(user);
+                        },
+                        function (error) {
+                            res.sendStatus(400).send(error);
+                        }
+                    );});
+
+
+
+
+        // model.SellerModel.viewMyItems(userId)
+        //     .then(
+        //         function (values) {
+        //
+        //             res.json(values);
+        //         },
+        //         function (error) {
+        //             res.sendStatus(400).send(error);
+        //         }
+        //     )
+
+
+    }
 
 
 

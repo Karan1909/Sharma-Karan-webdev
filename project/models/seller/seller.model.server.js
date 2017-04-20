@@ -10,12 +10,33 @@ module.exports = function () {
         "viewSellers":viewSellers,
         "removeFromSeller":removeFromSeller,
         "getAllSellers":getAllSellers,
-        "isSelling":isSelling
+        "isSelling":isSelling,
+        "viewMyItems":viewMyItems
 
 
     };
     return api;
 
+
+    function viewMyItems(username) {
+
+        console.log("user"+username);
+        return SellerModel.find(
+            {
+                "sellerusername":username
+            },
+            function(err, result) {
+                if (err) { /* handle err */ }
+                if (result) {
+                    console.log("result"+result);
+                    return result;
+                } else {
+                    console.log("fbpil "+err);
+                    return err;
+                }
+            }
+        );
+    }
 
     function isSelling(userId,bookId) {
         return (SellerModel.find({

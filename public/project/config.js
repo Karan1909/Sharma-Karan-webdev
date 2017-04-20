@@ -246,6 +246,22 @@
                         checkAdmin:isAdmin
                     }
 
+                }).when("/user/userId/soldItems",
+            {
+                templateUrl: "library/views/viewmysolditems.view.client.html",
+                controller: "ViewMySoldItemsController",
+                controllerAs:"model",
+                resolve:{
+                    someName: checkLogin,
+                    checkSeller:checkSeller
+
+                    //you can put checkAdmin means are they admin, if yes then we let them through with that route
+                }
+
+            })
+            .otherwise(
+                {
+                    redirectTo:'/login'
                 });
 
 

@@ -15,20 +15,34 @@
         vm.register=register;
 
         function register(user) {
-            UserService.findUserByUsername(user.username)
-                    .success(
-                    function (user) {
-                        vm.message="This username is already taken";
-                    }
-                ).error(
-                function () {
-                    var promise=UserService.createUser(user);
-                    promise.success(function (user) {
-                        $location.url("/user/viewProfile");
-                    });
+            vm.usernameError="";
+            vm.passwordError="";
 
-                }
-            );
+            if(user.username===" " ||user.username==="" ||user.username===undefined)
+            {
+                vm.usernameError="Username cannot be empty"
+            }
+            else if (user.password===" " ||user.password==="" || user.password===undefined)
+            {
+                vm.passwordError="Password cannot be empty"
+            }
+            else {
+                UserService.findUserByUsername(user.username)
+                    .success(
+                        function (user) {
+                            vm.message="This username is already taken";
+                        }
+                    ).error(
+                    function () {
+                        var promise=UserService.createUser(user);
+                        promise.success(function (user) {
+                            $location.url("/user/viewProfile");
+                        });
+
+                    });
+            }
+
+
         }
 
     //     function updateUser(newUser)

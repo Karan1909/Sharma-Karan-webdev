@@ -77,6 +77,7 @@
                             <li><a href="#/user/userId/viewLibrary">Library</a></li>
                             <li ng-if="model.user.role=='BUYER'"><a href="#/user/userId/viewAllSellers">Choose Preferred Sellers</a></li>
                             <li ng-show="model.user.role=='SELLER'"><a href="#/user/userId/search">Sell Books</a></li>
+                            <li ng-show="model.user.role=='SELLER'"><a href="#/user/userId/soldItems">View my Sold Items</a></li>
 
 
                         </ul>

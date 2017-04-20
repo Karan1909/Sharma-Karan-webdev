@@ -12,7 +12,8 @@
             "getDetailsOfOneBook":getDetailsOfOneBook,
             "viewSellers":viewSellers,
             "setElement":setElement,
-            "getElement":getElement
+            "getElement":getElement,
+            "viewMyItems":viewMyItems
         };
         return api;
 
@@ -49,6 +50,11 @@
             // var urlBase = "https://api.flickr.com/services/rest/?method=flickr.photos.search&format=json&api_key=API_KEY&text=TEXT";
             var url = urlBase.replace("TEXT", searchTerm);
             return $http.get(url);
+        }
+
+
+        function viewMyItems(userId) {
+            return $http.get("/api/user/userId/soldItems",userId);
         }
     }
 })();
