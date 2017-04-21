@@ -149,8 +149,9 @@
                 controller: "BookDetailController",
                 controllerAs:"model",
                 resolve:{
-                    someName: checkLogin,
-                    checkSeller:checkSeller
+                    someName: checkLogin
+                    // checkSeller:checkSeller,
+                    // checkBuyer:checkBuyer
                     //you can put checkAdmin means are they admin, if yes then we let them through with that route
                 }
 
