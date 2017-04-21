@@ -27,25 +27,37 @@
 
         function sellBook(bookId,title,userId,condition,price,comments,susername,sfirstname,slastname) {
 
-            var sellingBook={
-                "bookId":bookId,
-                "title":title,
-                "userId":userId,
-                "condition":condition,
-                "price":price,
-                "comments":comments,
-                "sellerusername":susername,
-                "sellerfirstname":sfirstname,
-                "sellerlastname":slastname
+            if(condition!=null&& condition!=""&& condition!=undefined && condition!=" ")
+            {
+                var sellingBook={
+                    "bookId":bookId,
+                    "title":title,
+                    "userId":userId,
+                    "condition":condition,
+                    "price":price,
+                    "comments":comments,
+                    "sellerusername":susername,
+                    "sellerfirstname":sfirstname,
+                    "sellerlastname":slastname
 
-            };
-            var promise=SellerBookService.sellBook(sellingBook,userId,bookId);
-            promise.success(
-                function (sellingBook) {
+                };
+                var promise=SellerBookService.sellBook(sellingBook,userId,bookId);
+                promise.success(
+                    function (sellingBook) {
 
-                    $location.url("/user/userId/viewLibrary/");
-                }
-            );
+                        $location.url("/user/userId/viewLibrary/");
+                    }
+                );
+
+
+            }
+            else
+            {
+
+                vm.error="Condition is empty.Please fill out details of condition of book!"
+
+            }
+
         }
 
 

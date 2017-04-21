@@ -51,6 +51,10 @@
                class="form-control"
                ng-model="model.sell.comments"/>
 
+
+                <div class="alert alert-danger ks-pushForList container " ng-show="model.error">
+                    {{model.error}}
+                </div>
         <label for="condition">Condition</label>
         <input id="condition"
                class="form-control"
