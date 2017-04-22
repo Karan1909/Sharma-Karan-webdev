@@ -5,7 +5,6 @@
              <div class="panel panel-info">
                 <div class="panel-heading">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" align="right">
-                    <a href="#/admin" ng-show="model.user.role=='ADMIN'">Admin Page</a>
                     <p class="navbar-text navbar-right ks-addPaddingTop">Signed in as <a href="#/user/editProfile" class="navbar-link">{{model.user.username}}</a></p>
                     </div>
                 </div>
@@ -66,20 +65,18 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
-                    <div class="btn-group" ng-if="model.user.role!='ADMIN'">
+                    <div class="btn-group">
                         <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Actions <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#/user/userId/viewAllOrders">View Orders</a></li>
                             <li ng-if="model.user.role=='BUYER'"><a href="#/user/userId/buyBooks">Buy Books</a></li>
-                            <li><a href="#/user/userId/viewLibrary">Library</a></li>
+                            <li ng-if="model.user.role=='BUYER' || model.user.role=='SELLER' "><a href="#/user/userId/viewLibrary">Library</a></li>
                             <li ng-if="model.user.role=='BUYER'"><a href="#/user/userId/viewAllSellers">Choose Preferred Sellers</a></li>
                             <li ng-show="model.user.role=='SELLER'"><a href="#/user/userId/search">Sell Books</a></li>
                             <li ng-show="model.user.role=='SELLER'"><a href="#/user/userId/soldItems">View my Sold Items</a></li>
-
-
+                            <li ng-show="model.user.role=='ADMIN'"><a href="#/admin">Admin Page</a></li>
                         </ul>
                     </div>
                     <span class="pull-right">

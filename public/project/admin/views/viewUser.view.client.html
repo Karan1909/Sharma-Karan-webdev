@@ -55,17 +55,17 @@
            class="form-control"
            placeholder="req4321"
            ng-model="model.user.password"
-           value="password"/>
+    type="password"/>
 
-    <label for="datepicker">Date of Birth</label>
+    <label for="datepicker1">Date of Birth</label>
     <div class='date' id='datepicker'>
         <input type="text" id="datepicker1" ng-model="model.user.dateOfBirth" class="form-control"/>
         <span class="glyphicon glyphicon-calendar pull-right ks-shiftCalIconUp">
                 </span>
-
     </div>
-    <label for="address">Address</label>
-    <input id="address"
+
+        <label for="address">Address</label>
+        <input id="address"
            class="form-control"
            ng-model="model.user.address" height="200px"/>
 
@@ -92,15 +92,19 @@
     </div>
     <div class="ks-addPaddingBottom">
     </div>
-    <nav class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container-fluid">
-            <div class="navbar-text pull-right wbdv-no-right-margin">
-                <a href="#/user/viewProfile">
-                    <span class="glyphicon glyphicon-user makeItWhite">
-                    </span>
+    <div class="col-xs-2">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <a ng-href="#/admin" class="makeItWhite">
+                    <i class="fa fa-chevron-left ks-shift-arrow-in-position" aria-hidden="true"></i>
                 </a>
+                <div class="navbar-text pull-right wbdv-no-right-margin">
+
+                    <i class="fa fa-power-off makeItWhite" aria-hidden="true" ng-click=model.logout()></i>
+
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </div>
 

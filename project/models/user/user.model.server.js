@@ -75,9 +75,7 @@ module.exports = function () {
                 "dateOfBirth": user.dateOfBirth,
                 "placeOfResidence": user.placeOfResidence,
                 "phoneNumber":user.phoneNumber,
-                "role":user.role,
-                imageWidget:{
-                    "url":user.imageWidget.url}
+                "role":user.role
 
             }
         )

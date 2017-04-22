@@ -33,6 +33,7 @@
                         }
                         else
                         {
+                            console.log(vm.error);
                             vm.error="Unable to update the user";
                         }
                     });

@@ -434,7 +434,7 @@ module.exports = function (app,model) {
     function logout(req,res) {
         console.log("inside logout");
         req.logout();
-        res.send(200);
+        res.sendStatus(200);
     }
 
 
