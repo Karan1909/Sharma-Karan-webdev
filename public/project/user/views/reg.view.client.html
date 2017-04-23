@@ -1,0 +1,57 @@
+<style>
+    .ng-submitted .ng-invalid {
+        background-color: red;
+    }
+    .myColor .ng-invalid {
+        color: red;
+    }
+</style>
+<div class="container" >
+    <h1>Register</h1>
+    <div class="alert alert-success" ng-show="model.message">
+        {{model.message}}
+    </div>
+    <span ng-if="form1.$submitted && form1.username.$error.required"  style="color: orangered; font-size: 120%">Username is required</span>
+    <form name="form1" novalidate ng-submit="model.register(model.user)">
+        <div class="input-group">
+
+            <span class="input-group-addon" id="basic-addon1">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true">
+
+                                </span>
+                            </span>
+
+            <input ng-model="model.user.username" name="username" class="form-control" required
+                   placeholder="Username" aria-describedby="basic-addon1" />
+
+        </div>
+        <span ng-if="form1.$submitted && form1.password.$error.required"  style="color: orangered; font-size: 120%">Password is required</span>
+        <div class="input-group">
+
+            <span class="input-group-addon" id="basic-addon2">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true">
+
+                    </span>
+                </span>
+
+
+            <input name="password" required class="form-control" ng-model="model.user.password" placeholder="Password"
+                   value="" type="password"/>
+
+
+        </div>
+
+
+
+
+
+        <!--<input ng-model="user.username" name="username" class="form-control" required/>-->
+        <!--<span ng-if="form1.$submitted && form1.username.$error.required">Username is required</span>-->
+
+        <!--<input ng-model="user.email" name="email" class="form-control" type="email" required/>-->
+        <!--<span ng-if="form1.$submitted && form1.email.$error.required">Email is required</span>-->
+        <!--<span ng-if="form1.$submitted && form1.email.$error.email">This is not a valid email</span>-->
+
+        <button type="submit" class="btn btn-block btn-primary">Submit</button>
+    </form>
+</div>
