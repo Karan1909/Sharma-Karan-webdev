@@ -22,6 +22,7 @@
         function login (user)
         {
 
+            vm.error="";
             UserService.findUserByCredentials(user.username,user.password)
             .success(function (user) {
                 console.log(user);

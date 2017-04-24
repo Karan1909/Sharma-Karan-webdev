@@ -94,8 +94,7 @@ module.exports = function () {
         return UserModel
             .findOne(
                 {
-                    username:username,
-                    password:password
+                    username:username
                 }
             );
 

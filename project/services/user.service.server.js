@@ -183,7 +183,17 @@ module.exports = function (app,model) {
                         return done(null, false);
                     }
                     console.log('[2]');
-                    return done(null, user);
+                    if(username && bcrypt.compareSync(password, user.password))
+                    {
+                        return done(null, user);
+                    }
+                    else
+                    {
+                        return done(null, false);
+                    }
+
+
+
                 },
                 function(err) {
                     if (err) { return done(err); }
@@ -392,7 +402,7 @@ module.exports = function (app,model) {
         var username=req.query.username;
         var password=req.query.password;
 
-        console.log("Get the user by credentials");
+        console.log("Get the user by credentials fubp");
         model.BookUserModel
             .findUserByCredentials(username,password).then(
             function (user) {
