@@ -22,8 +22,9 @@
         function login (user)
         {
 
-            var promise=UserService.findUserByCredentials(user.username,user.password);
-            promise.success(function (user) {
+            UserService.findUserByCredentials(user.username,user.password)
+            .success(function (user) {
+                console.log(user);
 
                 if(user)
                 {
@@ -33,10 +34,16 @@
                 }
                 else
                 {
-                    vm.error = "User not found";
+                    // vm.error = "User not found";
                 }
 
-            });
+            })
+                .error(
+                function () {
+                    vm.error = "User not found"
+                }
+
+            );
 
 
         }

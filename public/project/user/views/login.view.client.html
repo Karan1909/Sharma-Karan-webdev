@@ -8,8 +8,8 @@
 </style>
 <div class="container">
     <h1>Login</h1>
-    <div class="alert alert-success" ng-show="model.message">
-        {{model.message}}
+    <div class="alert alert-success" ng-show="model.error">
+        {{model.error}}
     </div>
     <span ng-if="form1.$submitted && form1.username.$error.required"  style="color: orangered; font-size: 120%">Username is required</span>
     <form name="form1" novalidate ng-submit="model.login(user)">

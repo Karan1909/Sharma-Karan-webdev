@@ -30,8 +30,12 @@
             "checkSeller":checkSeller,
             "addUserByAdmin":addUserByAdmin
 
+
         };
         return api;
+
+
+
 
 
         function addUserByAdmin(user) {
