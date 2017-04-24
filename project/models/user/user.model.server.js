@@ -36,7 +36,9 @@ module.exports = function () {
             {
                 "username":user.username,
                 "password":user.password,
-                "gender":user.gender
+                "gender":user.gender,
+                "firstName":user.firstName,
+                "lastName":user.lastName
 
             }
         );

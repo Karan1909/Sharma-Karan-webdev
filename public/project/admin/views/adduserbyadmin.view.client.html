@@ -17,12 +17,19 @@
 
 <div class="container" style="color: chartreuse; font-size: 120%">
 
+    <div ng-show ="model.firstNameError" class="alert alert-danger" role="alert">
+        {{model.firstNameError}}
+    </div>
     <label for="first">First Name</label>
     <input id="first"
            class="form-control"
            placeholder="John"
            ng-model="model.user.firstName"
            value="Karan"/>
+
+    <div ng-show ="model.lastNameError" class="alert alert-danger" role="alert">
+        {{model.lastNameError}}
+    </div>
 
     <label for="last">Last Name</label>
     <input id="last"
@@ -39,6 +46,9 @@
            ng-model="model.user.email"
            value="your-name@example.com"/>
 
+    <div ng-show ="model.usernameError" class="alert alert-danger" role="alert">
+        {{model.usernameError}}
+    </div>
     <label for="username">Username</label>
     <input id="username"
            class="form-control"
@@ -46,13 +56,15 @@
            ng-model="model.user.username"/>
 
     <label for="password">Password</label>
+    <div ng-show ="model.passwordError" class="alert alert-danger" role="alert">
+        {{model.passwordError}}
+    </div>
     <input id="password"
            class="form-control"
            type="password"
            placeholder="req4321"
            ng-model="model.user.password"
            value="password"/>
-
 
     <label for="datepicker">Date of Birth</label>
     <div class='date' id='datepicker'>
