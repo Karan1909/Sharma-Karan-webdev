@@ -11,6 +11,9 @@
     <div class="alert alert-success" ng-show="model.message">
         {{model.message}}
     </div>
+    <div class="alert alert-success" ng-show="model.password1">
+        {{model.password1}}
+    </div>
     <span ng-if="form1.$submitted && form1.username.$error.required"  style="color: orangered; font-size: 120%">Username is required</span>
     <form name="form1" novalidate ng-submit="model.register(model.user)">
         <div class="input-group">
@@ -25,7 +28,7 @@
                    placeholder="Username" aria-describedby="basic-addon1" />
 
         </div>
-        <span ng-if="form1.$submitted && form1.password.$error.required"  style="color: orangered; font-size: 120%">Password is required</span>
+        <span ng-if="form1.$submitted && form1.password.$error.required" style="color: orangered; font-size: 120%">Password is required</span>
         <div class="input-group">
 
             <span class="input-group-addon" id="basic-addon2">
@@ -35,12 +38,13 @@
                 </span>
 
 
-            <input name="password" required class="form-control" ng-model="model.user.password" placeholder="Password"
-                   value="" type="password"/>
+            <input name="password"  class="form-control" ng-model="model.user.password" placeholder="Password"
+                   value="" type="password" required/>
 
 
         </div>
 
+        <span ng-if="form1.$submitted && form1.vpassword.$error.required"  style="color: orangered; font-size: 120%">Validate Password is required</span>
         <span ng-if="form1.$submitted && (form1.vpassword.$viewValue!=form1.password.$viewValue)"  style="color: orangered; font-size: 120%">{{model.passwordError}}</span>
         <div class="input-group">
 
@@ -51,20 +55,23 @@
                 </span>
 
 
-            <input name="vpassword" required class="form-control" ng-model="model.user.verifypassword" placeholder="Password"
-                   value="" type="password"/>
+            <input name="vpassword" class="form-control" ng-model="model.user.verifypassword" placeholder="Password"
+                   value="" type="password" required />
 
 
         </div>
-        <label for="role" style="color: chartreuse; font-size: 120%">Register As</label>
 
-        <select id="role" ng-model="model.user.role">
-            <option value="ADMIN">ADMIN</option>
-            <option value="BUYER">BUYER</option>
-            <option value="SELLER">SELLER</option>
-            <option value="USER">USER</option>
-        </select>
         <button type="submit" class="btn btn-block btn-primary">Register</button>
     </form>
+
+    <label for="role" style="color: chartreuse; font-size: 120%">Register As</label>
+
+    <select id="role" ng-model="model.user.role">
+        <option value="ADMIN">ADMIN</option>
+        <option value="BUYER">BUYER</option>
+        <option value="SELLER">SELLER</option>
+        <option value="USER">USER</option>
+    </select>
+
 
 </div>

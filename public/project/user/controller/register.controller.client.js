@@ -17,11 +17,18 @@
         function register(user) {
             vm.usernameError="";
             vm.passwordError="";
+            vm.password1="";
 
             if(user.password!=user.verifypassword)
             {
                 vm.passwordError="Passwords don't match"
             }
+
+            if(user.password==" "||user.password==""|| user.password==null||user.verifypassword==" "||user.verifypassword==""|| user.verifypassword==null )
+            {
+                vm.password1="Password required"
+            }
+
             else {
                 UserService.findUserByUsername(user.username)
                     .success(
