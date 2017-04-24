@@ -23,7 +23,7 @@ module.exports = function () {
             // library:{type:Array, "default":[]},
             dateCreated: {type: Date, default: Date.now},
             googleId:{type:String},
-            role:{type: String, enum:['SELLER','BUYER','ADMIN','USER'], default:'USER'}
+            role:{type: String, enum:['SELLER','BUYER','ADMIN','USER'], default:'SELLER'}
 
         });
     return BookUserSchema;

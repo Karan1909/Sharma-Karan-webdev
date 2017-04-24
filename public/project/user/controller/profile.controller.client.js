@@ -46,17 +46,34 @@
 
         function updateUser(newUser)
         {
-            var promise=UserService.updateUser(userId,newUser);
-            promise.success(function (user) {
-                if(user!= null)
-                {
-                    vm.message="User updated successfully";
-                }
-                else
-                {
-                    vm.error="Unable to update the user";
-                }
-            });
+            vm.passwordError="";
+            vm.nameError="";
+
+            if(newUser.password==null || newUser.password=="" || newUser.password==" ")
+            {
+                vm.passwordError="Password is required"
+            }
+            else if (newUser.firstName==null || newUser.firstName=="" || newUser.firstName==" "||
+                newUser.lastName==null || newUser.lastName=="" || newUser.lastName==" ")
+            {
+                vm.nameError="First and Last name is required"
+            }
+            else
+            {
+                var promise=UserService.updateUser(userId,newUser);
+                promise.success(function (user) {
+                    if(user!= null)
+                    {
+                        vm.message="User updated successfully";
+                    }
+                    else
+                    {
+                        vm.error="Unable to update the user";
+                    }
+                });
+
+            }
+
 
         }
 

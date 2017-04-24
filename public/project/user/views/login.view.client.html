@@ -1,37 +1,60 @@
+<style>
+    .ng-submitted .ng-invalid {
+        background-color: red;
+    }
+    .myColor .ng-invalid {
+        color: red;
+    }
+</style>
 <div class="container">
     <h1>Login</h1>
-
-    <div ng-show ="model.error" class="alert alert-danger" role="alert">
-        {{model.error}}
+    <div class="alert alert-success" ng-show="model.message">
+        {{model.message}}
     </div>
-
-    <div class="form-group">
+    <span ng-if="form1.$submitted && form1.username.$error.required"  style="color: orangered; font-size: 120%">Username is required</span>
+    <form name="form1" novalidate ng-submit="model.login(user)">
         <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">
+            <span class="input-group-addon" id="basic-addon1">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true">
+
                                 </span>
                             </span>
-            <input type="text" ng-model="user.username" class="form-control ng-pristine ng-untouched ng-valid"
-                   placeholder="Username" aria-describedby="basic-addon1">
-        </div>
-    </div>
 
-    <div class="form-group">
+            <input ng-model="user.username" name="username" class="form-control" required
+                   placeholder="Username" aria-describedby="basic-addon1" />
+
+        </div>
+        <span ng-if="form1.$submitted && form1.password.$error.required"  style="color: orangered; font-size: 120%">Password is required</span>
         <div class="input-group">
 
-                <span class="input-group-addon" id="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">
                     <span class="glyphicon glyphicon-lock" aria-hidden="true">
 
                     </span>
                 </span>
-            <form name="form1">
-            <input type="password" ng-model="user.password" class="form-control ng-pristine ng-valid ng-touched" placeholder="Password" aria-describedby="basic-addon2" required>
-            </form>
+
+
+            <input name="password" required class="form-control" ng-model="user.password" placeholder="Password"
+                   value="" type="password"/>
+
         </div>
 
-    </div>
-    <a class="btn btn-primary btn-block"
-       ng-click="model.login(user)">Login</a>
+
+
+
+
+        <!--<input ng-model="user.username" name="username" class="form-control" required/>-->
+        <!--<span ng-if="form1.$submitted && form1.username.$error.required">Username is required</span>-->
+
+        <!--<input ng-model="user.email" name="email" class="form-control" type="email" required/>-->
+        <!--<span ng-if="form1.$submitted && form1.email.$error.required">Email is required</span>-->
+        <!--<span ng-if="form1.$submitted && form1.email.$error.email">This is not a valid email</span>-->
+
+        <button type="submit" class="btn btn-block btn-primary">Login</button>
+    </form>
+
+    <!--<a class="btn btn-primary btn-block"-->
+    <!--ng-click="model.login(user)">Login</a>-->
     <a class="btn btn-success btn-block"
        href="#/register">Register</a>
     <a href="/auth/google" class="btn btn-danger btn-block">
@@ -39,4 +62,3 @@
         Google
     </a>
 </div>
-<!-- the user object is not available to controller until we use $scope in the controller.

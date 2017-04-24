@@ -18,13 +18,9 @@
             vm.usernameError="";
             vm.passwordError="";
 
-            if(user.username===" " ||user.username==="" ||user.username===undefined)
+            if(user.password!=user.verifypassword)
             {
-                vm.usernameError="Username cannot be empty"
-            }
-            else if (user.password===" " ||user.password==="" || user.password===undefined)
-            {
-                vm.passwordError="Password cannot be empty"
+                vm.passwordError="Passwords don't match"
             }
             else {
                 UserService.findUserByUsername(user.username)

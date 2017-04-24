@@ -1,58 +1,66 @@
-
-<div class="container">
+<style>
+    .ng-submitted .ng-invalid {
+        background-color: red;
+    }
+    .myColor .ng-invalid {
+        color: red;
+    }
+</style>
+<div class="container" >
     <h1>Register</h1>
-
     <div class="alert alert-success" ng-show="model.message">
         {{model.message}}
     </div>
-    <div class="alert alert-danger" ng-show="model.usernameError">
-        {{model.usernameError}}
-    </div>
-    <div class="input-group">
-                            <span class="input-group-addon" id="basic-addon1">
+    <span ng-if="form1.$submitted && form1.username.$error.required"  style="color: orangered; font-size: 120%">Username is required</span>
+    <form name="form1" novalidate ng-submit="model.register(model.user)">
+        <div class="input-group">
+
+            <span class="input-group-addon" id="basic-addon1">
                                 <span class="glyphicon glyphicon-user" aria-hidden="true">
 
                                 </span>
                             </span>
 
-        <input type="text" ng-model="model.user.username" class="form-control ng-pristine ng-untouched ng-valid required"
-               placeholder="Username" aria-describedby="basic-addon1" value=""/>
-    </div>
+            <input ng-model="model.user.username" name="username" class="form-control" required
+                   placeholder="Username" aria-describedby="basic-addon1" />
 
-    <div class="form-group">
-
-
-        <div class="alert alert-danger" ng-show="model.passwordError">
-            {{model.passwordError}}
         </div>
+        <span ng-if="form1.$submitted && form1.password.$error.required"  style="color: orangered; font-size: 120%">Password is required</span>
         <div class="input-group">
 
-                <span class="input-group-addon" id="basic-addon2">
+            <span class="input-group-addon" id="basic-addon2">
                     <span class="glyphicon glyphicon-lock" aria-hidden="true">
 
                     </span>
                 </span>
 
 
-                <input name="password" required class="form-control" ng-model="model.user.password" placeholder="Password"
-                value="" type="password"/>
-            <!--<input type="password"  class="form-control ng-pristine ng-valid ng-touched"-->
-                    <!--id='password' aria-describedby="basic-addon2" required>-->
+            <input name="password" required class="form-control" ng-model="model.user.password" placeholder="Password"
+                   value="" type="password"/>
 
 
         </div>
 
-    </div>
-    <label for="role" style="color: chartreuse; font-size: 120%">Register As</label>
+        <span ng-if="form1.$submitted && (form1.vpassword.$viewValue!=form1.password.$viewValue)"  style="color: orangered; font-size: 120%">{{model.passwordError}}</span>
+        <div class="input-group">
 
-    <select id="role" ng-model="model.user.role">
-        <option value="ADMIN">ADMIN</option>
-        <option value="BUYER">BUYER</option>
-        <option value="SELLER">SELLER</option>
-        <option value="USER">USER</option>
-    </select>
-    <a class="btn btn-primary btn-block"
-     ng-click="model.register(model.user)" >Register</a>
-    <a class="btn btn-danger  btn-block"
-       href="#/">Cancel</a>
+            <span class="input-group-addon" id="basic-addon3">
+                    <span class="glyphicon glyphicon-lock" aria-hidden="true">
+
+                    </span>
+                </span>
+
+
+            <input name="vpassword" required class="form-control" ng-model="model.user.verifypassword" placeholder="Password"
+                   value="" type="password"/>
+
+
+        </div>
+
+        <div style="color: orangered; font-size: 120%">
+
+        </div>
+        <button type="submit" class="btn btn-block btn-primary">Register</button>
+    </form>
+
 </div>
