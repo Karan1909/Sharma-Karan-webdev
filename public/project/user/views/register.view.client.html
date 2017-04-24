@@ -56,10 +56,14 @@
 
 
         </div>
+        <label for="role" style="color: chartreuse; font-size: 120%">Register As</label>
 
-        <div style="color: orangered; font-size: 120%">
-
-        </div>
+        <select id="role" ng-model="model.user.role">
+            <option value="ADMIN">ADMIN</option>
+            <option value="BUYER">BUYER</option>
+            <option value="SELLER">SELLER</option>
+            <option value="USER">USER</option>
+        </select>
         <button type="submit" class="btn btn-block btn-primary">Register</button>
     </form>
 
