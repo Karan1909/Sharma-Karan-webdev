@@ -141,7 +141,7 @@ module.exports = function (app,model) {
         var user=req.body;
         user.password=bcrypt.hashSync(user.password);
         model.BookUserModel.updateUserByAdmin(userId,user)
-            .then(function(status){
+            .then(function(user){
                 res.json(user);
             });
 
@@ -379,7 +379,7 @@ module.exports = function (app,model) {
         newUser.password=bcrypt.hashSync(newUser.password);
         model.BookUserModel
             .updateUser(userId,newUser)
-            .then(function(status){
+            .then(function(newUser){
                 res.json(newUser);
             });
     }
