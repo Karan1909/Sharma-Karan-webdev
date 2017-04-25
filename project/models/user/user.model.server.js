@@ -251,7 +251,8 @@ module.exports = function () {
                 placeOfResidence:newUser.placeOfResidence,
                 dateOfBirth:newUser.dateOfBirth,
                 email:newUser.email,
-                phoneNumber:newUser.phoneNumber
+                phoneNumber:newUser.phoneNumber,
+                password:newUser.password
 
             });
 
