@@ -139,6 +139,7 @@ module.exports = function (app,model) {
     {
         var userId=req.params.userId;
         var user=req.body;
+        user.password=bcrypt.hashSync(user.password);
         model.BookUserModel.updateUserByAdmin(userId,user)
             .then(function(status){
                 res.json(user);
