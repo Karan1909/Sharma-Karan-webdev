@@ -375,6 +375,7 @@ module.exports = function (app,model) {
         // var userId=req.params.userId;
         var userId=req.user._id;
         var newUser=req.body;
+        newUser.password=bcrypt.hashSync(newUser.password);
         model.BookUserModel
             .updateUser(userId,newUser)
             .then(function(status){
