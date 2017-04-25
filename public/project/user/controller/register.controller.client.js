@@ -24,7 +24,7 @@
                 vm.passwordError="Passwords don't match"
             }
 
-            if(user.password==" "||user.password==""|| user.password==null||user.verifypassword==" "||user.verifypassword==""|| user.verifypassword==null )
+           else if(user.password==" "||user.password==""|| user.password==null||user.verifypassword==" "||user.verifypassword==""|| user.verifypassword==null )
             {
                 vm.password1="Password required"
             }
