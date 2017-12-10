@@ -295,7 +295,7 @@
                 }).
         when("/admin/:sid/viewLibrary",
             {
-                templateUrl: "Admin/views/viewuserlibrary.view.client.html",
+                templateUrl: "admin/views/viewuserlibrary.view.client.html",
                 controller: "AdminLibraryController",
                 controllerAs:"model",
                 resolve:{
