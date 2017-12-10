@@ -116,8 +116,37 @@
             {
                 redirectTo:'/login'
             })
+            .when("/admin/:userId/search",
+                {
+                    templateUrl: "admin/views/booksearchadmin.view.client.html",
+                    controller: "AdminLibraryController",
+                    controllerAs:"model",
+                    resolve:{
+                        someName: checkLogin
 
-            .when("/user/:uid/search/:bid",
+                    }
+
+                }
+            ).otherwise(
+            {
+                redirectTo:'/login'
+            })
+            .when("/admin/:userId/search/:bookId",
+                {
+                    templateUrl: "admin/views/adminbookdetail.view.client.html",
+                    controller: "AdminLibraryController",
+                    controllerAs:"model",
+                    resolve:{
+                        someName: checkLogin
+
+                    }
+
+                }
+            ).otherwise(
+            {
+                redirectTo:'/login'
+            })
+             .when("/user/:uid/search/:bid",
             {
                 templateUrl: "booksearch/views/bookdetail.view.client.html",
                 controller: "BookDetailController",
@@ -263,7 +292,21 @@
             .otherwise(
                 {
                     redirectTo:'/login'
-                });
+                }).
+        when("/admin/:sid/viewLibrary",
+            {
+                templateUrl: "Admin/views/viewuserlibrary.view.client.html",
+                controller: "AdminLibraryController",
+                controllerAs:"model",
+                resolve:{
+                    someName: checkLogin,
+                    checkAdmin:isAdmin
+                    //you can put checkAdmin means are they admin, if yes then we let them through with that route
+                }}
+        ).otherwise(
+            {
+                redirectTo:'/login'
+            });
 
 
 

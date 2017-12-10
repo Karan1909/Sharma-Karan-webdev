@@ -17,6 +17,7 @@
             "findUserByUsername": findUserByUsername,
             "addToLibrary": addToLibrary,
             "getBooksFromLibrary": getBooksFromLibrary,
+            "getBooksOfUserLibrary":getBooksOfUserLibrary,
             "getImageLink": getImageLink,
             "findUserByIdUsingObjects": findUserByIdUsingObjects,
             "logggedIn": logggedIn,
@@ -35,6 +36,14 @@
         return api;
 
 
+        function getBooksOfUserLibrary(someUserId) {
+            var obj={
+                "someUserId":someUserId
+            };
+            console.log("inside service"+someUserId);
+            return $http.get("/api/admin/"+someUserId+"/viewLibrary/",obj);
+        }
+
 
 
 
@@ -47,7 +56,8 @@
 
         function removeFromLibrary(bookId,userId) {
             var obj={
-                "bookId":bookId
+                "bookId":bookId,
+                "userId":userId
             };
             // var xyz=Object.values(obj.bookId);
             // console.log("xyz"+xyz);

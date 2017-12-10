@@ -28,7 +28,9 @@ module.exports = function (app,model) {
     app.get("/api/user/:userId",findUserById); // userId is the path paraameter
     app.put("/api/user/:userId",updateUser); // userId is the path paraameter
     // app.put("/api/user/:userId/search/:bookId",addToLibrary);
+    app.get("/api/admin/:userId/viewLibrary/",getBooks);
     app.get("/api/user/userId/viewLibrary",getBooksFromLibrary);
+
     app.get("/api/usingObjects/user/:userId",findUserByIdUsingObjects);
     app.get("/api/get/Image/user/:userId",getImageLinkForUser);
     app.post('/api/user/isadmin',isAdmin);
@@ -483,7 +485,8 @@ module.exports = function (app,model) {
     function removeFromLibrary(req,res) {
         var obj=req.body;
         var bookId=obj.bookId;
-        var userId=req.user._id;
+        var userId=obj.userId;
+        //var userId=req.user._id;
         console.log("book id is server "+bookId);
 
         model.BookModel.getIdFromGoogleBookId(bookId).then(
@@ -522,6 +525,29 @@ module.exports = function (app,model) {
     function checkSeller(req,res)
     {
         res.send(req.isAuthenticated() && req.user.role=="SELLER"? req.user : '0');
+    }
+
+    function getBooks(req,res)
+    {
+        var obj=req.body;
+       console.log(obj.someUserId);
+       // console.log(obj);
+       // var someUserId=obj.someUserId;
+        var someUserId=req.params.userId;
+        console.log(someUserId);
+
+        model.BookUserModel.getBooksFromLibrary(someUserId)
+            .then(
+                function (books) {
+                    console.log("inside server getting user with its library"+books);
+                    res.json(books);
+                },
+                function (error) {
+                    res.sendStatus(400).send(error);
+                }
+
+            );
+
     }
 
 };

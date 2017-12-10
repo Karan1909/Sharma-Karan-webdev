@@ -1,0 +1,55 @@
+<div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <b class="makeItWhite">LookBook App</b>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </nav>
+    <div class="input-group ks-pushForList">
+        <input ng-model="searchText" type="text" class="form-control border-for-textbox" placeholder="Search for Books!"/>
+        <span class="input-group-addon">
+            <a>
+               <i ng-click="model.searchBooks(searchText)" class="fa fa-search"></i>
+            </a>
+    </span>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row container-fluid" ng-show="model.book">
+            <div ng-repeat="book in model.book" >
+                <!--{{book.volumeInfo.imageLinks.smallThumbnail}}-->
+                <!--{{book.volumeInfo.imageLinks.Thumbnail}}-->
+                <div class ="col-lg-3 col-md-3 col-sm-6 col-xs-8" ng-if="book.volumeInfo.imageLinks.thumbnail">
+
+                    <a ng-click="model.viewDetails(book.id)">
+                        <img class="img-responsive thumbnail" ng-src="{{book.volumeInfo.imageLinks.thumbnail}}"
+                             alt="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRpjY4hmzAu4LDaXUCy2oLK6vkfC459JsafkcXSqURVbs6vZF-1z3ji8Q"/>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ks-addPaddingBottom">
+    </div>
+    <div class="col-xs-12">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+                <a ng-href="#/user/viewProfile" class="makeItWhite">
+                    <i class="fa fa-chevron-left ks-shift-arrow-in-position" aria-hidden="true"></i>
+                </a>
+                <div class="navbar-text pull-right wbdv-no-right-margin">
+
+                    <i class="fa fa-power-off makeItWhite icon" aria-hidden="true" ng-click=model.logout()></i>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

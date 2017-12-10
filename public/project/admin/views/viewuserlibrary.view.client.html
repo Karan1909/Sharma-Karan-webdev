@@ -1,0 +1,79 @@
+<div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#/">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <b class="makeItWhite">LookBook App</b>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="alert alert-danger ks-pushForList container " ng-show="model.error">
+        {{model.error}}
+    </div>
+    <div class="container" ng-show="model.books">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <table class="table" style="color: chartreuse; font-size: 120%">
+                <thead>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Name</th>
+                    <th>Publisher</th>
+                    <th>Remove From Library</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="book in model.books">
+                    <td>
+                        <a ng-click="model.viewDetails(book.bookId)">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <img class="img-responsive thumbnail" ng-src="{{book.url}}"/>
+                            </div>
+                        </a>
+                    </td>
+                    <td>
+                        <div class="col-xs-2 col-sm-4 col-md-8 col-lg-10">
+                            {{book.title}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-xs-2 col-sm-4 col-md-8 col-lg-10">
+                            {{book.publisher}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-xs-2 col-sm-4 col-md-8 col-lg-10">
+                <span class="glyphicon glyphicon-remove-sign icon"
+                      ng-click="model.removeFromLibrary(book.bookId,model.userId)">
+            </span>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="ks-addPaddingBottom">
+            </div>
+        </div>
+    </div>
+    <button type="button" ng-click=model.searchBook()>
+        Add book to library
+    </button>
+    <div class="col-xs-2">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container-fluid">
+
+
+                <a ng-href="#/admin" class="makeItWhite">
+                    <i class="fa fa-chevron-left ks-shift-arrow-in-position" aria-hidden="true"></i>
+                </a>
+                <div class="navbar-text pull-right wbdv-no-right-margin">
+
+                    <i class="fa fa-power-off makeItWhite icon" aria-hidden="true" ng-click=model.logout()></i>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
