@@ -306,16 +306,12 @@
         ).otherwise(
             {
                 redirectTo:'/login'
+            }).when("user/lookbookportal/meanstack",
+            {
+                templateUrl: "user/views/project.view.client.html",
+                controller:"LoginController",
+                controllerAs:"model"
             });
-
-
-
-
-
-
-
-
-
 
         function checkLogin($q, UserService,$location) {
 
